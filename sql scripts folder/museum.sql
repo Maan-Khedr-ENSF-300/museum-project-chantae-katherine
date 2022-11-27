@@ -50,7 +50,8 @@ CREATE TABLE ART_OBJECT (
     Date_borrowed       DATE,
     Date_returned       DATE,
     PRIMARY KEY (Id_no),
-    FOREIGN KEY (Artist_FName, Artist_LName) REFERENCES ARTIST(FName, LName)
+    FOREIGN KEY (Artist_FName, Artist_LName) REFERENCES ARTIST(FName, LName),
+    FOREIGN KEY (Borrowed_collection) REFERENCES COLLECTION(Name)
 );
 
 DROP TABLE IF EXISTS ON_DISPLAY;
