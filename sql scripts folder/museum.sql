@@ -17,7 +17,6 @@ VALUES
 (2, "One New Work: Ron Moppett", "2020-02-08", "2020-11-29"),
 (3, "Wolves: The Art of Dempsey Bob", "2022-09-10", "2022-11-20");
 
-
 DROP TABLE IF EXISTS ARTIST;
 CREATE TABLE ARTIST (
 	FName				VARCHAR(20) NOT NULL,
@@ -30,6 +29,12 @@ CREATE TABLE ARTIST (
 	Country_of_origin	VARCHAR(30),
 	PRIMARY KEY (FName, LName)
 );
+
+INSERT INTO ARTIST(FName, LName, Main_style, Artist_descrip, Date_born, Date_died, Epoch, Country_of_origin)
+VALUES
+("Vivian", "Maier", "Black & White", "Vivian Dorothy Maier was an American street photographer whose 
+work was discovered and recognized after her death. She worked for about 40 years as a nanny, mostly 
+in Chicago's North Shore, while pursuing photography.", "1926-02-01", "2009-04-21", "Modern", "American");
 
 DROP TABLE IF EXISTS COLLECTION;
 CREATE TABLE COLLECTION (
