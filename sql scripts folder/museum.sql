@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS ARTIST;
 CREATE TABLE ARTIST (
 	FName				VARCHAR(20) NOT NULL,
     LName				VARCHAR(20) NOT NULL,
-    Main_style			VARCHAR(25),
+    Main_style			VARCHAR(20),
     Artist_descrip		VARCHAR(250),
     Date_born			DATE,
     Date_died			DATE,
@@ -65,9 +65,20 @@ CREATE TABLE ON_DISPLAY (
 DROP TABLE IF EXISTS PAINTING;
 CREATE TABLE PAINTING (
     Id_no               INT NOT NULL,
-    Style               VARCHAR(25),
+    Style               VARCHAR(20),
     Drawn_on            VARCHAR(20),
     Paint_type          VARCHAR(20),
+    PRIMARY KEY (Id_no),
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+);
+
+DROP TABLE IF EXISTS SCULPTURE;
+CREATE TABLE SCULPTURE (
+    Id_no               INT NOT NULL,
+    Style               VARCHAR(20),
+    Material            VARCHAR(20),
+    Height              FLOAT,
+    Weight              FLOAT,
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 );
