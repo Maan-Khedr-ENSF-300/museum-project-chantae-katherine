@@ -44,7 +44,7 @@ CREATE TABLE ART_OBJECT (
     Title               VARCHAR(30),
     Origin              VARCHAR(30),
     ArtObj_descrip      VARCHAR(250),
-    Art_type            VARCHAR(10) NOT NULL,
+    Art_type            VARCHAR(10) NOT NULL DEFAULT 'OTHER',
     Epoch               VARCHAR(20),
     Borrowed_collection VARCHAR(25),
     Date_borrowed       DATE,
