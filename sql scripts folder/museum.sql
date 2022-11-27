@@ -34,7 +34,18 @@ INSERT INTO ARTIST(FName, LName, Main_style, Artist_descrip, Date_born, Date_die
 VALUES
 ("Vivian", "Maier", "Black & White", "Vivian Dorothy Maier was an American street photographer whose 
 work was discovered and recognized after her death. She worked for about 40 years as a nanny, mostly 
-in Chicago's North Shore, while pursuing photography.", "1926-02-01", "2009-04-21", "Modern", "American");
+in Chicago's North Shore, while pursuing photography.", "1926-02-01", "2009-04-21", "Modern", "American"),
+("Ron", "Moppett", "Abstract", "Ronald Benjamin Moppett RCA is a Canadian painter. He is known primarily 
+for abstract paintings and for works in which he combines paint and collage, along with non-traditional 
+materials. Moppett is based in Calgary, Alberta.", "1954-03-12", null, "Contemporary", "Canadian"),
+("Dempsey", "Bob", "Traditional", "Dempsey Bob, OC D.Litt is a Northwest Coast woodcarver and 
+sculptor from British Columbia, Canada, who is of Tahltan and Tlingit First Nations descent. He was 
+born in the Tahltan village of Telegraph Creek on the Stikine River in northwestern B.C., and is of the Wolf clan. ",
+"1948-01-01", null, "Contemporary", "Tahltan-Tlingit"),
+("Lai Cheuk", "Wah", "Realistic", "Sarah Lai Cheuk Wah is best known for her paintings of common objects and 
+urban landscapes, which she renders realistically in great detail. Her visual language is derived from the 
+ordinary, the mundane and the everyday.", "1983-01-01", null, "Contemporary", "Hong Konger");
+
 
 DROP TABLE IF EXISTS COLLECTION;
 CREATE TABLE COLLECTION (
