@@ -61,3 +61,13 @@ CREATE TABLE ON_DISPLAY (
     FOREIGN KEY (E_id) REFERENCES EXHIBITION(E_id),
     FOREIGN KEY (A_id) REFERENCES ART_OBJECT(Id_no)
 );
+
+DROP TABLE IF EXISTS PAINTING;
+CREATE TABLE PAINTING (
+    Id_no               INT NOT NULL,
+    Paint_style         VARCHAR(25),
+    Drawn_on            VARCHAR(20),
+    Paint_type          VARCHAR(20),
+    PRIMARY KEY (Id_no),
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+);
