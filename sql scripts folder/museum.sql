@@ -5,11 +5,18 @@ USE MUSEUM;
 DROP TABLE IF EXISTS EXHIBITION;
 CREATE TABLE EXHIBITION (
 	E_id				INT NOT NULL,
-    Name				VARCHAR(30) NOT NULL,
+    Name				VARCHAR(50) NOT NULL,
     Start_date			DATE,
     End_date			DATE,
     PRIMARY KEY (E_id)
 );
+
+INSERT INTO EXHIBITION (E_id, Name, Start_date, End_date)
+VALUES
+(1, "Vivian Maier", "2020-02-08", "2020-05-24"),
+(2, "One New Work: Ron Moppett", "2020-02-08", "2020-11-29"),
+(3, "Wolves: The Art of Dempsey Bob", "2022-09-10", "2022-11-20");
+
 
 DROP TABLE IF EXISTS ARTIST;
 CREATE TABLE ARTIST (
