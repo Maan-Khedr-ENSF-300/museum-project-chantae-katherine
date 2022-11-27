@@ -35,24 +35,20 @@ CREATE TABLE COLLECTION (
     PRIMARY KEY (Name)    
 );
 
--- 4. ART_OBJECT
--- 	• Id_no: INT NOT NULL
--- 	• Artist: can be null
--- 	• Year: can be null
--- 	• Title
--- 	• Origin
--- 	• ArtObj_descrip
--- 	• Art_type
--- 	• Epoch
--- 	• Artist_name
--- 	• Borrowed_collection
--- 	• Date_borrowed
--- Date_returned
-
 DROP TABLE IF EXISTS ART_OBJECT;
 CREATE TABLE ART_OBJECT (
     Id_no               INT NOT NULL,
     Artist_FName        VARCHAR(20), 
     Artist_LName        VARCHAR(20),
-    Year                INTEGER,
+    Year_created        INTEGER,
+    Title               VARCHAR(30),
+    Origin              VARCHAR(30),
+    ArtObj_descrip      VARCHAR(250),
+    Art_type            VARCHAR(10) NOT NULL,
+    Epoch               VARCHAR(20),
+    Borrowed_collection VARCHAR(25),
+    Date_borrowed       DATE,
+    Date_returned       DATE,
+    PRIMARY KEY (Id_no),
+    FOREIGN KEY (Artist_FName, Artist_LName) REFERENCES ARTIST(FName, LName)
 );
