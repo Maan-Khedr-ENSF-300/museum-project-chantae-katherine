@@ -52,3 +52,12 @@ CREATE TABLE ART_OBJECT (
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Artist_FName, Artist_LName) REFERENCES ARTIST(FName, LName)
 );
+
+DROP TABLE IF EXISTS ON_DISPLAY;
+CREATE TABLE ON_DISPLAY (
+    E_id                INT NOT NULL,
+    A_id                INT NOT NULL,
+    PRIMARY KEY (E_id, A_id),
+    FOREIGN KEY (E_id) REFERENCES EXHIBITION(E_id),
+    FOREIGN KEY (A_id) REFERENCES ART_OBJECT(Id_no)
+);
