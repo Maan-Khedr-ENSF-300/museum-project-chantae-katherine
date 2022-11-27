@@ -23,3 +23,14 @@ CREATE TABLE ARTIST (
 	Country_of_origin	VARCHAR(30),
 	PRIMARY KEY (FName, LName)
 );
+
+DROP TABLE IF EXISTS COLLECTION;
+CREATE TABLE COLLECTION (
+    Cname               VARCHAR(25) NOT NULL,
+    Contact_person      VARCHAR(20),
+    CType               VARCHAR(20),
+    C_descrip           VARCHAR(250),
+    Address             VARCHAR(30),
+    Phone               CHAR(11),
+    PRIMARY KEY (Cname)    
+);
