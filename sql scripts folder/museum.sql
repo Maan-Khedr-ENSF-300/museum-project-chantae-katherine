@@ -14,8 +14,7 @@ CREATE TABLE EXHIBITION (
 INSERT INTO EXHIBITION (E_id, Name, Start_date, End_date)
 VALUES
 (1, "Vivian Maier", "2020-02-08", "2020-05-24"),
-(2, "One New Work: Ron Moppett", "2020-02-08", "2020-11-29"),
-(3, "Wolves: The Art of Dempsey Bob", "2022-09-10", "2022-11-20");
+(2, "Wolves: The Art of Dempsey Bob", "2022-09-10", "2022-11-20");
 
 DROP TABLE IF EXISTS ARTIST;
 CREATE TABLE ARTIST (
@@ -35,9 +34,6 @@ VALUES
 ("Vivian", "Maier", "Black & White", "Vivian Dorothy Maier was an American street photographer whose 
 work was discovered and recognized after her death. She worked for about 40 years as a nanny, mostly 
 in Chicago's North Shore, while pursuing photography.", "1926-02-01", "2009-04-21", "Modern", "American"),
-("Ron", "Moppett", "Abstract", "Ronald Benjamin Moppett RCA is a Canadian painter. He is known primarily 
-for abstract paintings and for works in which he combines paint and collage, along with non-traditional 
-materials. Moppett is based in Calgary, Alberta.", "1954-03-12", null, "Contemporary", "Canadian"),
 ("Dempsey", "Bob", "Traditional", "Dempsey Bob, OC D.Litt is a Northwest Coast woodcarver and 
 sculptor from British Columbia, Canada, who is of Tahltan and Tlingit First Nations descent. He was 
 born in the Tahltan village of Telegraph Creek on the Stikine River in northwestern B.C., and is of the Wolf clan. ",
