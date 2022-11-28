@@ -110,3 +110,14 @@ CREATE TABLE SCULPTURE (
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 );
+
+DROP TABLE IF EXISTS STATUE;
+CREATE TABLE STATUE (
+    Id_no               INT NOT NULL,
+    Style               VARCHAR(20),
+    Material            VARCHAR(20),
+    Height              FLOAT,
+    Weight              FLOAT,
+    PRIMARY KEY (Id_no),
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+);
