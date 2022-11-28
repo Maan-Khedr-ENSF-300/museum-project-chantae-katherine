@@ -121,3 +121,12 @@ CREATE TABLE STATUE (
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 );
+
+DROP TABLE IF EXISTS OTHER;
+CREATE TABLE OTHER (
+    Id_no               INT NOT NULL,
+    Style               VARCHAR(20),
+    Type                VARCHAR(20),
+    PRIMARY KEY (Id_no),
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+);
