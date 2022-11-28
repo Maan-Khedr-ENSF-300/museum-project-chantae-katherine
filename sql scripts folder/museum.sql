@@ -130,3 +130,11 @@ CREATE TABLE OTHER (
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 );
+
+DROP TABLE IF EXISTS IN_PERMANENT_COLLECTION;
+CREATE TABLE IN_PERMANENT_COLLECTION (
+    Id_no               INT NOT NULL,
+    Cost                DECIMAL(19,2),
+    Date_acquired       DATE,
+    Status              VARCHAR(10)
+);
