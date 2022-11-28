@@ -49,7 +49,7 @@ CREATE TABLE COLLECTION (
     Contact_person      VARCHAR(20),
     Type                VARCHAR(20),
     C_descrip           VARCHAR(300),
-    Address             VARCHAR(30),
+    Address             VARCHAR(40),
     Phone               CHAR(11),
     PRIMARY KEY (Name)    
 );
@@ -60,7 +60,11 @@ VALUES
 art and objects can provide us with a sense of belonging, an understanding of what 
 it means to live here in Alberta, and an appreciation for the legacy of the remarkable 
 people and events that have shaped our communities.", "130 9 Ave SE, Calgary, AB",
-"14032684100");
+"14032684100"),
+("Met Collection", "Tiarra Brown", "Museum", "The Metropolitan Museum of Art is one of the 
+world's largest and finest art museums. Its collections include more than two million works 
+of art spanning 5,000 years of world culture, from prehistory to the present and from every 
+part of the globe.", "1000 Fifth Avenue, New York, NY", "12125357710");
 
 DROP TABLE IF EXISTS ART_OBJECT;
 CREATE TABLE ART_OBJECT (
