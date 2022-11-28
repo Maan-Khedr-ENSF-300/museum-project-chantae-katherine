@@ -92,8 +92,8 @@ VALUES
 (2, "Dempsey", "Bob", null, "Traders of the Sea", "Canadian", "5' x 10' Wood panel", "OTHER", "Contemporary", null, null, null),
 (3, "Lai Cheuk", "Wah", 2013, "Spotting the Light onto a Light", "Hong Konger", null, "PAINTING", "Contemporary", "Met Collection", "2022-05-06", null),
 (4, "Lai Cheuk", "Wah", 2013, "Sugar Rock", "Hong Konger", null, "PAINTING", "Contemporary", "Met Collection", "2022-05-06", null),
-(5, "Lai Cheuk", "Wah", 2009, "Sea (night series)", null, "OTHER", "Contemporary", null, null, null),
-(6, "Lai Cheuk", "Wah", 2001, "A Drowsy Car", null, "PAINTING", "Contemporary", null, null, null);
+(5, "Lai Cheuk", "Wah", 2009, "Sea (night series)", "Hong Konger", null, "OTHER", "Contemporary", null, null, null),
+(6, "Lai Cheuk", "Wah", 2001, "A Drowsy Car", "Hong Konger", null, "PAINTING", "Contemporary", null, null, null);
 
 
 DROP TABLE IF EXISTS ON_DISPLAY;
@@ -117,8 +117,8 @@ CREATE TABLE PAINTING (
 
 INSERT INTO PAINTING(Id_no, Style, Drawn_on, Paint_type)
 VALUES
-(3, "Realistic", "Canvas", "Oil");
-(4, "Realistic", "Canvas", "Oil");
+(3, "Realistic", "Canvas", "Oil"),
+(4, "Realistic", "Canvas", "Oil"),
 (6, "Realistic", "Canvas", "Oil");
 
 DROP TABLE IF EXISTS SCULPTURE;
