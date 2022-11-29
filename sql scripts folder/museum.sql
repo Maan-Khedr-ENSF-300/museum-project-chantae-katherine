@@ -189,5 +189,15 @@ CREATE TABLE IN_PERMANENT_COLLECTION (
     Id_no               INT NOT NULL,
     Cost                DECIMAL(19,2),
     Date_acquired       DATE,
-    Status              VARCHAR(10)
+    Status              VARCHAR(10),
+    PRIMARY KEY (Id_no),
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 );
+
+INSERT INTO IN_PERMANENT_COLLECTION(Id_no, Cost, Date_acquired, Status)
+VALUES
+(2, 1000, "2019-08-15", "on display"),
+(5, 2320.20, "2021-09-23", "stored"),
+(6, 450, "2022-03-11", "on loan"),
+(9, 780, "2020-06-19", "on loan"),
+(10, 999.98, "2021-12-09", "stored");
