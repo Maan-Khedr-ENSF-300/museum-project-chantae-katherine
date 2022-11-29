@@ -68,6 +68,8 @@ SET Id_no=100
 WHERE Id_no=8;
 
 -- 7) A deletion operation with any necessary triggers.
-/*
-    
-*/
+-- Deleting this ART_OBJECT will also delete the corresponding
+-- record in the table PAINTING, since art_object with Id_no=3 is a 
+-- painting, and we have specified 'ON DELETE CASCADE'
+
+DELETE FROM ART_OBJECT WHERE Id_no=3;
