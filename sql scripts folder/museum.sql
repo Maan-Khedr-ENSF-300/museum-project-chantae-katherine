@@ -90,7 +90,7 @@ CREATE TABLE ART_OBJECT (
 -- trigger that requires Date_borrowed and Date_returned to be dates in the past or today's date
 delimiter //
 CREATE TRIGGER DATE_VIOLATION
-BEFORE INSERT ON ART_OBJECT
+BEFORE UPDATE ON ART_OBJECT
 FOR EACH ROW
 BEGIN
     IF new.Date_borrowed > CURDATE() THEN
