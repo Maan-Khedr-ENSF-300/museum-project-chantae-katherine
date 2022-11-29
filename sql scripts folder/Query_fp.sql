@@ -3,13 +3,15 @@ Use MUSEUM;
 -- Query Retrieval File
 
 -- 1) Show all tables and explain how they are related to one another(keys,triggers, etc).
+show tables;
+
 select *
 from information_schema.table_constraints
 where constraint_schema = "museum";
 
 -- 2) A basic retrieval query.
 /*
-Displaying all the art objects stored in the museum database that includes Id num, year created and title.
+Displaying all the art objects stored in the museum database, showing attributes Id num, year created and title.
 */
 select Id_no,Year_created, Title
 from ART_OBJECT;
