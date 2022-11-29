@@ -87,6 +87,22 @@ CREATE TABLE ART_OBJECT (
     FOREIGN KEY (Borrowed_collection) REFERENCES COLLECTION(Name)
 );
 
+-- trigger that requires Date_borrowed and Date_returned to be dates in the past or today's date
+delimiter //
+CREATE TRIGGER DATE_VIOLATION
+BEFORE INSERT ON ART_OBJECT
+FOR EACH ROW
+BEGIN
+    IF new.Date_borrowed > CURDATE() THEN
+        SET new.Date_borrowed = null;
+    END IF;
+    IF new.Date_returned > CURDATE() THEN
+        SET new.Date_returned = null;
+    END IF;
+END; //
+
+delimiter ;
+
 INSERT INTO ART_OBJECT(Id_no, Artist_FName, Artist_LName, Year_created, Title, Origin, 
 ArtObj_descrip, Art_type, Epoch, Borrowed_collection, Date_borrowed, Date_returned)
 VALUES
