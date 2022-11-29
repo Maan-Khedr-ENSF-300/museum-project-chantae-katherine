@@ -119,7 +119,7 @@ Anish Kapoor, that is the centerpiece of AT&T Plaza at Millennium Park in Chicag
 screams in the midst of his torture. Every aspect of the figure, from squinting eyes to torn tongue and flamelike hair, 
 contributes to this image of torment.", "SCULPTURE", "Italian baroque", "Met Collection", "2021-12-12", null),
 (9, null, null, 1861, "Woman from the French Colonies", "French", "Because beauty is not the province of privileged race, I give to the world of 
-art the idea of the universality of beauty.", "STATUE", null, null, null, null),
+art the idea of the universality of beauty.", "STATUE", "Baroque", null, null, null),
 (10, null, null, 1925, "Statue of Balto", "American", "Balto was a Siberian Husky and sled dog. He achieved fame when he reportedly led a team of sled dogs 
 to help transport diphtheria antitoxin from Anchorage Nenana to combat an outbreak of the disease.", "STATUE", "Modern", null, null, null);
 
@@ -150,8 +150,8 @@ CREATE TABLE PAINTING (
 INSERT INTO PAINTING(Id_no, Style, Drawn_on, Paint_type)
 VALUES
 (3, "Realism", "Canvas", "Oil"),
-(4, "Realism", "Canvas", "Oil"),
-(6, "Realism", "Canvas", "Oil");
+(4, "Realism", "Paper", "Oil"),
+(6, "Realism", "Canvas", "Acrylic");
 
 DROP TABLE IF EXISTS SCULPTURE;
 CREATE TABLE SCULPTURE (
