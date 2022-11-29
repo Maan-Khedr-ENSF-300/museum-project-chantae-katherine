@@ -1,6 +1,8 @@
-Use MUSEUM;
+-- Group 5
 -- ENSF 300 Final Project 
 -- Query Retrieval File
+
+Use MUSEUM;
 
 -- 1) Show all tables and explain how they are related to one another(keys,triggers, etc).
 show tables;
@@ -25,7 +27,7 @@ from ART_OBJECT as AOB, COLLECTION as C
 where AOB.Borrowed_collection = C.Name
 group by Id_no;
 
--- 3) A retrirval query with ordered results.
+-- 3) A retrieval query with ordered results.
 /*
 Displaying all the art objects based on the date that are only available, when it was created from oldest to newest works.
 Displaying the Id number, title, artists' first and last name and year.
@@ -40,7 +42,7 @@ order by Year_created Asc;
 Display all art objects' Id number, the artist first and last name,art object description and year created for the artists that 
 are from the United Kingdom.
 */
-select  distinct Id_no, Artist_FName, Artist_LName, Artobj_descrip, Year_created
+select distinct Id_no, Artist_FName, Artist_LName, Year_created
 from ARTIST, ART_OBJECT 
 where Year_created in
 (
