@@ -83,8 +83,8 @@ CREATE TABLE ART_OBJECT (
     Date_borrowed       DATE,
     Date_returned       DATE,
     PRIMARY KEY (Id_no),
-    FOREIGN KEY (Artist_FName, Artist_LName) REFERENCES ARTIST(FName, LName),
-    FOREIGN KEY (Borrowed_collection) REFERENCES COLLECTION(Name)
+    FOREIGN KEY (Artist_FName, Artist_LName) REFERENCES ARTIST(FName, LName) ON UPDATE CASCADE,
+    FOREIGN KEY (Borrowed_collection) REFERENCES COLLECTION(Name) ON UPDATE CASCADE
 );
 
 -- trigger that requires Date_borrowed and Date_returned to be dates in the past or today's date
@@ -128,8 +128,8 @@ CREATE TABLE ON_DISPLAY (
     E_id                INT NOT NULL,
     A_id                INT NOT NULL,
     PRIMARY KEY (E_id, A_id),
-    FOREIGN KEY (E_id) REFERENCES EXHIBITION(E_id),
-    FOREIGN KEY (A_id) REFERENCES ART_OBJECT(Id_no)
+    FOREIGN KEY (E_id) REFERENCES EXHIBITION(E_id) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (A_id) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE 
 );
 
 INSERT INTO ON_DISPLAY(E_id, A_id)
@@ -144,7 +144,7 @@ CREATE TABLE PAINTING (
     Drawn_on            VARCHAR(20),
     Paint_type          VARCHAR(20),
     PRIMARY KEY (Id_no),
-    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO PAINTING(Id_no, Style, Drawn_on, Paint_type)
@@ -161,7 +161,7 @@ CREATE TABLE SCULPTURE (
     Height              FLOAT,  -- in meters
     Weight              FLOAT,  -- in lbs
     PRIMARY KEY (Id_no),
-    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO SCULPTURE(Id_no, Style, Material, Height, Weight)
@@ -177,7 +177,7 @@ CREATE TABLE STATUE (
     Height              FLOAT,  -- in meters
     Weight              FLOAT,  -- in lbs
     PRIMARY KEY (Id_no),
-    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO STATUE(Id_no, Style, Material, Height, Weight)
@@ -191,7 +191,7 @@ CREATE TABLE OTHER (
     Style               VARCHAR(20),
     Type                VARCHAR(30),
     PRIMARY KEY (Id_no),
-    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO OTHER(Id_no, Style, Type)
@@ -207,7 +207,7 @@ CREATE TABLE IN_PERMANENT_COLLECTION (
     Date_acquired       DATE,
     Status              VARCHAR(10),
     PRIMARY KEY (Id_no),
-    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO IN_PERMANENT_COLLECTION(Id_no, Cost, Date_acquired, Status)
