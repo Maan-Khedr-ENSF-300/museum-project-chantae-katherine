@@ -62,8 +62,7 @@ where Status = "stored";
 
 -- 6) An update operation with any necessary triggers.
 -- Attempt to update a statue's Id_no with a new Id_no that does not exist in ART_OBJECT
--- (this violates referential integrity, and the action will be rejected)
-
+-- (since this violates referential integrity, the action will be rejected)
 UPDATE STATUE
 SET Id_no=100
 WHERE Id_no=8;
