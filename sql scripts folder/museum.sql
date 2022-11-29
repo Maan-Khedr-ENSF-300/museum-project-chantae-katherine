@@ -40,7 +40,9 @@ born in the Tahltan village of Telegraph Creek on the Stikine River in northwest
 "1948-01-01", null, "Contemporary", "Canada"),
 ("Lai Cheuk", "Wah", "Realistic", "Sarah Lai Cheuk Wah is best known for her paintings of common objects and 
 urban landscapes, which she renders realistically in great detail. Her visual language is derived from the 
-ordinary, the mundane and the everyday.", "1983-01-01", null, "Contemporary", "Hong Kong");
+ordinary, the mundane and the everyday.", "1983-01-01", null, "Contemporary", "Hong Kong"),
+("Anish", "Kapoor", "Installation art", "Sir Anish Mikhail Kapoor CBE, RA is a British-Indian sculptor specializing 
+in installation art and conceptual art.", "1954-03-12", null, "Contemporary", "United Kingdom");
 
 
 DROP TABLE IF EXISTS COLLECTION;
@@ -89,12 +91,17 @@ INSERT INTO ART_OBJECT(Id_no, Artist_FName, Artist_LName, Year_created, Title, O
 ArtObj_descrip, Art_type, Epoch, Borrowed_collection, Date_borrowed, Date_returned)
 VALUES
 (1, "Vivian", "Maier", 1953, null, "American", "From Street Photography 1", "OTHER", "Modern", "Glenbow Collection", "2020-01-02", "2020-06-15"),
-(2, "Dempsey", "Bob", null, "Traders of the Sea", "Canadian", "5' x 10' Wood panel", "OTHER", "Contemporary", null, null, null),
+(2, "Dempsey", "Bob", null, "Traders of the Sea", "Tahltan-Tlingit", "5' x 10' Wood panel", "OTHER", "Contemporary", null, null, null),
 (3, "Lai Cheuk", "Wah", 2013, "Spotting the Light onto a Light", "Hong Konger", null, "PAINTING", "Contemporary", "Met Collection", "2022-05-06", null),
 (4, "Lai Cheuk", "Wah", 2013, "Sugar Rock", "Hong Konger", null, "PAINTING", "Contemporary", "Met Collection", "2022-05-06", null),
 (5, "Lai Cheuk", "Wah", 2009, "Sea (night series)", "Hong Konger", null, "OTHER", "Contemporary", null, null, null),
-(6, "Lai Cheuk", "Wah", 2001, "A Drowsy Car", "Hong Konger", null, "PAINTING", "Contemporary", null, null, null);
-
+(6, "Lai Cheuk", "Wah", 2001, "A Drowsy Car", "Hong Konger", null, "PAINTING", "Contemporary", null, null, null),
+(7, "Anish", "Kapoor", 2006, "Cloud Gate", "British-Indian", "Cloud Gate is a public sculpture by Indian-born British artist 
+Anish Kapoor, that is the centerpiece of AT&T Plaza at Millennium Park in Chicago, Illinois.", "SCULPTURE", "Contemporary", "Met Collection",
+"2022-02-06", "2022-11-10"),
+(8, null, null, 1680, "Marsyas", "German", "Flayed alive after losing a musical contest to the god Apollo, the satyr Marsyas 
+screams in the midst of his torture. Every aspect of the figure, from squinting eyes to torn tongue and flamelike hair, 
+contributes to this image of torment.", "SCULPTURE", "Italian baroque", "Met Collection", "2021-12-12", null);
 
 DROP TABLE IF EXISTS ON_DISPLAY;
 CREATE TABLE ON_DISPLAY (
@@ -122,20 +129,25 @@ CREATE TABLE PAINTING (
 
 INSERT INTO PAINTING(Id_no, Style, Drawn_on, Paint_type)
 VALUES
-(3, "Realistic", "Canvas", "Oil"),
-(4, "Realistic", "Canvas", "Oil"),
-(6, "Realistic", "Canvas", "Oil");
+(3, "Realism", "Canvas", "Oil"),
+(4, "Realism", "Canvas", "Oil"),
+(6, "Realism", "Canvas", "Oil");
 
 DROP TABLE IF EXISTS SCULPTURE;
 CREATE TABLE SCULPTURE (
     Id_no               INT NOT NULL,
     Style               VARCHAR(20),
     Material            VARCHAR(20),
-    Height              FLOAT,
-    Weight              FLOAT,
+    Height              VARCHAR(10),  
+    Weight              VARCHAR(10),  
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 );
+
+INSERT INTO SCULPTURE(Id_no, Style, Material, Height, Weight)
+VALUES
+(7, "Installation art", "Stainless steel", "10 m", "110 tons"),
+(8, "Portraiture", "Marble", "0.6858 m", "133.8 lb");
 
 DROP TABLE IF EXISTS STATUE;
 CREATE TABLE STATUE (
