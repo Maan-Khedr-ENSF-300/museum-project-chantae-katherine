@@ -97,11 +97,15 @@ VALUES
 (5, "Lai Cheuk", "Wah", 2009, "Sea (night series)", "Hong Konger", null, "OTHER", "Contemporary", null, null, null),
 (6, "Lai Cheuk", "Wah", 2001, "A Drowsy Car", "Hong Konger", null, "PAINTING", "Contemporary", null, null, null),
 (7, "Anish", "Kapoor", 2006, "Cloud Gate", "British-Indian", "Cloud Gate is a public sculpture by Indian-born British artist 
-Anish Kapoor, that is the centerpiece of AT&T Plaza at Millennium Park in Chicago, Illinois.", "SCULPTURE", "Contemporary", "Met Collection",
+Anish Kapoor, that is the centerpiece of AT&T Plaza at Millennium Park in Chicago, Illinois.", "STATUE", "Contemporary", "Met Collection",
 "2022-02-06", "2022-11-10"),
 (8, null, null, 1680, "Marsyas", "German", "Flayed alive after losing a musical contest to the god Apollo, the satyr Marsyas 
 screams in the midst of his torture. Every aspect of the figure, from squinting eyes to torn tongue and flamelike hair, 
-contributes to this image of torment.", "SCULPTURE", "Italian baroque", "Met Collection", "2021-12-12", null);
+contributes to this image of torment.", "SCULPTURE", "Italian baroque", "Met Collection", "2021-12-12", null),
+(9, null, null, 1861, "Woman from the French Colonies", "French", "Because beauty is not the province of privileged race, I give to the world of 
+art the idea of the universality of beauty.", "STATUE", null, null, null, null),
+(10, null, null, 1925, "Statue of Balto", "American", "Balto was a Siberian Husky and sled dog. He achieved fame when he reportedly led a team of sled dogs 
+to help transport diphtheria antitoxin from Anchorage Nenana to combat an outbreak of the disease.", "STATUE", "Modern", null, null, null);
 
 DROP TABLE IF EXISTS ON_DISPLAY;
 CREATE TABLE ON_DISPLAY (
@@ -138,27 +142,32 @@ CREATE TABLE SCULPTURE (
     Id_no               INT NOT NULL,
     Style               VARCHAR(20),
     Material            VARCHAR(20),
-    Height              VARCHAR(10),  
-    Weight              VARCHAR(10),  
+    Height              FLOAT,  -- in meters
+    Weight              FLOAT,  -- in lbs
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 );
 
 INSERT INTO SCULPTURE(Id_no, Style, Material, Height, Weight)
 VALUES
-(7, "Installation art", "Stainless steel", "10 m", "110 tons"),
-(8, "Portraiture", "Marble", "0.6858 m", "133.8 lb");
+(7, "Installation art", "Stainless steel", 10, 220000),
+(10, "Animalism", "Bronze", 1.3716, 1000);
 
 DROP TABLE IF EXISTS STATUE;
 CREATE TABLE STATUE (
     Id_no               INT NOT NULL,
     Style               VARCHAR(20),
     Material            VARCHAR(20),
-    Height              FLOAT,
-    Weight              FLOAT,
+    Height              FLOAT,  -- in meters
+    Weight              FLOAT,  -- in lbs
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 );
+
+INSERT INTO STATUE(Id_no, Style, Material, Height, Weight)
+VALUES
+(8, "Portraiture", "Marble", 0.6858, 133.8),
+(9, "Bust", "Marble", 0.96885, 307.1);
 
 DROP TABLE IF EXISTS OTHER;
 CREATE TABLE OTHER (
