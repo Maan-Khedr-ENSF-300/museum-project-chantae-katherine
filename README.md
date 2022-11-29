@@ -11,7 +11,9 @@ Katherine Tubang (30121665) katherine.tubang@ucalgary.ca
 
 - modify this file to include your group members information and tasks assigned per each
 - modify this file to include any notes on how to use and run the program
-- include any features you have added beyond the minimum requirements in a features list
+
+## Bonus Features:
+- Implemented a full custom trigger (DATE_VIOLATION) for ART_OBJECT table
 
 ## Organization:
 - code folder: contains your main python application code
