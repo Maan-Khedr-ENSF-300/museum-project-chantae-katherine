@@ -12,6 +12,12 @@ Katherine Tubang (30121665) katherine.tubang@ucalgary.ca
 - modify this file to include your group members information and tasks assigned per each
 - modify this file to include any notes on how to use and run the program
 
+## Notes:
+Users:
+  Username: ch | Password: password1
+  Username: kt | Password: password2
+  Username: guest | No password
+
 ## Bonus Features:
 - .sql Query file:
   - Completed bonus queries 1), 6), and 7)
