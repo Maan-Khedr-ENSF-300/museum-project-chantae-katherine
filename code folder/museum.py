@@ -1,4 +1,4 @@
-# Python application that interfaces the olympicarchery database
+# Python application that interfaces the museum database
 # Chantae Ho 30141743
 # Katherine Tubang
 
@@ -54,6 +54,22 @@ def menu():
 # 5- Present the user with the results of the statement that was executed.
 
 # 6- The program runs endlessly until on the main menu the user selects to quit the program
+
+'''Information for this project:
+o	python application user interfaces: you are required to do the guest 
+interface which only allows for queries, you will only have to do one more 
+of the two remaining interfaces - your choice which one to do -. If you do 
+both remaining interfaces there is up to 8% project bonus to be awarded
+o	access control using sql commands: this requires the creation of roles 
+and users for the database from the sql scrip as shown in the video posted on 
+D2L. the project requirement is to manage user access through the application, 
+meaning that you can always log in as root and just show the interface 
+corresponding to the prompt selections, which would not prevent a guest from 
+dropping a table if they knew how to inject scripts. for the bonus the login 
+will be using multiple credentials with different access levels as shown in 
+the video recording which will prevent any undesired behaviour by the user. 
+this is worth up to 3% project bonus
+'''
 
 
 if __name__ == "__main__":
