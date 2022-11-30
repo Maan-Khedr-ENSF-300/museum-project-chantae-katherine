@@ -4,18 +4,50 @@
 
 import mysql.connector
 
-def main():
-    print("Welcome to the Olympic Archery Database!")
+def login():
+    print("Please select your role from the following list: ")
+    print("1. Database Admin or Data Entry")
+    print("2. Browse as guest")
 
-    # 1- Ask for login credentials to connect to the localhost and database
-    _user = input("Please enter user name: ")
-    _password = input("Please enter your password: ")
+    choice = input("Enter your role (1 or 2) here: ")
+
+    if (choice == "1"):
+        # Ask for login credentials to connect to the localhost and database
+        _username = input("Please enter user name: ")
+        _password = input("Please enter your password: ")
+    elif (choice == "2"):
+        _username = "guest"
+        _password = None
+    else:
+        print("Invalid input.")
+        exit(1)
+    return _username, _password
+
+
+
+def main():
+    print("Welcome to the Art Museum Database!")
+    _username, _password = login()
 
     # connect to server
-    cnx = mysql.connector.connect(user=_user, password=_password)
+    cnx = mysql.connector.connect(user=_username, password=_password)
+
+    cur = cnx.cursor()
+
+    cur.execute("select current_role()")
+    role = cur.fetchone()[0]
+    if (role == "`db_admin`@`localhost`"):
+        print("You have Database Admin privileges.")
+        role_num = 0
+    elif (role == "`data_entry`@`localhost`"):
+        print("You have Data Entry privileges.")
+        role_num = 1
+    else:
+        print("You have Read-Access privileges.")
+        role_num = 2
+
     cnx.close()
 
-    menu()
 
 
 # 2- The application will ask the user for the kind of operation they would like to execute
