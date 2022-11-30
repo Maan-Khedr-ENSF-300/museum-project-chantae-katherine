@@ -61,11 +61,13 @@ from ART_OBJECT join IN_PERMANENT_COLLECTION on IN_PERMANENT_COLLECTION.Id_no = 
 where Status = "stored";
 
 -- 6) An update operation with any necessary triggers.
--- Attempt to update a statue's Id_no with a new Id_no that does not exist in ART_OBJECT
--- (since this violates referential integrity, the action will be rejected)
-UPDATE STATUE
+-- Update an art_object's Id_no and see that the sculpture which references this art_object
+-- has also had its Id_no changed. (ON UPDATE CASCADE)
+UPDATE ART_OBJECT
 SET Id_no=100
 WHERE Id_no=8;
+
+SELECT * from SCULPTURE;
 
 -- 7) A deletion operation with any necessary triggers.
 -- Deleting this ART_OBJECT will also delete the corresponding
