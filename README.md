@@ -22,6 +22,7 @@ Users:
 - .sql Query file:
   - Completed bonus queries 1), 6), and 7)
   - Implemented a full custom trigger (DATE_VIOLATION) for ART_OBJECT table
+- Access control using sql commands: Roles and users created for database. This is in museum.sql
 
 ## Organization:
 - code folder: contains your main python application code
