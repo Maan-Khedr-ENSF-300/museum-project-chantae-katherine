@@ -63,9 +63,11 @@ where Status = "stored";
 -- 6) An update operation with any necessary triggers.
 -- Update an art_object's Id_no and see that the sculpture which references this art_object
 -- has also had its Id_no changed. (ON UPDATE CASCADE)
+SELECT * from SCULPTURE;
+
 UPDATE ART_OBJECT
-SET Id_no=100
-WHERE Id_no=8;
+SET Id_no=44
+WHERE Id_no=10;
 
 SELECT * from SCULPTURE;
 
