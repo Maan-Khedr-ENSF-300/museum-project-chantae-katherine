@@ -7,11 +7,15 @@ Katherine Tubang (30121665) katherine.tubang@ucalgary.ca
 - EER Diagram - Chantae, Katherine
 - Relational Schema - Chantae
 - SQL script to create & populate database - Chantae
-- SQL script for queries - Katherine
+- SQL script for queries - Katherine (the rest of the queries), Chantae (3 queries)
 
 - modify this file to include your group members information and tasks assigned per each
 - modify this file to include any notes on how to use and run the program
-- include any features you have added beyond the minimum requirements in a features list
+
+## Bonus Features:
+- .sql Query file:
+  - Completed bonus queries 1), 6), and 7)
+  - Implemented a full custom trigger (DATE_VIOLATION) for ART_OBJECT table
 
 ## Organization:
 - code folder: contains your main python application code
