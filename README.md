@@ -14,9 +14,9 @@ Katherine Tubang (30121665) katherine.tubang@ucalgary.ca
 
 ## Notes:
 Users:
-  Username: ch | Password: password1
-  Username: kt | Password: password2
-  Username: guest | No password
+- Username: ch | Password: password1
+- Username: kt | Password: password2
+- Username: guest | No password
 
 ## Bonus Features:
 - .sql Query file:
