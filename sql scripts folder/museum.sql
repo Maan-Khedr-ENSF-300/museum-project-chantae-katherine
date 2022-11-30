@@ -217,3 +217,24 @@ VALUES
 (6, 450, "2022-03-11", "on loan"),
 (9, 780, "2020-06-19", "on loan"),
 (10, 999.98, "2021-12-09", "stored");
+
+
+DROP ROLE IF EXISTS db_admin@localhost, data_entry@localhost, read_access@localhost;
+CREATE ROLE db_admin@localhost, data_entry@localhost, read_access@localhost;
+
+GRANT ALL PRIVILEGES ON MUSEUM.* TO db_admin@localhost;
+GRANT SELECT, INSERT, UPDATE, DELETE ON MUSEUM.* TO data_entry@localhost;
+GRANT SELECT ON MUSEUM.* TO read_access@localhost;
+
+DROP USER IF EXISTS ch@localhost, kt@localhost, guest@localhost;
+CREATE USER ch@localhost IDENTIFIED WITH mysql_native_password BY 'password1';
+CREATE USER kt@localhost IDENTIFIED WITH mysql_native_password BY 'password2';
+CREATE USER guest@localhost;
+
+GRANT db_admin@localhost TO ch@localhost;
+GRANT data_entry@localhost TO kt@localhost;
+GRANT read_access@localhost TO guest@localhost;
+
+SET DEFAULT ROLE ALL TO ch@localhost;
+SET DEFAULT ROLE ALL TO kt@localhost;
+SET DEFAULT ROLE ALL TO guest@localhost;
