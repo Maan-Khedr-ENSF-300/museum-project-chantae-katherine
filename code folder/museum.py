@@ -2,6 +2,11 @@
 # Chantae Ho 30141743
 # Katherine Tubang
 
+# Users:
+#     Username: ch | Password: password1
+#     Username: kt | Password: password2
+#     Username: guest | No password
+
 import mysql.connector
 
 def login():
