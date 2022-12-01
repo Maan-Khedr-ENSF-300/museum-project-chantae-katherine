@@ -32,7 +32,12 @@ def login():
         exit(1)
     return _username, _password
 
-
+def guest_access():
+    pass
+    # end user wanting to browse database
+    # use descriptive user-friendly prompts to guid ser
+    # show option menu for user to select what to browse.
+    # multi-level menu to help user reach selection, with option to go back to upper menu
 
 def main():
     print("Welcome to the Art Museum Database!")
@@ -53,7 +58,7 @@ def main():
         role_num = 1
     else:
         print("You have Read-Access privileges.")
-        role_num = 2
+        guest_access()
 
     cnx.close()
 
