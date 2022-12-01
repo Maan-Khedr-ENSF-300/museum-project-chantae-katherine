@@ -51,8 +51,7 @@ def selection_menu():
         table_choice = input("Enter a choice from 1-5: ")
 
         if table_choice == "5":
-
-            instr = "select * from art_object"
+            instr = "select Id_no, Artist_fname, Artist_lname, Year_created, Title, Origin, Art_type, Epoch, Borrowed_collection from art_object"
             searchkey = input("\nEnter the Id number of the art_object you are looking for (1 - 10, or press Enter to show all): ") or None
             if (searchkey != None):
                 instr += " where Id_no=%s"
@@ -65,6 +64,30 @@ def selection_menu():
         # figure out way to print this stuff nicely
         print(col_names)
         print(search_result)
+
+        # formatting still does not work with normal font size (14) !!!
+        print("Search found ",len(search_result)," Entries:\n")
+        header_size=len(col_names)
+        for i in range(header_size):
+            if i == 4:
+                print("{:<40s}".format(col_names[i]),end='')
+            elif i == 5 or i == 7:
+                print("{:<20s}".format(col_names[i]),end='')
+            else:
+                print("{:<15s}".format(col_names[i]),end='')
+        print()
+        print(20*header_size*'-')
+        for row in search_result:
+            i = 0
+            for val in row:
+                if i == 4:
+                    print("{:<40s}".format(str(val)),end='')
+                elif i == 5 or i == 7:
+                    print("{:<20s}".format(str(val)),end='')                
+                else:
+                    print("{:<15s}".format(str(val)),end='')
+                i += 1
+            print()
         
     # multi-level menu to help user reach selection, with option to go back to upper menu
 
