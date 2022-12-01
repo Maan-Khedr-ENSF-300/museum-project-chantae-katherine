@@ -41,16 +41,19 @@ def selection_menu():
     choice = input("Enter your choice (1 - 4) here: ")
 
     if choice == "1":
+        # ask if user wants to see painting/statue/sculpture/other or art_object
+
         instr = "select * from art_object"
         searchkey = input("\nEnter the Id number of the art_object you are looking for (press Enter to show all): ") or None
         if (searchkey != None):
             instr += " where Id_no=%s"
             searchkey = tuple(searchkey)
-        print(instr, searchkey)
+
         cur.execute(instr, searchkey)
-        # cur.execute("select * from art_object where Id_no=%s", ("1",))
         col_names=cur.column_names
         search_result=cur.fetchall()
+
+        # figure out way to print this stuff nicely
         print(col_names)
         print(search_result)
         
