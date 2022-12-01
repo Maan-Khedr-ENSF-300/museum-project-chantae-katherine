@@ -21,6 +21,10 @@ def login():
     else:
         print("Invalid input.")
         exit(1)
+
+    if _username == "root":
+        print("Not a valid user.")
+        exit(1)
     return _username, _password
 
 
