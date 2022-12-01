@@ -46,7 +46,7 @@ def selection_menu():
         print("1. Painting")
         print("2. Statue")
         print("3. Sculpture")
-        print("4. Other art objects")
+        print("4. Other art types")
         print("5. General art objects")
         table_choice = input("Enter a choice from 1-5: ")
 
