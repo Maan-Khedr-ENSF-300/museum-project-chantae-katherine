@@ -33,12 +33,31 @@ def login():
     return _username, _password
 
 def selection_menu():
-    pass
-    # show option menu for user to select what to browse.
+    print("\nWhat would you like to lookup? Choose from the following list:")
+    print("1. Art object")
+    print("2. Artist")
+    print("3. Exhibition")
+    print("4. Collection")
+    choice = input("Enter your choice (1 - 4) here: ")
+
+    if choice == "1":
+        instr = "select * from art_object"
+        searchkey = input("\nEnter the Id number of the art_object you are looking for (press Enter to show all): ") or None
+        if (searchkey != None):
+            instr += " where Id_no=%s"
+            searchkey = tuple(searchkey)
+        print(instr, searchkey)
+        cur.execute(instr, searchkey)
+        # cur.execute("select * from art_object where Id_no=%s", ("1",))
+        col_names=cur.column_names
+        search_result=cur.fetchall()
+        print(col_names)
+        print(search_result)
+        
     # multi-level menu to help user reach selection, with option to go back to upper menu
 
 def guest_access():
-    pass
+    selection_menu()
     # end user wanting to browse database
     # use descriptive user-friendly prompts to guide user
     
@@ -49,9 +68,10 @@ def main():
 
     # connect to server
     cnx = mysql.connector.connect(user=_username, password=_password)
-
+    global cur
     cur = cnx.cursor()
-
+    
+    cur.execute("Use museum")
     cur.execute("select current_role()")
     role = cur.fetchone()[0]
     if (role == "`db_admin`@`localhost`"):
