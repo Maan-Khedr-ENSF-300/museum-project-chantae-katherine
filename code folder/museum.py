@@ -42,16 +42,25 @@ def selection_menu():
 
     if choice == "1":
         # ask if user wants to see painting/statue/sculpture/other or art_object
+        print("\nWhat category of art objects would you like to search?")
+        print("1. Painting")
+        print("2. Statue")
+        print("3. Sculpture")
+        print("4. Other art objects")
+        print("5. General art objects")
+        table_choice = input("Enter a choice from 1-5: ")
 
-        instr = "select * from art_object"
-        searchkey = input("\nEnter the Id number of the art_object you are looking for (1 - 10, or press Enter to show all): ") or None
-        if (searchkey != None):
-            instr += " where Id_no=%s"
-            searchkey = tuple(searchkey)
+        if table_choice == "5":
 
-        cur.execute(instr, searchkey)
-        col_names=cur.column_names
-        search_result=cur.fetchall()
+            instr = "select * from art_object"
+            searchkey = input("\nEnter the Id number of the art_object you are looking for (1 - 10, or press Enter to show all): ") or None
+            if (searchkey != None):
+                instr += " where Id_no=%s"
+                searchkey = tuple(searchkey)
+
+            cur.execute(instr, searchkey)
+            col_names=cur.column_names
+            search_result=cur.fetchall()
 
         # figure out way to print this stuff nicely
         print(col_names)
