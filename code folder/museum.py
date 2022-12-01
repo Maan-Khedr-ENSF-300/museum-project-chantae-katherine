@@ -40,7 +40,7 @@ def selection_menu():
 def guest_access():
     pass
     # end user wanting to browse database
-    # use descriptive user-friendly prompts to guid ser
+    # use descriptive user-friendly prompts to guide user
     
 
 def main():
