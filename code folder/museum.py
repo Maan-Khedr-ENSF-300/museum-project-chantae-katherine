@@ -44,7 +44,7 @@ def selection_menu():
         # ask if user wants to see painting/statue/sculpture/other or art_object
 
         instr = "select * from art_object"
-        searchkey = input("\nEnter the Id number of the art_object you are looking for (press Enter to show all): ") or None
+        searchkey = input("\nEnter the Id number of the art_object you are looking for (1 - 10, or press Enter to show all): ") or None
         if (searchkey != None):
             instr += " where Id_no=%s"
             searchkey = tuple(searchkey)
