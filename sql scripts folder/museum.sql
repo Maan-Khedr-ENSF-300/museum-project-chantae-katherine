@@ -115,8 +115,7 @@ VALUES
 (7, "Anish", "Kapoor", 2006, "Cloud Gate", "British-Indian", "Cloud Gate is a public sculpture.", "STATUE", "Contemporary", "Met Collection",
 "2022-02-06", "2022-11-10"),
 (8, null, null, 1680, "Marsyas", "German", "The satyr Marsyas screams in the midst of his torture.", "SCULPTURE", "Italian baroque", "Met Collection", "2021-12-12", null),
-(9, null, null, 1861, "Woman from the French Colonies", "French", "Because beauty is not the province of privileged race, I give to the world of 
-art the idea of the universality of beauty.", "STATUE", "Baroque", null, null, null),
+(9, null, null, 1861, "Woman from the French Colonies", "French", "The idea of the universality of beauty.", "STATUE", "Baroque", null, null, null),
 (10, null, null, 1925, "Statue of Balto", "American", "Balto led a team of sled dogs to transport diphtheria antitoxin.", "STATUE", "Modern", null, null, null);
 
 DROP TABLE IF EXISTS ON_DISPLAY;
