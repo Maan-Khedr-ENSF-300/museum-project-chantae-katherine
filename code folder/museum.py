@@ -51,7 +51,7 @@ def selection_menu():
         table_choice = input("Enter a choice from 1-5: ")
 
         if table_choice == "5":
-            instr = "select Id_no, Artist_fname, Artist_lname, Year_created, Title, Origin, Art_type, Epoch, Borrowed_collection from art_object"
+            instr = "select * from art_object"
             searchkey = input("\nEnter the Id number of the art_object you are looking for (1 - 10, or press Enter to show all): ") or None
             if (searchkey != None):
                 instr += " where Id_no=%s"
@@ -65,30 +65,46 @@ def selection_menu():
         print(col_names)
         print(search_result)
 
-        # formatting still does not work with normal font size (14) !!!
         print("Search found ",len(search_result)," Entries:\n")
         header_size=len(col_names)
-        for i in range(header_size):
+        for i in range(6):
             if i == 4:
-                print("{:<40s}".format(col_names[i]),end='')
-            elif i == 5 or i == 7:
-                print("{:<20s}".format(col_names[i]),end='')
+                print("{:<35s}".format(col_names[i]),end='')
             else:
-                print("{:<15s}".format(col_names[i]),end='')
+                print("{:<16s}".format(col_names[i]),end='')
         print()
-        print(20*header_size*'-')
+        print(15*8*'-')
         for row in search_result:
             i = 0
-            for val in row:
-                if i == 4:
-                    print("{:<40s}".format(str(val)),end='')
-                elif i == 5 or i == 7:
-                    print("{:<20s}".format(str(val)),end='')                
+            for j in range(6):
+                if j == 4:
+                    print("{:<35s}".format(str(row[j])),end='')
                 else:
-                    print("{:<15s}".format(str(val)),end='')
-                i += 1
+                    print("{:<16s}".format(str(row[j])),end='')                
+            print()
+
+        print()
+
+        for i in range(7, header_size):
+            print("{:<20s}".format(col_names[i]),end='')
+        print()
+        print(15*8*'-')
+        for row in search_result:
+            i = 0
+            for j in range(7, len(row)):
+                print("{:<20s}".format(str(row[j])),end='')                
             print()
         
+        print()
+        print("{:s}".format(col_names[6]),end='')
+        print()
+
+        print(15*8*'-')
+        for row in search_result:
+            print("{:s}".format(str(row[6])),end='')  
+            print()
+
+
     # multi-level menu to help user reach selection, with option to go back to upper menu
 
 def guest_access():
