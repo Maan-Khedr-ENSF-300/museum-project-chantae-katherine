@@ -61,7 +61,6 @@ def selection_menu():
             col_names=cur.column_names
             search_result=cur.fetchall()
 
-        # figure out way to print this stuff nicely
         print(col_names)
         print(search_result)
 
@@ -103,6 +102,7 @@ def selection_menu():
         for row in search_result:
             print("{:s}".format(str(row[6])),end='')  
             print()
+
 
 
     # multi-level menu to help user reach selection, with option to go back to upper menu
