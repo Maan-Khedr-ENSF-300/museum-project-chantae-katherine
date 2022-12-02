@@ -112,16 +112,12 @@ VALUES
 (4, "Lai Cheuk", "Wah", 2013, "Sugar Rock", "Hong Konger", null, "PAINTING", "Contemporary", "Met Collection", "2022-05-06", null),
 (5, "Lai Cheuk", "Wah", 2009, "Sea (night series)", "Hong Konger", null, "OTHER", "Contemporary", null, null, null),
 (6, "Lai Cheuk", "Wah", 2001, "A Drowsy Car", "Hong Konger", null, "PAINTING", "Contemporary", null, null, null),
-(7, "Anish", "Kapoor", 2006, "Cloud Gate", "British-Indian", "Cloud Gate is a public sculpture by Indian-born British artist 
-Anish Kapoor, that is the centerpiece of AT&T Plaza at Millennium Park in Chicago, Illinois.", "STATUE", "Contemporary", "Met Collection",
+(7, "Anish", "Kapoor", 2006, "Cloud Gate", "British-Indian", "Cloud Gate is a public sculpture.", "STATUE", "Contemporary", "Met Collection",
 "2022-02-06", "2022-11-10"),
-(8, null, null, 1680, "Marsyas", "German", "Flayed alive after losing a musical contest to the god Apollo, the satyr Marsyas 
-screams in the midst of his torture. Every aspect of the figure, from squinting eyes to torn tongue and flamelike hair, 
-contributes to this image of torment.", "SCULPTURE", "Italian baroque", "Met Collection", "2021-12-12", null),
+(8, null, null, 1680, "Marsyas", "German", "The satyr Marsyas screams in the midst of his torture.", "SCULPTURE", "Italian baroque", "Met Collection", "2021-12-12", null),
 (9, null, null, 1861, "Woman from the French Colonies", "French", "Because beauty is not the province of privileged race, I give to the world of 
 art the idea of the universality of beauty.", "STATUE", "Baroque", null, null, null),
-(10, null, null, 1925, "Statue of Balto", "American", "Balto was a Siberian Husky and sled dog. He achieved fame when he reportedly led a team of sled dogs 
-to help transport diphtheria antitoxin from Anchorage Nenana to combat an outbreak of the disease.", "STATUE", "Modern", null, null, null);
+(10, null, null, 1925, "Statue of Balto", "American", "Balto led a team of sled dogs to transport diphtheria antitoxin.", "STATUE", "Modern", null, null, null);
 
 DROP TABLE IF EXISTS ON_DISPLAY;
 CREATE TABLE ON_DISPLAY (
