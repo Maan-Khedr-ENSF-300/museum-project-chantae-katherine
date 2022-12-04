@@ -246,6 +246,8 @@ def guest_access():
     choice = input("Would you like to continue searching? Enter y to continue or n to quit: ")
     if choice == 'y':
         selection_menu()
+    else:
+        return
 
 def data_entry_access():
     choice = menu(1);
@@ -253,9 +255,12 @@ def data_entry_access():
         selection_menu()
     elif choice == "1":
         insertion_menu()
+    elif choice == "10":
+        return
     else:
         print("That is not a valid input.")
-        exit(1)
+    data_entry_access()
+    
 
     # - search, insert, update, delete
 
@@ -296,6 +301,9 @@ def main():
         print("\nYou have Read-Access privileges.")
         guest_access()
 
+    print("\nThanks for using the program! See you next time.")
+
+
     cnx.close()
 
 
@@ -312,6 +320,7 @@ def menu(role_num):
         print("5. Create view")
         print("6. Alter")
         print("7. Query")
+    print("10. QUIT")
 
     choice = input("Which operation would you like to execute? Please enter your choice here: ")
     return choice;
