@@ -1,6 +1,5 @@
 # Python application that interfaces the museum database
 # Chantae Ho 30141743
-# Katherine Tubang
 
 # Users:
 #     Username: ch | Password: password1
