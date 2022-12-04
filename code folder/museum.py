@@ -222,10 +222,17 @@ def guest_access():
     selection_menu()  
 
 def data_entry_access():
-    menu(1);
+    choice = menu(1);
+    if choice == "0":
+        selection_menu()
+    elif choice == "1":
+        insertion_menu()
+    else:
+        print("That is not a valid input.")
+        exit(1)
+
     # - search, insert, update, delete
-    # a. Lookup information in the database by providing search field values (not SQL
-    # commands)
+
     # b. Insert new tuples to a specific table in the database by first selecting the table for data
     # insertion, then either:
     # i. Providing a file with information line separated, where each line represents an
