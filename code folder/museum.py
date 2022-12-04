@@ -106,7 +106,7 @@ def selection_menu():
         searchkey = input("\nEnter the First name of the artist you are looking for (press Enter for all): ") or None
         if (searchkey != None):
             instr += " where Fname=%s"
-            searchkey = searchkey.split(" ")
+            searchkey = searchkey.split("\n")
             searchkey = tuple(searchkey)
 
         cur.execute(instr, searchkey)
@@ -147,7 +147,6 @@ def selection_menu():
         searchkey = input("\nEnter the Exhibition ID of the exhibition you are looking for (press Enter for all): ") or None
         if (searchkey != None):
             instr += " where E_id=%s"
-            searchkey = searchkey.split(" ")
             searchkey = tuple(searchkey)
 
         cur.execute(instr, searchkey)
@@ -174,10 +173,10 @@ def selection_menu():
     
     elif choice == "4":     # choice is collection
         instr = "select * from collection"
-        searchkey = input("\nEnter the Exhibition ID of the exhibition you are looking for (press Enter for all): ") or None
+        searchkey = input("\nEnter the name of the collection you are looking for (press Enter for all): ") or None
         if (searchkey != None):
-            instr += " where E_id=%s"
-            searchkey = searchkey.split(" ")
+            instr += " where Name=%s"
+            searchkey = searchkey.split("\n")
             searchkey = tuple(searchkey)
 
         cur.execute(instr, searchkey)
@@ -187,20 +186,23 @@ def selection_menu():
         print("Search found ",len(search_result)," Entries:\n")
         header_size=len(col_names)
 
-        for i in range(header_size):
-            if i == 1:
-                print("{:<35s}".format(col_names[i]),end='')
-            else:
-                print("{:<15s}".format(col_names[i]),end='')
-        print()
-        print(20*header_size*'-')
-        for row in search_result:
-            for j in range(header_size):
-                if j == 1:
-                    print("{:<35s}".format(str(row[j])),end='')   
-                else:
-                    print("{:<15s}".format(str(row[j])),end='')                
-            print()    
+        print(col_names)
+        print(search_result)
+
+        # for i in range(header_size):
+        #     if i == 1:
+        #         print("{:<35s}".format(col_names[i]),end='')
+        #     else:
+        #         print("{:<15s}".format(col_names[i]),end='')
+        # print()
+        # print(20*header_size*'-')
+        # for row in search_result:
+        #     for j in range(header_size):
+        #         if j == 1:
+        #             print("{:<35s}".format(str(row[j])),end='')   
+        #         else:
+        #             print("{:<15s}".format(str(row[j])),end='')                
+        #     print()    
 
 
 
