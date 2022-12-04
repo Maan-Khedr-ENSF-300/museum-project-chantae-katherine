@@ -13,12 +13,6 @@ where constraint_schema = "museum";
 
 -- 2) A basic retrieval query.
 /*
-Displaying all the art objects stored in the museum database, showing attributes Id num, year created and title.
-*/
-select Id_no,Year_created, Title
-from ART_OBJECT;
-
-/*
 Displaying the contact person, address and phone that is borrowed.
 Order them by the art objects Id number. 
 */
