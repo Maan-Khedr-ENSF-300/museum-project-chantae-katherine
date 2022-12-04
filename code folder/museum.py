@@ -222,7 +222,7 @@ def guest_access():
     selection_menu()  
 
 def data_entry_access():
-    pass
+    menu(1);
     # - search, insert, update, delete
     # a. Lookup information in the database by providing search field values (not SQL
     # commands)
@@ -250,13 +250,13 @@ def main():
     cur.execute("select current_role()")
     role = cur.fetchone()[0]
     if (role == "`db_admin`@`localhost`"):
-        print("You have Database Admin privileges.")
+        print("\nYou have Database Admin privileges.")
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
-        print("You have Data Entry privileges.")
+        print("\nYou have Data Entry privileges.")
         data_entry_access()
     else:
-        print("You have Read-Access privileges.")
+        print("\nYou have Read-Access privileges.")
         guest_access()
 
     cnx.close()
@@ -270,7 +270,7 @@ def menu(role_num):
     print("1. Insert")
     print("2. Delete")
     print("3. Update")
-    if role_num == 1:
+    if role_num == 0:
         print("4. Create table")
         print("5. Create view")
         print("6. Alter")
