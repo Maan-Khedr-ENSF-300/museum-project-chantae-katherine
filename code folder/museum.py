@@ -142,10 +142,36 @@ def selection_menu():
             print("{:s}".format(str(row[3])),end='')  
             print()
     
+    elif choice == "3":     # choice is exhibition
+        instr = "select * from exhibition"
+        searchkey = input("\nEnter the Exhibition ID of the exhibition you are looking for (press Enter for all): ") or None
+        if (searchkey != None):
+            instr += " where E_id=%s"
+            searchkey = searchkey.split(" ")
+            searchkey = tuple(searchkey)
 
+        cur.execute(instr, searchkey)
+        col_names=cur.column_names
+        search_result=cur.fetchall()
 
+        print("Search found ",len(search_result)," Entries:\n")
+        header_size=len(col_names)
 
-    # multi-level menu to help user reach selection, with option to go back to upper menu
+        for i in range(header_size):
+            if i == 1:
+                print("{:<35s}".format(col_names[i]),end='')
+            else:
+                print("{:<15s}".format(col_names[i]),end='')
+        print()
+        print(20*header_size*'-')
+        for row in search_result:
+            for j in range(header_size):
+                if j == 1:
+                    print("{:<35s}".format(str(row[j])),end='')   
+                else:
+                    print("{:<15s}".format(str(row[j])),end='')                
+            print()    
+
 
 def guest_access():
     selection_menu()
