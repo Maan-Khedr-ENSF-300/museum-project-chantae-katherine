@@ -245,7 +245,7 @@ def guest_access():
     print(100*"=")
     choice = input("Would you like to continue searching? Enter y to continue or n to quit: ")
     if choice == 'y':
-        selection_menu()
+        guest_access()
     else:
         return
 
