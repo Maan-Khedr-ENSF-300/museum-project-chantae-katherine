@@ -31,18 +31,22 @@ CREATE TABLE ARTIST (
 
 INSERT INTO ARTIST(FName, LName, Main_style, Artist_descrip, Date_born, Date_died, Epoch, Country_of_origin)
 VALUES
-("Vivian", "Maier", "Black & White", "Vivian Dorothy Maier was an American street photographer whose 
-work was discovered and recognized after her death. She worked for about 40 years as a nanny, mostly 
-in Chicago's North Shore, while pursuing photography.", "1926-02-01", "2009-04-21", "Modern", "United States"),
-("Dempsey", "Bob", "Traditional", "Dempsey Bob, OC D.Litt is a Northwest Coast woodcarver and 
-sculptor from British Columbia, Canada, who is of Tahltan and Tlingit First Nations descent. He was 
-born in the Tahltan village of Telegraph Creek on the Stikine River in northwestern B.C., and is of the Wolf clan. ",
+("Vivian", "Maier", "Black & White", 
+"Vivian Dorothy Maier was an American street photographer whose work was discovered and 
+    recognized after her death. She worked for about 40 years as a nanny, mostly 
+    in Chicago's North Shore, while pursuing photography.", "1926-02-01", "2009-04-21", "Modern", "United States"),
+("Dempsey", "Bob", "Traditional", 
+"Dempsey Bob, OC D.Litt is a Northwest Coast woodcarver and sculptor from British Columbia, 
+    Canada, who is of Tahltan and Tlingit First Nations descent. He was born in the Tahltan 
+    village of Telegraph Creek on the Stikine River in northwestern B.C., and is of the Wolf clan. ",
 "1948-01-01", null, "Contemporary", "Canada"),
-("Lai Cheuk", "Wah", "Realistic", "Sarah Lai Cheuk Wah is best known for her paintings of common objects and 
-urban landscapes, which she renders realistically in great detail. Her visual language is derived from the 
-ordinary, the mundane and the everyday.", "1983-01-01", null, "Contemporary", "Hong Kong"),
-("Anish", "Kapoor", "Installation art", "Sir Anish Mikhail Kapoor CBE, RA is a British-Indian sculptor specializing 
-in installation art and conceptual art.", "1954-03-12", null, "Contemporary", "United Kingdom");
+("Lai Cheuk", "Wah", "Realistic", 
+"Sarah Lai Cheuk Wah is best known for her paintings of common objects and urban landscapes, 
+    which she renders realistically in great detail. Her visual language is derived from the 
+    ordinary, the mundane and the everyday.", "1983-01-01", null, "Contemporary", "Hong Kong"),
+("Anish", "Kapoor", "Installation art", 
+"Sir Anish Mikhail Kapoor CBE, RA is a British-Indian sculptor specializing in installation 
+    art and conceptual art.", "1954-03-12", null, "Contemporary", "United Kingdom");
 
 
 DROP TABLE IF EXISTS COLLECTION;
