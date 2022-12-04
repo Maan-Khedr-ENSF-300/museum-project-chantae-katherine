@@ -224,18 +224,25 @@ def insert_sequence(table):
         # get column names and largest id number
         cur.execute("SELECT id_no FROM art_object ORDER BY id_no DESC LIMIT 1")
         last_id = (cur.fetchone())
-        
+        cur = cnx.cursor(buffered=True)
+
         cur.execute("SELECT * FROM art_object where id_no=%s", last_id)
         col_names = cur.column_names
 
-        attributes = [last_id[0]+1]
+        data = [last_id[0]+1]
 
         for i in range(1, len(col_names)):
             prompt = "Enter a value for " + col_names[i] + ": "
-            attributes.append(input(prompt))
+            data.append(input(prompt) or None)
 
-        print(tuple(attributes))
-        
+        data = tuple(data)
+        insert_str = ("insert into art_object values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
+
+        cur.execute(insert_str, data)
+        cnx.commit()
+
+        cur.execute("SELECT * FROM art_object") 
+        print(cur.fetchall())       
 
 def insertion_menu():
     while(True):
@@ -301,6 +308,7 @@ def main():
 
     # connect to server
     try:
+        global cnx
         cnx = mysql.connector.connect(user=_username, password=_password)
     except mysql.connector.Error as err:
         print("\nSomething went wrong:", err)
