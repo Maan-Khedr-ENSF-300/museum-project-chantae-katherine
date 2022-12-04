@@ -221,6 +221,9 @@ def selection_menu():
 def guest_access():
     selection_menu()  
 
+def data_entry_access():
+    pass
+
 def main():
     print("Welcome to the Art Museum Database!")
     _username, _password = login()
@@ -238,7 +241,7 @@ def main():
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
         print("You have Data Entry privileges.")
-        role_num = 1
+        data_entry_access()
     else:
         print("You have Read-Access privileges.")
         guest_access()
