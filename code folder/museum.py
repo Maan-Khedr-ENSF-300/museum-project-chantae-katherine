@@ -216,10 +216,10 @@ def selection_menu():
             print("{:s}".format(str(row[3])),end='')  
             print() 
 
-def insert_from_file():
+def insert_from_file(table):
     pass
 
-def insert_sequence():
+def insert_sequence(table):
     pass
 
 def insertion_menu():
@@ -232,12 +232,17 @@ def insertion_menu():
             break;
         print("That is an invalid choice. Please choose again.")
 
-    # TODO: choose table to insert into
+    print("\nWhich table would you like to insert into? Choose from the following list:")
+    print("1. Art object")
+    print("2. Artist")
+    print("3. Exhibition")
+    print("4. Collection")
+    table = input("Enter your choice (1 - 4) here: ")
 
     if (choice == 1):
-        insert_from_file()
+        insert_from_file(table)
     elif choice == 2:
-        insert_sequence()
+        insert_sequence(table)
 
 def guest_access():
     selection_menu()
