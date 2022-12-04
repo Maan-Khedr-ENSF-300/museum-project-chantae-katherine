@@ -224,7 +224,6 @@ def insert_sequence(table):
         # get column names and largest id number
         cur.execute("SELECT id_no FROM art_object ORDER BY id_no DESC LIMIT 1")
         last_id = (cur.fetchone())
-        cur = cnx.cursor(buffered=True)
 
         cur.execute("SELECT * FROM art_object where id_no=%s", last_id)
         col_names = cur.column_names
@@ -232,7 +231,10 @@ def insert_sequence(table):
         data = [last_id[0]+1]
 
         for i in range(1, len(col_names)):
-            prompt = "Enter a value for " + col_names[i] + ": "
+            info=""
+            if i == 7:
+                info = " (PAINTING/STATUE/SCULPTURE/OTHER)"
+            prompt = "Enter a value for " + col_names[i] + info + ": "
             data.append(input(prompt) or None)
 
         data = tuple(data)
@@ -314,7 +316,7 @@ def main():
         print("\nSomething went wrong:", err)
         exit(1)
     global cur
-    cur = cnx.cursor()
+    cur = cnx.cursor(buffered=True)
     
     cur.execute("Use museum")
     cur.execute("select current_role()")
