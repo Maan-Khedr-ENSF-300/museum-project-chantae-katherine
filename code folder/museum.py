@@ -228,7 +228,7 @@ def insertion_menu():
         print("1. Provide a file with data to insert")
         print("2. Be guided through the data entry process")
         choice = input("Please enter your choice here: ")
-        if (choice == 1 or choice == 2):
+        if (choice == "1" or choice == "2"):
             break;
         print("That is an invalid choice. Please choose again.")
 
