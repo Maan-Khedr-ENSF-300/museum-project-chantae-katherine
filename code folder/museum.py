@@ -189,20 +189,35 @@ def selection_menu():
         print(col_names)
         print(search_result)
 
-        # for i in range(header_size):
-        #     if i == 1:
-        #         print("{:<35s}".format(col_names[i]),end='')
-        #     else:
-        #         print("{:<15s}".format(col_names[i]),end='')
-        # print()
-        # print(20*header_size*'-')
-        # for row in search_result:
-        #     for j in range(header_size):
-        #         if j == 1:
-        #             print("{:<35s}".format(str(row[j])),end='')   
-        #         else:
-        #             print("{:<15s}".format(str(row[j])),end='')                
-        #     print()    
+        # print all attributes except collection description
+        for i in range(header_size-1):
+            if i == 3:
+                print("{:<35s}".format(col_names[i+1]),end='')
+            elif i > 3:
+                print("{:<20s}".format(col_names[i+1]),end='')
+            else:
+                print("{:<20s}".format(col_names[i]),end='')
+        print()
+        print(20*(header_size)*'-')
+        for row in search_result:
+            for j in range(header_size-1):
+                if j == 3:
+                    print("{:<35s}".format(str(row[j+1])),end='')   
+                elif j > 3:
+                    print("{:<20s}".format(str(row[j+1])),end='')
+                else:
+                    print("{:<20s}".format(str(row[j])),end='')                
+            print()   
+        
+        # print collection description
+        print()
+        print("{:s}".format(col_names[3]),end='')
+        print()
+
+        print(15*8*'-')
+        for row in search_result:
+            print("{:s}".format(str(row[3])),end='')  
+            print() 
 
 
 
