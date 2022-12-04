@@ -273,7 +273,7 @@ def main():
     try:
         cnx = mysql.connector.connect(user=_username, password=_password)
     except mysql.connector.Error as err:
-        print("Something went wrong %s", err)
+        print("\nSomething went wrong:", err)
         exit(1)
     global cur
     cur = cnx.cursor()
