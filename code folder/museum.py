@@ -115,44 +115,30 @@ def selection_menu():
         print("Search found ",len(search_result)," Entries:\n")
         header_size=len(col_names)
 
-        print(col_names)
-        print(search_result)
-        # for i in range(6):
-        #     if i == 4:
-        #         print("{:<35s}".format(col_names[i]),end='')
-        #     else:
-        #         print("{:<16s}".format(col_names[i]),end='')
-        # print()
-        # print(15*8*'-')
-        # for row in search_result:
-        #     i = 0
-        #     for j in range(6):
-        #         if j == 4:
-        #             print("{:<35s}".format(str(row[j])),end='')
-        #         else:
-        #             print("{:<16s}".format(str(row[j])),end='')                
-        #     print()
-
-        # print()
-
-        # for i in range(7, header_size):
-        #     print("{:<20s}".format(col_names[i]),end='')
-        # print()
-        # print(15*8*'-')
-        # for row in search_result:
-        #     i = 0
-        #     for j in range(7, len(row)):
-        #         print("{:<20s}".format(str(row[j])),end='')                
-        #     print()
+        for i in range(7):
+            if i >= 3:
+                print("{:<16s}".format(col_names[i+1]),end='')
+            else:
+                print("{:<17s}".format(col_names[i]),end='')
+        print()
+        print(17*7*'-')
+        for row in search_result:
+            j = 0
+            for j in range(7):
+                if j >= 3:
+                    print("{:<16s}".format(str(row[j+1])),end='')   
+                else:
+                    print("{:<17s}".format(str(row[j])),end='')                
+            print()
         
-        # print()
-        # print("{:s}".format(col_names[6]),end='')
-        # print()
+        print()
+        print("{:s}".format(col_names[3]),end='')
+        print()
 
-        # print(15*8*'-')
-        # for row in search_result:
-        #     print("{:s}".format(str(row[6])),end='')  
-        #     print()
+        print(15*8*'-')
+        for row in search_result:
+            print("{:s}".format(str(row[3])),end='')  
+            print()
     
 
 
