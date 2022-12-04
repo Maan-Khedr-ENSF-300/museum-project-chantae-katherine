@@ -216,6 +216,12 @@ def selection_menu():
             print("{:s}".format(str(row[3])),end='')  
             print() 
 
+def insert_from_file():
+    pass
+
+def insert_sequence():
+    pass
+
 def insertion_menu():
     while(True):
         print("\nWould you like to:")
@@ -225,6 +231,8 @@ def insertion_menu():
         if (choice == 1 or choice == 2):
             break;
         print("That is an invalid choice. Please choose again.")
+
+    # TODO: choose table to insert into
 
     if (choice == 1):
         insert_from_file()
