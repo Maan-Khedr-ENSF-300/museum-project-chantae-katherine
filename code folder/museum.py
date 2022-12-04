@@ -91,6 +91,7 @@ def selection_menu():
                     print("{:<20s}".format(str(row[j])),end='')                
                 print()
             
+            # print art_object description separately
             print()
             print("{:s}".format(col_names[6]),end='')
             print()
@@ -131,6 +132,7 @@ def selection_menu():
                     print("{:<17s}".format(str(row[j])),end='')                
             print()
         
+        # print artist description separately (it is v long)
         print()
         print("{:s}".format(col_names[3]),end='')
         print()
