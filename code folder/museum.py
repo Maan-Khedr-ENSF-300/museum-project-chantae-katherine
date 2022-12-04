@@ -220,7 +220,22 @@ def insert_from_file(table):
     pass
 
 def insert_sequence(table):
-    pass
+    if table == "1":     # choice is art_object table
+        # get column names and largest id number
+        cur.execute("SELECT id_no FROM art_object ORDER BY id_no DESC LIMIT 1")
+        last_id = (cur.fetchone())
+        
+        cur.execute("SELECT * FROM art_object where id_no=%s", last_id)
+        col_names = cur.column_names
+
+        attributes = [last_id[0]+1]
+
+        for i in range(1, len(col_names)):
+            prompt = "Enter a value for " + col_names[i] + ": "
+            attributes.append(input(prompt))
+
+        print(tuple(attributes))
+        
 
 def insertion_menu():
     while(True):
@@ -239,9 +254,9 @@ def insertion_menu():
     print("4. Collection")
     table = input("Enter your choice (1 - 4) here: ")
 
-    if (choice == 1):
+    if (choice == "1"):
         insert_from_file(table)
-    elif choice == 2:
+    elif choice == "2":
         insert_sequence(table)
 
 def guest_access():
@@ -301,7 +316,8 @@ def main():
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        data_entry_access()
+        insert_sequence("1")
+        # data_entry_access()
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
