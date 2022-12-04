@@ -223,6 +223,19 @@ def guest_access():
 
 def data_entry_access():
     pass
+    # - search, insert, update, delete
+    # a. Lookup information in the database by providing search field values (not SQL
+    # commands)
+    # b. Insert new tuples to a specific table in the database by first selecting the table for data
+    # insertion, then either:
+    # i. Providing a file with information line separated, where each line represents an
+    # entry that should be made to the table of choice
+    # ii. Providing a sequence of entries through detailed prompts ( for example ask the
+    # user to provide art piece name, then upon entering the value ask for the data,
+    # followed by type, etc...)
+    # c. Update and delete tuples in the database by providing search field values. Make sure to
+    # show appropriate messages for successful updates and deletions, and also descriptive
+    # messages for failed attempts
 
 def main():
     print("Welcome to the Art Museum Database!")
@@ -251,15 +264,17 @@ def main():
 
 
 # 2- The application will ask the user for the kind of operation they would like to execute
-def menu():
+def menu(role_num):
     print("\n-----------MENU-----------")
+    print("0. Search database")
     print("1. Insert")
     print("2. Delete")
     print("3. Update")
-    print("4. Create table")
-    print("5. Create view")
-    print("6. Alter")
-    print("7. Query")
+    if role_num == 1:
+        print("4. Create table")
+        print("5. Create view")
+        print("6. Alter")
+        print("7. Query")
 
     choice = input("Which operation would you like to execute? Please enter your choice here: ")
     return choice;
