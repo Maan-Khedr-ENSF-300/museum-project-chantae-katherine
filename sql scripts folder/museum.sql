@@ -58,7 +58,7 @@ CREATE TABLE COLLECTION (
 
 INSERT INTO COLLECTION(Name, Contact_person, Type, C_descrip, Address, Phone)
 VALUES
-("Glenbow Collection", "Melanie Kjorlien", "Museum", "Glenbow’s incredible collection of 
+("Glenbow Collection", "Melanie Kjorlien", "Museum", "Glenbow/'s incredible collection of 
 art and objects can provide us with a sense of belonging, an understanding of what 
 it means to live here in Alberta, and an appreciation for the legacy of the remarkable 
 people and events that have shaped our communities.", "130 9 Ave SE, Calgary, AB",
