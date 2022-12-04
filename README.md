@@ -3,16 +3,18 @@
 Group 5 - 
 Chantae Ho (30141743) chantae.ho@ucalgary.ca
 Katherine Tubang (30121665) katherine.tubang@ucalgary.ca 
+- ERD diagram planning: Chantae, Katherine
+- ERD diagram creation: Katherine
+- Relational schema planning: Chantae
+- Relational schema creation: Chantae
+- SQL Database Creation & Initialization, Roles & Users (Access Control): Chantae
+- SQL Queries: Chantae (3 queries), Katherine (rest of queries)
+- Python guest access: Chantae
+- Python data entry access: Chantae
+- Python testing and debugging: Chantae
+- Python reviewing: Chantae
 
-- EER Diagram - Chantae, Katherine
-- Relational Schema - Chantae
-- SQL script to create & populate database - Chantae
-- SQL script for queries - Katherine (the rest of the queries), Chantae (3 queries)
-
-- modify this file to include your group members information and tasks assigned per each
-- modify this file to include any notes on how to use and run the program
-
-## Notes:
+## Notes on how to use and run program:
 Users:
 - Username: ch | Password: password1
 - Username: kt | Password: password2
@@ -23,9 +25,4 @@ Users:
   - Completed bonus queries 1), 6), and 7)
   - Implemented a full custom trigger (DATE_VIOLATION) for ART_OBJECT table
 - Access control using sql commands: Roles and users created for database. This is in museum.sql
-
-## Organization:
-- code folder: contains your main python application code
-- sql scripts folder: contains all sql scripts required (database creation and initialization, sql script with query tasks in the handout, etc...)
-- database design folder: EERD and relational schema
-- optional data folder: has data files that you can sue to load data to your application if you use this optional implementation requirement
+- In the python application, implemented the data entry and guest accesses.
