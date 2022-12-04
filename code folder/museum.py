@@ -219,10 +219,7 @@ def selection_menu():
 
 
 def guest_access():
-    selection_menu()
-    # end user wanting to browse database
-    # use descriptive user-friendly prompts to guide user
-    
+    selection_menu()  
 
 def main():
     print("Welcome to the Art Museum Database!")
