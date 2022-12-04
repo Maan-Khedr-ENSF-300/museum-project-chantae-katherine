@@ -240,7 +240,12 @@ def insertion_menu():
         insert_sequence()
 
 def guest_access():
-    selection_menu()  
+    selection_menu()
+    print()
+    print(100*"=")
+    choice = input("Would you like to continue searching? Enter y to continue or n to quit: ")
+    if choice == 'y':
+        selection_menu()
 
 def data_entry_access():
     choice = menu(1);
