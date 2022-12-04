@@ -186,9 +186,6 @@ def selection_menu():
         print("Search found ",len(search_result)," Entries:\n")
         header_size=len(col_names)
 
-        print(col_names)
-        print(search_result)
-
         # print all attributes except collection description
         for i in range(header_size-1):
             if i == 3:
