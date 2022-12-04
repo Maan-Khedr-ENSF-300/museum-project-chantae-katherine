@@ -99,6 +99,61 @@ def selection_menu():
             for row in search_result:
                 print("{:s}".format(str(row[6])),end='')  
                 print()
+    
+    elif choice == "2":     # choice is artist
+        instr = "select * from artist"
+        searchkey = input("\nEnter the First name of the artist you are looking for (press Enter for all): ") or None
+        if (searchkey != None):
+            instr += " where Fname=%s"
+            searchkey = searchkey.split(" ")
+            searchkey = tuple(searchkey)
+
+        cur.execute(instr, searchkey)
+        col_names=cur.column_names
+        search_result=cur.fetchall()
+
+        print("Search found ",len(search_result)," Entries:\n")
+        header_size=len(col_names)
+
+        print(col_names)
+        print(search_result)
+        # for i in range(6):
+        #     if i == 4:
+        #         print("{:<35s}".format(col_names[i]),end='')
+        #     else:
+        #         print("{:<16s}".format(col_names[i]),end='')
+        # print()
+        # print(15*8*'-')
+        # for row in search_result:
+        #     i = 0
+        #     for j in range(6):
+        #         if j == 4:
+        #             print("{:<35s}".format(str(row[j])),end='')
+        #         else:
+        #             print("{:<16s}".format(str(row[j])),end='')                
+        #     print()
+
+        # print()
+
+        # for i in range(7, header_size):
+        #     print("{:<20s}".format(col_names[i]),end='')
+        # print()
+        # print(15*8*'-')
+        # for row in search_result:
+        #     i = 0
+        #     for j in range(7, len(row)):
+        #         print("{:<20s}".format(str(row[j])),end='')                
+        #     print()
+        
+        # print()
+        # print("{:s}".format(col_names[6]),end='')
+        # print()
+
+        # print(15*8*'-')
+        # for row in search_result:
+        #     print("{:s}".format(str(row[6])),end='')  
+        #     print()
+    
 
 
 
