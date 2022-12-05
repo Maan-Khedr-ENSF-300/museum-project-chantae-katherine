@@ -250,6 +250,7 @@ def insert_sequence(table):
             print("Unable to insert into database")
             return
 
+         #Based on art_type (PAINTING/STATUE/SCULPTURE/OTHER), get data for that also
         print("\nPlease enter some more information about your", data[7])
         cur.execute("SELECT * FROM " + data[7])
         col_names = cur.column_names
@@ -278,9 +279,8 @@ def insert_sequence(table):
         cur.execute("SELECT * FROM art_object") 
         print(cur.fetchall())
 
-    #TODO: based on art_type, ask questions for those as well
     #TODO: ask if art_object is on display
-    #TODO: ask if ao. is in permanent collection
+    #TODO: if borrowed collection is None, then object is in permanent collection
 
     #TODO: add other choices (2-4)
 
