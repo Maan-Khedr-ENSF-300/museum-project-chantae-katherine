@@ -197,7 +197,7 @@ def selection_menu():
             elif i > 3:
                 print("{:<20s}".format(col_names[i+1]),end='')
             else:
-                print("{:<20s}".format(col_names[i]),end='')
+                print("{:<22s}".format(col_names[i]),end='')
         print()
         print(20*(header_size)*'-')
         for row in search_result:
@@ -207,7 +207,7 @@ def selection_menu():
                 elif j > 3:
                     print("{:<20s}".format(str(row[j+1])),end='')
                 else:
-                    print("{:<20s}".format(str(row[j])),end='')                
+                    print("{:<22s}".format(str(row[j])),end='')                
             print()   
         
         # print collection description
@@ -822,7 +822,7 @@ def admin_access():
     elif choice == "10":
         return
     else:
-        print("Those actions have not yet been implemented.")
+        print("\nThat action has not been implemented yet.")
     admin_access()
 
 def data_entry_access():
@@ -863,13 +863,12 @@ def main():
         admin_access()
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        update_delete_menu(1)
+        data_entry_access()
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
 
     print("\nThanks for using the program! See you next time.")
-
 
     cnx.close()
 
