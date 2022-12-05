@@ -156,13 +156,13 @@ CREATE TABLE SCULPTURE (
     Id_no               INT NOT NULL,
     Style               VARCHAR(20),
     Material            VARCHAR(20),
-    Height              FLOAT,  -- in meters
-    Weight              FLOAT,  -- in lbs
+    Height_in_m         FLOAT,  -- in meters
+    Weight_in_lb        FLOAT,  -- in lbs
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO SCULPTURE(Id_no, Style, Material, Height, Weight)
+INSERT INTO SCULPTURE(Id_no, Style, Material, Height_in_m, Weight_in_lb)
 VALUES
 (7, "Installation art", "Stainless steel", 10, 220000),
 (10, "Animalism", "Bronze", 1.3716, 1000);
@@ -172,13 +172,13 @@ CREATE TABLE STATUE (
     Id_no               INT NOT NULL,
     Style               VARCHAR(20),
     Material            VARCHAR(20),
-    Height              FLOAT,  -- in meters
-    Weight              FLOAT,  -- in lbs
+    Height_in_m         FLOAT,  -- in meters
+    Weight_in_lb        FLOAT,  -- in lbs
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO STATUE(Id_no, Style, Material, Height, Weight)
+INSERT INTO STATUE(Id_no, Style, Material, Height_in_m, Weight_in_lb)
 VALUES
 (8, "Portraiture", "Marble", 0.6858, 133.8),
 (9, "Bust", "Marble", 0.96885, 307.1);
