@@ -272,12 +272,6 @@ def insert_from_file(table):
             print("\nSomething went wrong:", err)
             return
 
-
-    #TODO: stuff from file read correctly. now, insert stuff from file into sql db
-    
-    # i. Providing a file with information line separated, where each line represents an
-    # entry that should be made to the table of choice
-
 def insert_sequence(table):
     if table == "1":     # choice is art_object table
         # get column names and largest id number
