@@ -782,14 +782,7 @@ def update_delete_menu(action_num):
                 new_val = (new_val,)
             update_str = "update " + table + " set " + attribute + "=%s where " + col_names[0] + "=" + pk
         else:
-            delete_str = "delete from " + table + " where " + col_names[0] + "=" + pk 
-        
-        
-
-
-    #TODO: Implement all 10 million other tables!!!
-    #in_permanent_collection, on_display, painting, statue, sculpture, other
-        
+            delete_str = "delete from " + table + " where " + col_names[0] + "=" + pk       
 
     if action == "update":
         try:
