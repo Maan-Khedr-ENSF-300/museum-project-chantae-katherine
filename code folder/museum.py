@@ -577,8 +577,7 @@ def main():
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        # data_entry_access()
-        insert_from_file("3")
+        data_entry_access()
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
