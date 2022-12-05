@@ -620,7 +620,7 @@ def update_delete_menu(action_num):
             index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
             attribute = col_names[index-1]
             
-            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for NULL):") or None
+            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for None):") or None
             if new_val != None:
                 new_val = tuple(new_val.split('\n'))
             else:
@@ -667,7 +667,7 @@ def update_delete_menu(action_num):
             index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
             attribute = col_names[index-1]
             
-            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for NULL):") or None
+            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for None):") or None
             if new_val != None:
                 new_val = tuple(new_val.split('\n'))
             else:
@@ -700,7 +700,7 @@ def update_delete_menu(action_num):
             index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
             attribute = col_names[index-1]
             
-            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for NULL):") or None
+            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for None):") or None
             if new_val != None:
                 new_val = tuple(new_val.split('\n'))
             else:
@@ -749,7 +749,7 @@ def update_delete_menu(action_num):
             index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
             attribute = col_names[index-1]
             
-            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for NULL):") or None
+            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for None):") or None
             if new_val != None:
                 new_val = tuple(new_val.split('\n'))
             else:
