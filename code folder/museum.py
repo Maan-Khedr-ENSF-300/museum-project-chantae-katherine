@@ -377,6 +377,37 @@ def insert_sequence(table):
             print("\nSomething went wrong:", err)
             return
     
+    elif table == "3":      # table choice is exhibition
+        print("\nPlease enter the exhibition info below:")
+        cur.execute("SELECT * FROM exhibition")
+        col_names = cur.column_names
+
+        cur.execute("SELECT E_id FROM exhibition ORDER BY e_id DESC LIMIT 1")
+        last_id = (cur.fetchone())
+
+        num_params = len(col_names)
+        params = num_params * "%s,"
+        params = params[:-1]    #remove extra comma at end
+        insert = ("insert into exhibition values (" + params + ")")
+
+        data = [last_id[0]+1]
+
+        for i in range(1, num_params):
+            info = ""
+            if i == 2 or i == 3:
+                info = " (yyyy-mm-dd)"
+            prompt = "Enter a value for " + col_names[i] + info + ": "
+            data.append(input(prompt) or None)
+
+        data = tuple(data)
+        
+        try:
+            cur.execute(insert, data)
+            cnx.commit()
+            print("\nData successfully entered into database.")
+        except mysql.connector.Error as err:
+            print("\nSomething went wrong:", err)
+            return
 
     #TODO: add other choices (2-4)
 
@@ -461,7 +492,7 @@ def main():
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        insert_sequence("2")
+        insert_sequence("3")
         # data_entry_access()
     else:
         print("\nYou have Read-Access privileges.")
