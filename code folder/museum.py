@@ -567,7 +567,7 @@ def update_delete_menu(action_num):
     cur.execute("select * from " + table)
     col_names=cur.column_names
     search_result=cur.fetchall()
-    print("\nThere are" , len(search_result)," entries in that table:\n")
+    print("\nThere are" , len(search_result),"entries in that table:\n")
 
     header_size = len(col_names)
     #TODO: Implement all 10 million other tables!!!
@@ -610,12 +610,12 @@ def update_delete_menu(action_num):
             print("{:s}".format(str(row[6])),end='')  
             print()
         
-        a_id = input("\nPlease enter the Id_no of the art object you would like to " + action + ":")
+        a_id = input("\nPlease enter the Id_no of the art object you would like to " + action + ": ")
         if action == "update":
             print("\nWhich attribute would you like to update?")
             for i in range(header_size):
                 print(str(i+1) + ". " + str(col_names[i]))
-            index = int(input("Enter your choice here (1 - " + str(header_size + 1) + "): "))
+            index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
             attribute = col_names[index-1]
             
             new_val = input("\nEnter a new value for " + attribute + " here: ")
@@ -623,6 +623,50 @@ def update_delete_menu(action_num):
             update_str = "update " + table + " set " + attribute + "=%s where Id_no=" + a_id
         else:
             delete_str = "delete from art_object where Id_no =" + a_id
+
+    elif table == "artist":
+        for i in range(7):
+            if i >= 3:
+                print("{:<16s}".format(col_names[i+1]),end='')
+            else:
+                print("{:<17s}".format(col_names[i]),end='')
+        print()
+        print(17*7*'-')
+        for row in search_result:
+            j = 0
+            for j in range(7):
+                if j >= 3:
+                    print("{:<16s}".format(str(row[j+1])),end='')   
+                else:
+                    print("{:<17s}".format(str(row[j])),end='')                
+            print()
+        
+        # print artist description separately (it is v long)
+        print()
+        print("{:s}".format(col_names[3]),end='')
+        print()
+
+        print(15*8*'-')
+        for row in search_result:
+            print("{:s}".format(str(row[3])),end='')  
+            print()
+
+        fname = input("\nPlease enter the First name of the artist you would like to " + action + ": ")
+        fname = "\"" + fname + "\""
+        lname = input("Please enter the Last name of the artist you would like to " + action + ": ")
+        lname = "\"" + lname + "\""
+        if action == "update":
+            print("\nWhich attribute would you like to update?")
+            for i in range(header_size):
+                print(str(i+1) + ". " + str(col_names[i]))
+            index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
+            attribute = col_names[index-1]
+            
+            new_val = input("\nEnter a new value for " + attribute + " here: ")
+            new_val = tuple(new_val.split('\n'))
+            update_str = "update " + table + " set " + attribute + "=%s where fname=" + fname + " and lname=" + lname
+        else:
+            delete_str = "delete from artist where fname =" + fname + " and lname=" + lname 
 
     if action == "update":
         try:
@@ -636,7 +680,7 @@ def update_delete_menu(action_num):
         try:
             cur.execute(delete_str)
             cnx.commit()
-            print("\nData successfully updated.")
+            print("\nData successfully deleted.")
         except mysql.connector.Error as err:
             print("\nSomething went wrong:", err)
             return   
