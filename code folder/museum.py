@@ -348,10 +348,8 @@ def insert_sequence(table):
                 print("\nSomething went wrong:", err)
                 return
 
-
-        cur.execute("SELECT borrowed_collection FROM art_object")
-        print(cur.fetchall())
-
+    elif table == "2":      # table choice is artist
+        pass
     #TODO: add other choices (2-4)
 
 
