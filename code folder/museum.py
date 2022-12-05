@@ -668,6 +668,7 @@ def update_delete_menu(action_num):
         else:
             delete_str = "delete from artist where fname =" + fname + " and lname=" + lname 
 
+
     if action == "update":
         try:
             cur.execute(update_str, new_val)
@@ -684,6 +685,22 @@ def update_delete_menu(action_num):
         except mysql.connector.Error as err:
             print("\nSomething went wrong:", err)
             return   
+
+def admin_access():
+    choice = menu(0);
+    if choice == "0":
+        selection_menu()
+    elif choice == "1":
+        insertion_menu()
+    elif choice == "2":
+        update_delete_menu(0)
+    elif choice == "3":
+        update_delete_menu(1)
+    elif choice == "10":
+        return
+    else:
+        print("Those actions have not yet been implemented.")
+    admin_access()
 
 def data_entry_access():
     choice = menu(1);
@@ -720,7 +737,7 @@ def main():
     role = cur.fetchone()[0]
     if (role == "`db_admin`@`localhost`"):
         print("\nYou have Database Admin privileges.")
-        role_num = 0
+        data_entry_access()
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
         update_delete_menu(1)
