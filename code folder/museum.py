@@ -409,8 +409,40 @@ def insert_sequence(table):
             print("\nSomething went wrong:", err)
             return
 
-    #TODO: add other choices (2-4)
+    elif table == "4":      # table choice is collection
+        print("\nPlease enter the collection info below:")
+        cur.execute("SELECT * FROM collection")
+        col_names = cur.column_names
 
+        num_params = len(col_names)
+        params = num_params * "%s,"
+        params = params[:-1]    #remove extra comma at end
+        insert = ("insert into collection values (" + params + ")")
+
+        data = []
+
+        for i in range(0, num_params):
+            info = ""
+            if i == 2:
+                info = " (museum/personal/etc.)"
+            elif i == 3:
+                info = " (collection description)"
+            prompt = "Enter a value for " + col_names[i] + info + ": "
+            data.append(input(prompt) or None)
+
+        data = tuple(data)
+        
+        try:
+            cur.execute(insert, data)
+            cnx.commit()
+            print("\nData successfully entered into database.")
+        except mysql.connector.Error as err:
+            print("\nSomething went wrong:", err)
+            return
+
+    else:
+        print("That is not a valid choice.")
+        return
 
 def insertion_menu():
     while(True):
@@ -492,7 +524,7 @@ def main():
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        insert_sequence("3")
+        insert_sequence("4")
         # data_entry_access()
     else:
         print("\nYou have Read-Access privileges.")
