@@ -7,6 +7,7 @@
 #     Username: guest | No password
 
 import mysql.connector
+import os
 
 def login():
     print("Please select your role from the following list: ")
@@ -217,7 +218,26 @@ def selection_menu():
             print() 
 
 def insert_from_file(table):
-    pass
+    # Assuming file in in data folder!
+    filename = input("\nEnter the filename here (include .txt extension): ")
+    path = "C:\\Users\\chant\\Documents\\GitHub\\museum-project-team-5\\data folder\\" + filename
+        
+    input_list = []
+    try:
+        file_handler = open(path)
+        for line in file_handler:
+            input_list.append(line.rstrip())
+    except IOError:
+        exit("Error reading file")
+    except Exception as error:
+        exit("An error occurred")
+    finally:
+        file_handler.close()
+
+    num_insertions = len(input_list)
+
+    
+    
     # i. Providing a file with information line separated, where each line represents an
     # entry that should be made to the table of choice
 
@@ -526,7 +546,8 @@ def main():
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        data_entry_access()
+        # data_entry_access()
+        insert_from_file("3")
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
