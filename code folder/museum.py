@@ -242,13 +242,13 @@ def insert_sequence(table):
         data = tuple(data)
         insert_str = ("insert into art_object values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-        try:
-            cur.execute(insert_str, data)
-            cnx.commit()
-            print("\nData successfully entered into database.")
-        except Exception:
-            print("Unable to insert into database")
-            return
+        # try:
+        #     cur.execute(insert_str, data)
+        #     cnx.commit()
+        #     print("\nData successfully entered into database.")
+        # except mysql.connector.Error as err:
+            # print("\nSomething went wrong:", err)
+        #     return
 
          #Based on art_type (PAINTING/STATUE/SCULPTURE/OTHER), get data for that also
         print("\nPlease enter some more information about your", data[7])
@@ -268,19 +268,51 @@ def insert_sequence(table):
 
         arttype_data = tuple(arttype_data)
         
-        try:
-            cur.execute(insert_arttype, arttype_data)
-            cnx.commit()
-            print("\nArt type successfully entered into database.")
-        except Exception:
-            print("Unable to insert into database")
-            return
+        # try:
+        #     cur.execute(insert_arttype, arttype_data)
+        #     cnx.commit()
+        #     print("\nArt type successfully entered into database.")
+        # except mysql.connector.Error as err:
+            # print("\nSomething went wrong:", err)
+        #     return
 
-        cur.execute("SELECT * FROM art_object") 
+        #If borrowed_collection is None, then object is in permanent collection
+        if data[9] == None:
+            print("\nSince this art object is in the museum's permanent collection, we need some more information.")
+            cur.execute("SELECT * FROM in_permanent_collection")
+            col_names = cur.column_names
+
+            num_params = len(col_names)
+            params = num_params * "%s,"
+            params = params[:-1]    #remove extra comma at end
+            insert_pcoll = ("insert into in_permanent_collection values (" + params + ")")
+
+            pcoll_data = [data[0]]
+
+            for i in range(1, num_params):
+                info = ""
+                if i == 2:
+                    info = " (yyyy-mm-dd)"
+                elif i == 3:
+                    info = " (stored/on loan/on display)"
+                prompt = "Enter a value for " + col_names[i] + info + ": "
+                pcoll_data.append(input(prompt) or None)
+
+            insert_pcoll = tuple(insert_pcoll)
+            
+            # try:
+            #     cur.execute(insert_pcoll, pcoll_data)
+            #     cnx.commit()
+            #     print("\nArt type successfully entered into database.")
+            # except mysql.connector.Error as err:
+                # print("\nSomething went wrong:", err)
+            #     return
+
+
+        cur.execute("SELECT borrowed_collection FROM art_object")
         print(cur.fetchall())
 
     #TODO: ask if art_object is on display
-    #TODO: if borrowed collection is None, then object is in permanent collection
 
     #TODO: add other choices (2-4)
 
