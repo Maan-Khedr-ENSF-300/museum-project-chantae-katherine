@@ -570,8 +570,6 @@ def update_delete_menu(action_num):
     print("\nThere are" , len(search_result),"entries in that table:\n")
 
     header_size = len(col_names)
-    #TODO: Implement all 10 million other tables!!!
-    #exhibition, collection, in_permanent_collection, on_display, painting, statue, sculpture, other
 
     if table == "art_object":
         for i in range(6):
@@ -758,6 +756,39 @@ def update_delete_menu(action_num):
         else:
             delete_str = "delete from collection where name=" + name 
 
+    else:
+        for i in range(header_size):
+            print("{:<22s}".format(col_names[i]),end='')
+        print()
+        print(22*(header_size)*'-')
+        for row in search_result:
+            for j in range(header_size):
+                print("{:<22s}".format(str(row[j])),end='')                
+            print()   
+        
+        pk = input("\nPlease enter the " + col_names[0] + " of the object you would like to " + action + ": ")
+        pk = "\"" + pk + "\""
+        if action == "update":
+            print("\nWhich attribute would you like to update?")
+            for i in range(header_size):
+                print(str(i+1) + ". " + str(col_names[i]))
+            index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
+            attribute = col_names[index-1]
+            
+            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for None):") or None
+            if new_val != None:
+                new_val = tuple(new_val.split('\n'))
+            else:
+                new_val = (new_val,)
+            update_str = "update " + table + " set " + attribute + "=%s where " + col_names[0] + "=" + pk
+        else:
+            delete_str = "delete from " + table + " where " + col_names[0] + "=" + pk 
+        
+        
+
+
+    #TODO: Implement all 10 million other tables!!!
+    #in_permanent_collection, on_display, painting, statue, sculpture, other
         
 
     if action == "update":
