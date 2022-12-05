@@ -242,13 +242,13 @@ def insert_sequence(table):
         data = tuple(data)
         insert_str = ("insert into art_object values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-        # try:
-        #     cur.execute(insert_str, data)
-        #     cnx.commit()
-        #     print("\nData successfully entered into database.")
-        # except mysql.connector.Error as err:
-            # print("\nSomething went wrong:", err)
-        #     return
+        try:
+            cur.execute(insert_str, data)
+            cnx.commit()
+            print("\nData successfully entered into database.")
+        except mysql.connector.Error as err:
+            print("\nSomething went wrong:", err)
+            return
 
          #Based on art_type (PAINTING/STATUE/SCULPTURE/OTHER), get data for that also
         print("\nPlease enter some more information about your", data[7])
@@ -268,13 +268,15 @@ def insert_sequence(table):
 
         arttype_data = tuple(arttype_data)
         
-        # try:
-        #     cur.execute(insert_arttype, arttype_data)
-        #     cnx.commit()
-        #     print("\nArt type successfully entered into database.")
-        # except mysql.connector.Error as err:
-            # print("\nSomething went wrong:", err)
-        #     return
+        try:
+            cur.execute(insert_arttype, arttype_data)
+            cnx.commit()
+            print("\nArt type successfully entered into database.")
+        except mysql.connector.Error as err:
+            print("\nSomething went wrong:", err)
+            return
+
+        on_display = False
 
         #If borrowed_collection is None, then object is in permanent collection
         if data[9] == None:
@@ -298,21 +300,57 @@ def insert_sequence(table):
                 prompt = "Enter a value for " + col_names[i] + info + ": "
                 pcoll_data.append(input(prompt) or None)
 
-            insert_pcoll = tuple(insert_pcoll)
+            pcoll_data = tuple(pcoll_data)
             
-            # try:
-            #     cur.execute(insert_pcoll, pcoll_data)
-            #     cnx.commit()
-            #     print("\nArt type successfully entered into database.")
-            # except mysql.connector.Error as err:
-                # print("\nSomething went wrong:", err)
-            #     return
+            try:
+                cur.execute(insert_pcoll, pcoll_data)
+                cnx.commit()
+                print("\nData successfully entered into database.")
+            except mysql.connector.Error as err:
+                print("\nSomething went wrong:", err)
+                return
+
+            if pcoll_data[3] == "on display":
+                on_display = True
+        
+        if (not on_display) and (data[9] != None):
+            answer = input("\nIs the art object currently on display? Enter y or n: ")
+            if answer == 'y':
+                on_display = True
+        
+        if on_display:
+            print("\nSince this art object is on display, we need some more information.")
+            cur.execute("SELECT E_id, Name FROM exhibition")
+            exhibitions = cur.fetchall()
+            col_names = cur.column_names
+
+            print("Here are the exhibitions to choose from: ")
+
+            for i in range(len(col_names)):
+                print("{:<20s}".format(col_names[i]),end='')
+            print()
+            print(30*len(col_names)*'-')
+            for row in exhibitions:
+                for i in range(len(col_names)):
+                    print("{:<20s}".format(str(row[i])),end='')
+                print()
+            
+            e_id = input("\nEnter the E_id of the exhibition this art object belongs to: ")
+            to_insert = tuple(e_id)
+            a_id = (data[0],)
+            to_insert = to_insert + a_id
+
+            try:
+                cur.execute("insert into on_display values (%s, %s)", to_insert)
+                cnx.commit()
+                print("\nArt object display data successfully entered into database.")
+            except mysql.connector.Error as err:
+                print("\nSomething went wrong:", err)
+                return
 
 
         cur.execute("SELECT borrowed_collection FROM art_object")
         print(cur.fetchall())
-
-    #TODO: ask if art_object is on display
 
     #TODO: add other choices (2-4)
 
