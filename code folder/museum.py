@@ -218,6 +218,8 @@ def selection_menu():
 
 def insert_from_file(table):
     pass
+    # i. Providing a file with information line separated, where each line represents an
+    # entry that should be made to the table of choice
 
 def insert_sequence(table):
     if table == "1":     # choice is art_object table
@@ -476,28 +478,28 @@ def guest_access():
     else:
         return
 
+def update_menu():
+    pass
+
+def delete_menu():
+    pass
+
 def data_entry_access():
     choice = menu(1);
     if choice == "0":
         selection_menu()
     elif choice == "1":
         insertion_menu()
+    elif choice == "2":
+        update_menu()
+    elif choice == "3":
+        delete_menu()
     elif choice == "10":
         return
     else:
         print("That is not a valid input.")
     data_entry_access()
     
-
-    # - search, insert, update, delete
-
-    # b. Insert new tuples to a specific table in the database by first selecting the table for data
-    # insertion, then either:
-    # i. Providing a file with information line separated, where each line represents an
-    # entry that should be made to the table of choice
-    # ii. Providing a sequence of entries through detailed prompts ( for example ask the
-    # user to provide art piece name, then upon entering the value ask for the data,
-    # followed by type, etc...)
     # c. Update and delete tuples in the database by providing search field values. Make sure to
     # show appropriate messages for successful updates and deletions, and also descriptive
     # messages for failed attempts
@@ -524,8 +526,7 @@ def main():
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        insert_sequence("4")
-        # data_entry_access()
+        data_entry_access()
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
