@@ -233,10 +233,44 @@ def insert_from_file(table):
         exit("An error occurred")
     finally:
         file_handler.close()
-
+    
     num_insertions = len(input_list)
 
+    table_dict = {"1":"art_object", "2":"artist", "3":"collection", "4":"exhibition"}
+
+    cur.execute("SELECT * FROM " + table_dict.get(table))
+    col_names = cur.column_names
+
+    num_params = len(col_names)
+    params = num_params * "%s,"
+    params = params[:-1]    #remove extra comma at end
+    insert_str = ("insert into " + table_dict.get(table) + " values (" + params + ")")
+
+    for i in range(num_insertions):
     
+        if table == "1" or table == "4":
+            select_str = ("select " + col_names[0] + " from " + table_dict.get(table) + " order by " +  col_names[0] + " desc limit 1")
+            cur.execute(select_str)
+            last_id = (cur.fetchone())
+            
+            data = [last_id[0]+1]
+            
+        else:
+            data = []
+
+        data = data + input_list[i].split(",")
+        data = tuple(data)
+
+        try:
+            cur.execute(insert_str, data)
+            cnx.commit()
+            print("\nData successfully entered into database.")
+        except mysql.connector.Error as err:
+            print("\nSomething went wrong:", err)
+            return
+
+
+    #TODO: stuff from file read correctly. now, insert stuff from file into sql db
     
     # i. Providing a file with information line separated, where each line represents an
     # entry that should be made to the table of choice
@@ -547,7 +581,7 @@ def main():
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
         # data_entry_access()
-        insert_from_file("3")
+        insert_from_file("4")
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
