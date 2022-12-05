@@ -537,7 +537,7 @@ def table_menu(action):
             "5":"in_permanent_collection","6":"on_display","7":"other","8":"painting",
             "9":"sculpture","10":"statue"}
     while(True):
-        print("\nWhich table would you like to", action, "? Choose from the following list:")
+        print("\nWhich table would you like to", action, "from ? Choose from the following list:")
         print("1. General Art objects")
         print("2. Artist")
         print("3. Exhibition")
@@ -557,8 +557,12 @@ def table_menu(action):
     return table_dict.get(table)
 
 
-def update_menu():
-    table = table_menu("update")
+def update_delete_menu(action_num):
+    if action_num == 0:
+        action = "update"
+    else:
+        action = "delete"
+    table = table_menu(action)
 
     cur.execute("select * from " + table)
     col_names=cur.column_names
@@ -566,7 +570,7 @@ def update_menu():
     print("\nThere are" , len(search_result)," entries in that table:\n")
 
     header_size = len(col_names)
-    
+    #TODO: Implement all 10 million other tables!!!
     if table == "art_object":
         for i in range(6):
             if i == 4:
@@ -606,17 +610,21 @@ def update_menu():
             print("{:s}".format(str(row[6])),end='')  
             print()
         
-        a_id = input("\nPlease enter the Id_no of the art object you would like to update: ")
-        print("\nWhich attribute would you like to update?")
-        for i in range(header_size):
-            print(str(i+1) + ". " + str(col_names[i]))
-        index = int(input("Enter your choice here (1 - " + str(header_size + 1) + "): "))
-        attribute = col_names[index-1]
-        
-        new_val = input("\nEnter a new value for " + attribute + " here: ")
-        new_val = tuple(new_val.split('\n'))
-        update_str = "update " + table + " set " + attribute + "=%s where Id_no=" + a_id
+        a_id = input("\nPlease enter the Id_no of the art object you would like to " + action + ":")
+        if action == "update":
+            print("\nWhich attribute would you like to update?")
+            for i in range(header_size):
+                print(str(i+1) + ". " + str(col_names[i]))
+            index = int(input("Enter your choice here (1 - " + str(header_size + 1) + "): "))
+            attribute = col_names[index-1]
+            
+            new_val = input("\nEnter a new value for " + attribute + " here: ")
+            new_val = tuple(new_val.split('\n'))
+            update_str = "update " + table + " set " + attribute + "=%s where Id_no=" + a_id
+        else:
+            delete_str = "delete from art_object where Id_no =" + a_id
 
+    if action == "update":
         try:
             cur.execute(update_str, new_val)
             cnx.commit()
@@ -624,11 +632,14 @@ def update_menu():
         except mysql.connector.Error as err:
             print("\nSomething went wrong:", err)
             return
-
-        
-
-def delete_menu():
-    table = table_menu("delete")
+    else:
+        try:
+            cur.execute(delete_str)
+            cnx.commit()
+            print("\nData successfully updated.")
+        except mysql.connector.Error as err:
+            print("\nSomething went wrong:", err)
+            return   
 
 def data_entry_access():
     choice = menu(1);
@@ -637,18 +648,14 @@ def data_entry_access():
     elif choice == "1":
         insertion_menu()
     elif choice == "2":
-        update_menu()
+        update_delete_menu(0)
     elif choice == "3":
-        delete_menu()
+        update_delete_menu(1)
     elif choice == "10":
         return
     else:
         print("That is not a valid input.")
     data_entry_access()
-    
-    # c. Update and delete tuples in the database by providing search field values. Make sure to
-    # show appropriate messages for successful updates and deletions, and also descriptive
-    # messages for failed attempts
 
 def main():
     print("Welcome to the Art Museum Database!")
@@ -672,7 +679,7 @@ def main():
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        update_menu()
+        update_delete_menu(1)
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
