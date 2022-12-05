@@ -259,6 +259,9 @@ def insert_from_file(table):
             data = []
 
         data = data + input_list[i].split(",")
+        for i in range(len(data)):
+            if data[i] == 'None':
+                data[i] = None
         data = tuple(data)
 
         try:
@@ -581,7 +584,7 @@ def main():
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
         # data_entry_access()
-        insert_from_file("4")
+        insert_from_file("3")
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
