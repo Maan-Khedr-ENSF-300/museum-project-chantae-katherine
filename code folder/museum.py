@@ -534,8 +534,8 @@ def guest_access():
 
 def table_menu(action):
     table_dict = {"1":"art_object","2":"artist","3":"exhibition","4":"collection",
-            "5":"in_permanent_collection","6":"on_display","7":"other","8":"painting",
-            "9":"sculpture","10":"statue"}
+            "5":"in_permanent_collection","6":"on_display","10":"other","7":"painting",
+            "8":"sculpture","9":"statue"}
     while(True):
         print("\nWhich table would you like to", action, "from ? Choose from the following list:")
         print("1. General Art objects")
@@ -544,10 +544,10 @@ def table_menu(action):
         print("4. Collection")
         print("5. Permanent Collection objects")
         print("6. On Display Objects")
-        print("7. OTHER Type Art Objects")
-        print("8. PAINTING Type Art Objects")
-        print("9. SCULPTURE Type Art Objects")
-        print("10. STATUE Type Art Objects")
+        print("7. PAINTING Type Art Objects")
+        print("8. SCULPTURE Type Art Objects")
+        print("9. STATUE Type Art Objects")
+        print("10. OTHER Type Art Ojbects")
 
         table = input("Enter your choice (1 - 10) here: ")
         
@@ -571,6 +571,8 @@ def update_delete_menu(action_num):
 
     header_size = len(col_names)
     #TODO: Implement all 10 million other tables!!!
+    #exhibition, collection, in_permanent_collection, on_display, painting, statue, sculpture, other
+
     if table == "art_object":
         for i in range(6):
             if i == 4:
