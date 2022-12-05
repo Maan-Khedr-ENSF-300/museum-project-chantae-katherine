@@ -529,8 +529,33 @@ def guest_access():
     else:
         return
 
+def table_menu(action):
+    table_dict = {"1":"ArtUobject","2":"Artist","3":"Exhibition","4":"Collection",
+            "5":"in_Permanent_Collection","6":"On_Display","7":"OTHER","8":"PAINTING",
+            "9":"SCULPTURE","10":"STATUE"}
+    while(True):
+        print("\nWhich table would you like to", action, "? Choose from the following list:")
+        print("1. Art object")
+        print("2. Artist")
+        print("3. Exhibition")
+        print("4. Collection")
+        print("5. Permanent Collection objects")
+        print("6. On Display Objects")
+        print("7. OTHER Type Art Objects")
+        print("8. PAINTING Type Art Objects")
+        print("9. SCULPTURE Type Art Objects")
+        print("10. STATUE Type Art Objects")
+
+        table = input("Enter your choice (1 - 10) here: ")
+        
+        if table in table_dict:
+            break
+        print("Invalid input.")
+    return table_dict.get(table)
+
+
 def update_menu():
-    pass
+    table = table_menu()
 
 def delete_menu():
     pass
@@ -577,7 +602,7 @@ def main():
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        data_entry_access()
+        table_menu("update")
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
