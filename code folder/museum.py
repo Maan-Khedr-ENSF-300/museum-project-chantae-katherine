@@ -764,10 +764,14 @@ def update_delete_menu(action_num):
         try:
             cur.execute(update_str, new_val)
             cnx.commit()
+            if (cur.rowcount < 1):
+                raise Exception("The object you entered does not exist.")
             print("\nData successfully updated.")
         except mysql.connector.Error as err:
             print("\nSomething went wrong:", err)
             return
+        except Exception as e:
+            print("\nUnsuccessful update:", e)
     else:
         try:
             cur.execute(delete_str)
