@@ -620,8 +620,11 @@ def update_delete_menu(action_num):
             index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
             attribute = col_names[index-1]
             
-            new_val = input("\nEnter a new value for " + attribute + " here: ")
-            new_val = tuple(new_val.split('\n'))
+            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for NULL):") or None
+            if new_val != None:
+                new_val = tuple(new_val.split('\n'))
+            else:
+                new_val = (new_val,)
             update_str = "update " + table + " set " + attribute + "=%s where Id_no=" + a_id
         else:
             delete_str = "delete from art_object where Id_no =" + a_id
@@ -664,8 +667,11 @@ def update_delete_menu(action_num):
             index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
             attribute = col_names[index-1]
             
-            new_val = input("\nEnter a new value for " + attribute + " here: ")
-            new_val = tuple(new_val.split('\n'))
+            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for NULL):") or None
+            if new_val != None:
+                new_val = tuple(new_val.split('\n'))
+            else:
+                new_val = (new_val,)
             update_str = "update " + table + " set " + attribute + "=%s where fname=" + fname + " and lname=" + lname
         else:
             delete_str = "delete from artist where fname =" + fname + " and lname=" + lname 
@@ -694,11 +700,65 @@ def update_delete_menu(action_num):
             index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
             attribute = col_names[index-1]
             
-            new_val = input("\nEnter a new value for " + attribute + " here: ")
-            new_val = tuple(new_val.split('\n'))
+            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for NULL):") or None
+            if new_val != None:
+                new_val = tuple(new_val.split('\n'))
+            else:
+                new_val = (new_val,)
             update_str = "update " + table + " set " + attribute + "=%s where E_id=" + e_id
         else:
             delete_str = "delete from exhibition where E_id =" + e_id
+    
+    elif table == "collection":
+        # print all attributes except collection description
+        for i in range(header_size-1):
+            if i == 3:
+                print("{:<35s}".format(col_names[i+1]),end='')
+            elif i > 3:
+                print("{:<20s}".format(col_names[i+1]),end='')
+            else:
+                print("{:<22s}".format(col_names[i]),end='')
+        print()
+        print(20*(header_size)*'-')
+        for row in search_result:
+            for j in range(header_size-1):
+                if j == 3:
+                    print("{:<35s}".format(str(row[j+1])),end='')   
+                elif j > 3:
+                    print("{:<20s}".format(str(row[j+1])),end='')
+                else:
+                    print("{:<22s}".format(str(row[j])),end='')                
+            print()   
+        
+        # print collection description
+        print()
+        print("{:s}".format(col_names[3]),end='')
+        print()
+
+        print(15*8*'-')
+        for row in search_result:
+            print("{:s}".format(str(row[3])),end='')  
+            print() 
+
+        name = input("\nPlease enter the Name of the collection you would like to " + action + ": ")
+        name = "\"" + name + "\""
+        if action == "update":
+            print("\nWhich attribute would you like to update?")
+            for i in range(header_size):
+                print(str(i+1) + ". " + str(col_names[i]))
+            index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
+            attribute = col_names[index-1]
+            
+            new_val = input("\nEnter a new value for " + attribute + " here (press Enter for NULL):") or None
+            if new_val != None:
+                new_val = tuple(new_val.split('\n'))
+            else:
+                new_val = (new_val,)
+            update_str = "update " + table + " set " + attribute + "=%s where name=" + name
+        else:
+            delete_str = "delete from collection where name=" + name 
+
+        
 
     if action == "update":
         try:
