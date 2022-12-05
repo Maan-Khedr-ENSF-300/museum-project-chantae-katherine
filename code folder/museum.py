@@ -776,10 +776,14 @@ def update_delete_menu(action_num):
         try:
             cur.execute(delete_str)
             cnx.commit()
+            if (cur.rowcount < 1):
+                raise Exception("The object you entered does not exist.")
             print("\nData successfully deleted.")
         except mysql.connector.Error as err:
             print("\nSomething went wrong:", err)
             return   
+        except Exception as e:
+            print("\nUnsuccessful deletion:", e)
 
 def admin_access():
     choice = menu(0);
@@ -835,7 +839,7 @@ def main():
         admin_access()
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        update_delete_menu(0)
+        update_delete_menu(1)
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
