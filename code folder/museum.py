@@ -236,7 +236,7 @@ def insert_from_file(table):
     
     num_insertions = len(input_list)
 
-    table_dict = {"1":"art_object", "2":"artist", "3":"collection", "4":"exhibition"}
+    table_dict = {"1":"art_object", "2":"artist", "3":"exhibition", "4":"collection"}
 
     cur.execute("SELECT * FROM " + table_dict.get(table))
     col_names = cur.column_names
@@ -248,7 +248,7 @@ def insert_from_file(table):
 
     for i in range(num_insertions):
     
-        if table == "1" or table == "4":
+        if table == "1" or table == "3":
             select_str = ("select " + col_names[0] + " from " + table_dict.get(table) + " order by " +  col_names[0] + " desc limit 1")
             cur.execute(select_str)
             last_id = (cur.fetchone())
