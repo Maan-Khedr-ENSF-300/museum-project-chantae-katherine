@@ -49,12 +49,14 @@ def selection_menu():
         # print("4. Other art types")
         # print("5. General art objects")
         # table_choice = input("Enter a choice from 1-5: ")
+
         table_choice = "5"
         if table_choice == "5":
             instr = "select * from art_object"
-            searchkey = input("\nEnter the Id number of the art_object you are looking for (1 - 10, or press Enter to show all): ") or None
+            searchkey = input("\nEnter the Id number of the art_object you are looking for (press Enter to show all): ") or None
             if (searchkey != None):
                 instr += " where Id_no=%s"
+                searchkey = searchkey.split("\n")
                 searchkey = tuple(searchkey)
 
             cur.execute(instr, searchkey)
@@ -148,6 +150,7 @@ def selection_menu():
         searchkey = input("\nEnter the Exhibition ID of the exhibition you are looking for (press Enter for all): ") or None
         if (searchkey != None):
             instr += " where E_id=%s"
+            searchkey = searchkey.split("\n")
             searchkey = tuple(searchkey)
 
         cur.execute(instr, searchkey)
@@ -530,12 +533,12 @@ def guest_access():
         return
 
 def table_menu(action):
-    table_dict = {"1":"ArtUobject","2":"Artist","3":"Exhibition","4":"Collection",
-            "5":"in_Permanent_Collection","6":"On_Display","7":"OTHER","8":"PAINTING",
-            "9":"SCULPTURE","10":"STATUE"}
+    table_dict = {"1":"art_object","2":"artist","3":"exhibition","4":"collection",
+            "5":"in_permanent_collection","6":"on_display","7":"other","8":"painting",
+            "9":"sculpture","10":"statue"}
     while(True):
         print("\nWhich table would you like to", action, "? Choose from the following list:")
-        print("1. Art object")
+        print("1. General Art objects")
         print("2. Artist")
         print("3. Exhibition")
         print("4. Collection")
@@ -555,10 +558,77 @@ def table_menu(action):
 
 
 def update_menu():
-    table = table_menu()
+    table = table_menu("update")
+
+    cur.execute("select * from " + table)
+    col_names=cur.column_names
+    search_result=cur.fetchall()
+    print("\nThere are" , len(search_result)," entries in that table:\n")
+
+    header_size = len(col_names)
+    
+    if table == "art_object":
+        for i in range(6):
+            if i == 4:
+                print("{:<35s}".format(col_names[i]),end='')
+            else:
+                print("{:<16s}".format(col_names[i]),end='')
+        print()
+        print(15*8*'-')
+        for row in search_result:
+            i = 0
+            for j in range(6):
+                if j == 4:
+                    print("{:<35s}".format(str(row[j])),end='')
+                else:
+                    print("{:<16s}".format(str(row[j])),end='')                
+            print()
+
+        print()
+
+        for i in range(7, header_size):
+            print("{:<20s}".format(col_names[i]),end='')
+        print()
+        print(15*8*'-')
+        for row in search_result:
+            i = 0
+            for j in range(7, len(row)):
+                print("{:<20s}".format(str(row[j])),end='')                
+            print()
+
+        # print art_object description separately
+        print()
+        print("{:s}".format(col_names[6]),end='')
+        print()
+
+        print(15*8*'-')
+        for row in search_result:
+            print("{:s}".format(str(row[6])),end='')  
+            print()
+        
+        a_id = input("\nPlease enter the Id_no of the art object you would like to update: ")
+        print("\nWhich attribute would you like to update?")
+        for i in range(header_size):
+            print(str(i+1) + ". " + str(col_names[i]))
+        index = int(input("Enter your choice here (1 - " + str(header_size + 1) + "): "))
+        attribute = col_names[index-1]
+        
+        new_val = input("\nEnter a new value for " + attribute + " here: ")
+        new_val = tuple(new_val.split('\n'))
+        update_str = "update " + table + " set " + attribute + "=%s where Id_no=" + a_id
+
+        try:
+            cur.execute(update_str, new_val)
+            cnx.commit()
+            print("\nData successfully updated.")
+        except mysql.connector.Error as err:
+            print("\nSomething went wrong:", err)
+            return
+
+        
 
 def delete_menu():
-    pass
+    table = table_menu("delete")
 
 def data_entry_access():
     choice = menu(1);
@@ -602,7 +672,7 @@ def main():
         role_num = 0
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        table_menu("update")
+        update_menu()
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
