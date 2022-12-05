@@ -670,6 +670,35 @@ def update_delete_menu(action_num):
         else:
             delete_str = "delete from artist where fname =" + fname + " and lname=" + lname 
 
+    elif table == "exhibition":
+        for i in range(header_size):
+            if i == 1:
+                print("{:<35s}".format(col_names[i]),end='')
+            else:
+                print("{:<15s}".format(col_names[i]),end='')
+        print()
+        print(20*header_size*'-')
+        for row in search_result:
+            for j in range(header_size):
+                if j == 1:
+                    print("{:<35s}".format(str(row[j])),end='')   
+                else:
+                    print("{:<15s}".format(str(row[j])),end='')                
+            print()    
+
+        e_id = input("\nPlease enter the E_id of the exhibition you would like to " + action + ": ")
+        if action == "update":
+            print("\nWhich attribute would you like to update?")
+            for i in range(header_size):
+                print(str(i+1) + ". " + str(col_names[i]))
+            index = int(input("Enter your choice here (1 - " + str(header_size) + "): "))
+            attribute = col_names[index-1]
+            
+            new_val = input("\nEnter a new value for " + attribute + " here: ")
+            new_val = tuple(new_val.split('\n'))
+            update_str = "update " + table + " set " + attribute + "=%s where E_id=" + e_id
+        else:
+            delete_str = "delete from exhibition where E_id =" + e_id
 
     if action == "update":
         try:
@@ -742,7 +771,7 @@ def main():
         admin_access()
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
-        update_delete_menu(1)
+        update_delete_menu(0)
     else:
         print("\nYou have Read-Access privileges.")
         guest_access()
