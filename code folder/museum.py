@@ -234,17 +234,56 @@ def insert_sequence(table):
             info=""
             if i == 7:
                 info = " (PAINTING/STATUE/SCULPTURE/OTHER)"
+            elif (i == 10 or i == 11):
+                info = " (yyyy-mm-dd format, including dashes)"
             prompt = "Enter a value for " + col_names[i] + info + ": "
             data.append(input(prompt) or None)
 
         data = tuple(data)
         insert_str = ("insert into art_object values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-        cur.execute(insert_str, data)
-        cnx.commit()
+        try:
+            cur.execute(insert_str, data)
+            cnx.commit()
+            print("\nData successfully entered into database.")
+        except Exception:
+            print("Unable to insert into database")
+            return
+
+        print("\nPlease enter some more information about your", data[7])
+        cur.execute("SELECT * FROM " + data[7])
+        col_names = cur.column_names
+
+        num_params = len(col_names)
+        params = num_params * "%s,"
+        params = params[:-1]    #remove extra comma at end
+        insert_arttype = ("insert into " + data[7] + " values (" + params + ")")
+
+        arttype_data = [data[0]]
+
+        for i in range(1, num_params):
+            prompt = "Enter a value for " + col_names[i] + ": "
+            arttype_data.append(input(prompt) or None)
+
+        arttype_data = tuple(arttype_data)
+        
+        try:
+            cur.execute(insert_arttype, arttype_data)
+            cnx.commit()
+            print("\nArt type successfully entered into database.")
+        except Exception:
+            print("Unable to insert into database")
+            return
 
         cur.execute("SELECT * FROM art_object") 
-        print(cur.fetchall())       
+        print(cur.fetchall())
+
+    #TODO: based on art_type, ask questions for those as well
+    #TODO: ask if art_object is on display
+    #TODO: ask if ao. is in permanent collection
+
+    #TODO: add other choices (2-4)
+
 
 def insertion_menu():
     while(True):
