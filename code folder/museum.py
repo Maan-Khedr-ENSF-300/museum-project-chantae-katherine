@@ -737,7 +737,7 @@ def main():
     role = cur.fetchone()[0]
     if (role == "`db_admin`@`localhost`"):
         print("\nYou have Database Admin privileges.")
-        data_entry_access()
+        admin_access()
     elif (role == "`data_entry`@`localhost`"):
         print("\nYou have Data Entry privileges.")
         update_delete_menu(1)
