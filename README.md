@@ -21,7 +21,7 @@ Users:
 - Username: guest | No password
 
 In order to insert from file, the file must be in 'data folder'.
-The attributes must be separated by commas without spaces, and entries are line separated.
+The attributes must be separated by commas without spaces, and entries must be line separated.
 
 ## Bonus Features:
 - .sql Query file:
