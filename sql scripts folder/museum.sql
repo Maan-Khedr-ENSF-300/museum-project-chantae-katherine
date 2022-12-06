@@ -86,8 +86,8 @@ CREATE TABLE ART_OBJECT (
     Date_borrowed       DATE,
     Date_returned       DATE,
     PRIMARY KEY (Id_no),
-    FOREIGN KEY (Artist_FName, Artist_LName) REFERENCES ARTIST(FName, LName) ON UPDATE CASCADE,
-    FOREIGN KEY (Borrowed_collection) REFERENCES COLLECTION(Name) ON UPDATE CASCADE
+    FOREIGN KEY (Artist_FName, Artist_LName) REFERENCES ARTIST(FName, LName) ON UPDATE CASCADE ON DELETE SET NULL,
+    FOREIGN KEY (Borrowed_collection) REFERENCES COLLECTION(Name) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 -- trigger that requires Date_borrowed and Date_returned to be dates in the past or today's date
@@ -127,7 +127,7 @@ CREATE TABLE ON_DISPLAY (
     A_id                INT NOT NULL,
     PRIMARY KEY (E_id, A_id),
     FOREIGN KEY (E_id) REFERENCES EXHIBITION(E_id) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (A_id) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE 
+    FOREIGN KEY (A_id) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO ON_DISPLAY(E_id, A_id)
