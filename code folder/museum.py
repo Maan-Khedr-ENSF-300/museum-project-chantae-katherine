@@ -41,17 +41,46 @@ def selection_menu():
     choice = input("Enter your choice (1 - 4) here: ")
 
     if choice == "1":
-        # ask if user wants to see painting/statue/sculpture/other or art_object
-        # print("\nWhat category of art objects would you like to search?")
-        # print("1. Painting")
-        # print("2. Statue")
-        # print("3. Sculpture")
-        # print("4. Other art types")
-        # print("5. General art objects")
-        # table_choice = input("Enter a choice from 1-5: ")
+        print("\nWhat category of art objects would you like to search?")
+        print("1. Painting")
+        print("2. Statue")
+        print("3. Sculpture")
+        print("4. Other art types")
+        print("5. General art objects")
+        table_choice = input("Enter a choice from 1-5: ")
 
-        table_choice = "5"
-        if table_choice == "5":
+        if table_choice != "5":
+            arttype_dict = {"1":"painting", "2":"statue", "3":"sculpture", "4":"other"}
+            table = arttype_dict.get(table_choice)
+            instr = "select * from " + table
+            searchkey = input("\nEnter the Id number of the " + table + " you are looking for (press Enter to show all): ") or None
+            if (searchkey != None):
+                instr += " where Id_no=%s"
+                searchkey = searchkey.split("\n")
+                searchkey = tuple(searchkey)
+
+            try:
+                cur.execute(instr, searchkey)
+            except mysql.connector.Error as err:
+                print("\nSomething went wrong:", err)
+                return
+            
+            col_names=cur.column_names
+            search_result=cur.fetchall()
+
+            print("Search found",len(search_result),"entries:\n")
+            header_size=len(col_names)
+            for i in range(header_size):
+                print("{:<22s}".format(col_names[i]),end='')
+            print()
+            print(22*header_size*'-')
+            for row in search_result:
+                for j in range(header_size):
+                    print("{:<22s}".format(str(row[j])),end='')                
+                print()
+
+
+        elif table_choice == "5":
             instr = "select * from art_object"
             searchkey = input("\nEnter the Id number of the art_object you are looking for (press Enter to show all): ") or None
             if (searchkey != None):
@@ -63,7 +92,6 @@ def selection_menu():
             col_names=cur.column_names
             search_result=cur.fetchall()
 
-
             print("Search found ",len(search_result)," Entries:\n")
             header_size=len(col_names)
             for i in range(6):
@@ -74,7 +102,6 @@ def selection_menu():
             print()
             print(15*8*'-')
             for row in search_result:
-                i = 0
                 for j in range(6):
                     if j == 4:
                         print("{:<35s}".format(str(row[j])),end='')
