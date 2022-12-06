@@ -873,8 +873,6 @@ def main():
     cnx.close()
 
 
-
-# 2- The application will ask the user for the kind of operation they would like to execute
 def menu(role_num):
     print("\n-----------MENU-----------")
     print("0. Search database")
