@@ -558,7 +558,7 @@ def table_menu(action):
 
 
 def update_delete_menu(action_num):
-    if action_num == 0:
+    if action_num:
         action = "update"
     else:
         action = "delete"
