@@ -20,9 +20,12 @@ Users:
 - Username: kt | Password: password2
 - Username: guest | No password
 
+In order to insert from file, the file must be in 'data folder'.
+The attributes must be separated by commas without spaces, and entries are line separated.
+
 ## Bonus Features:
 - .sql Query file:
   - Completed bonus queries 1), 6), and 7)
   - Implemented a full custom trigger (DATE_VIOLATION) for ART_OBJECT table
 - Access control using sql commands: Roles and users created for database. This is in museum.sql
-- In the python application, implemented the data entry and guest accesses.
+- In the python application, implemented the data entry and guest accesses. Database admin access is partially complete.
