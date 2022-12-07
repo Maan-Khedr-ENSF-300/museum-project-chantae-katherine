@@ -478,8 +478,8 @@ def insert_sequence(table):
 
 
 
-            if pcoll_data[3] == "on display":
-                on_display = True
+        if pcoll_data[3] == "on display":
+            on_display = True
         
         if (not on_display) and (data[9] != None):
             answer = input("\nIs the art object currently on display? Enter y or n: ")
