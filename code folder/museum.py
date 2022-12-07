@@ -885,7 +885,7 @@ def create_new_table_menu():
         print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
         create_new_table_menu()
 
-    admin_access()
+    #admin_access()
 
 ## Implementing functions for chosen methods (Create Table)
 
@@ -925,7 +925,8 @@ def create_view_menu():
         read_sql()
     else:
         print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
-    create_view_menu()
+        create_view_menu()
+
 
 ## Implementing functions for chosen methods (Create Views)
 
