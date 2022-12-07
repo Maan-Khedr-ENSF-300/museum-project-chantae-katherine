@@ -869,15 +869,16 @@ def admin_access():
     # That will be executed through the connector and will output/dsplay the table onto the terminal.
 
 def create_new_table_menu():
+    print("\nChosen New Table Creation")
     print("\nPlease select the method in which you would like to create your new table:")
     print("1: Typing in your MySQL command")
-    print("2: Insert a SQL script file")
+    print("2: Insert a SQL script file path directory")
     chosen = input("Enter chosen method (1-2): ")
 
     #if chosen == "1":
             # call function that will type the sql command
         #type_table()
-    if chosen == "2":          ## # elif chosen == "2":
+    if chosen == "2":          ##elif chosen == "2": Need to change once done above
             # call function that will use the sql script 
         insert_file_table()
     else:
@@ -893,8 +894,8 @@ def create_new_table_menu():
     # command = input("Please type in your MySQL command: ")
 
 def insert_file_table():
-    print("\nChosen Method")
-    path = input("Enter your sql script filename: ")
+    print("\nChosen Method: Reading SQL File")
+    path = input("Enter your sql script file path directory: ")
 
     cur.execute("use museum")
     with open (path, 'r') as f:
@@ -910,23 +911,35 @@ def insert_file_table():
     # The view should be saved on the db as well
     # Should check through db search changes are there?? 
 
-#def create_view_menu():
-    # print("\nPlease select the method in which you would like to create view:")
-    # print("1: Typing in your MySQL command")
-    # print("2: Insert a SQL script file")
-    # chosen = input("Enter chosen method (1-2): ")
+def create_view_menu():
+    print("\n Chosen View Creation")
+    print("\nPlease select the method in which you would like to create view:")
+    print("1: Typing in your MySQL command")
+    print("2: Insert a SQL script file")
+    chosen = input("Enter chosen method (1-2): ")
 
     # if chosen == "1":
             # call function that will type the sql command
             # type_view()
-    # elif chosen == "2":
-            # call function that will use the sql script 
-            #insert_file_view()
-    # else:
-            # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
-    # create_view_menu()
+    if chosen == "2":                  # elif chosen == "2": 
+        insert_file_view()
+    else:
+        print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+    create_view_menu()
 
 ## Implementing functions for chosen methods (Create Views)
+
+#def type_view():
+
+def insert_file_view():
+    print("\nChosen Method: Reading SQL File")
+    path = input("Enter your sql script file path directory: ")
+
+    cur.execute("use museum")
+    with open (path, 'r') as f:
+        with cnx.cursor() as cursor:
+            cursor.execute(f.read(), multi=True)
+        print("\nRead file and executed sucessfully!")
 
 
 
@@ -978,8 +991,6 @@ def insert_file_table():
     # basic_query_menu()
 
     ## Implementing functions for chosen methods (Basic Retrieval Queries)
-
-
 
 def data_entry_access():
     choice = menu(1);
