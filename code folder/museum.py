@@ -866,22 +866,22 @@ def create_new_table_menu():
     while (True):
         print("\n New Table Creation")
         print(20*"-")
-        print("\nPlease select the method in which you would like to create your new table:")
-        print("1: Typing in your MySQL command")
+        print("Please select the method in which you would like to create your new table:")
+        print("\n1: Typing in your MySQL command")
         print("2: Insert a SQL script file path directory")
         print("3: Back to MENU")
         chosen = input("Enter chosen method (1-2): ")
 
         if chosen == "1":  
             type_sql()
-            break
         elif chosen == "2":         
             read_sql()
-            break
         elif chosen == "3":
             break
         else:
             print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
+
+        break 
 
     return
         
@@ -909,40 +909,47 @@ def read_sql():
 
 
 def create_view_menu():
-    print("\n View Creation")
-    print(15*"-")
-    print("\nPlease select the method in which you would like to create view:")
-    print("1: Typing in your MySQL command")
-    print("2: Insert a SQL script file")
-    chosen = input("Enter chosen method (1-2): ")
+    while (True):
+        print("\n View Creation")
+        print(15*"-")
+        print("Please select the method in which you would like to create view:")
+        print("\n1: Typing in your MySQL command")
+        print("2: Insert a SQL script file")
+        print("3: Back to MENU")
+        chosen = input("Enter chosen method (1-2): ")
 
-    if chosen == "1":
-        type_sql()
-    elif chosen == "2":                 
-        read_sql()   
-    else:
-        print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
-        create_view_menu()
+        if chosen == "1":
+            type_sql()
+        elif chosen == "2":                 
+            read_sql()   
+        elif chosen == "3":
+            break
+        else:
+            print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
+        break
 
     return
 
 def alter_tb_menu():
-    print("\n Altering Existing Table")
-    print(25*"-") 
-    print("\nPlease select the method in which you would like to alter an existing table:")
-    print("1: Typing in your MySQL command")
-    print("2: Insert a SQL script file")
-    chosen = input("Enter chosen method (1-2): ")
+    while(True):
+        print("\n Altering Existing Table")
+        print(25*"-") 
+        print("Please select the method in which you would like to alter an existing table:")
+        print("\n1: Typing in your MySQL command")
+        print("2: Insert a SQL script file")
+        print("3: Back to MENU")
+        chosen = input("Enter chosen method (1-2): ")
 
-    if chosen == "1":
-        type_sql()
-        return
-    elif chosen == "2":
-        read_sql()
-        return
-    else:
-        print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
-        alter_tb_menu()
+        if chosen == "1":
+            type_sql()
+        elif chosen == "2":
+            read_sql()
+        elif chosen == "3":
+            break
+        else:
+            print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
+        
+        break
     
     return 
 
@@ -961,7 +968,8 @@ def basic_query_menu():
 #functions for query display below for both methods (reading and typing)
 
 def query_type():
-    print("\nChosen Methods: Typing in your SQL command")
+    print("\nTyping in your SQL command")
+    print(25*"-")
     command = input("\nPlease enter your SQL query: ")
     cur.execute("use museum")
     execute= cur.execute(command)
