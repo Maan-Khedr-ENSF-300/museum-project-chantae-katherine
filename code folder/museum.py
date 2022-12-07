@@ -334,7 +334,7 @@ def insert_sequence(table):
             print("\nSomething went wrong:", err)
             return
 
-         #Based on art_type (PAINTING/STATUE/SCULPTURE/OTHER), get data for that also
+        #Based on art_type (PAINTING/STATUE/SCULPTURE/OTHER), get data for that also
         print("\nPlease enter some more information about your", data[7])
         cur.execute("SELECT * FROM " + data[7])
         col_names = cur.column_names
@@ -396,90 +396,6 @@ def insert_sequence(table):
 
             if pcoll_data[3] == "on display":
                 on_display = True
-        
-        if (not on_display) and (data[9] != None):
-            answer = input("\nIs the art object currently on display? Enter y or n: ")
-            if answer == 'y':
-                on_display = True
-        
-        if on_display:
-            print("\nSince this art object is on display, we need some more information.")
-            cur.execute("SELECT E_id, Name FROM exhibition")
-            exhibitions = cur.fetchall()
-            col_names = cur.column_names
-
-            print("Here are the exhibitions to choose from: ")
-
-            for i in range(len(col_names)):
-                print("{:<20s}".format(col_names[i]),end='')
-            print()
-            print(30*len(col_names)*'-')
-            for row in exhibitions:
-                for i in range(len(col_names)):
-                    print("{:<20s}".format(str(row[i])),end='')
-                print()
-            
-            e_id = input("\nEnter the E_id of the exhibition this art object belongs to: ")
-            to_insert = tuple(e_id)
-            a_id = (data[0],)
-            to_insert = to_insert + a_id
-
-            try:
-                cur.execute("insert into on_display values (%s, %s)", to_insert)
-                cnx.commit()
-                print("\nArt object display data successfully entered into database.")
-            except mysql.connector.Error as err:
-                print("\nSomething went wrong:", err)
-                return
-
-    elif table == "2":      # table choice is artist
-        print("\nPlease enter the artist info below:")
-        cur.execute("SELECT * FROM artist")
-        col_names = cur.column_names
-
-        num_params = len(col_names)
-        params = num_params * "%s,"
-        params = params[:-1]    #remove extra comma at end
-        insert_artist = ("insert into artist values (" + params + ")")
-
-        artist_data = []
-
-        for i in range(0, num_params):
-            info = ""
-            if i == 4 or i == 5:
-                info = " (yyyy-mm-dd)"
-            prompt = "Enter a value for " + col_names[i] + info + ": "
-            artist_data.append(input(prompt) or None)
-
-        artist_data = tuple(artist_data)
-        
-        try:
-            cur.execute(insert_artist, artist_data)
-            cnx.commit()
-            print("\nData successfully entered into database.")
-        except mysql.connector.Error as err:
-            print("\nSomething went wrong:", err)
-            return
-    
-    elif table == "3":      # table choice is exhibition
-        print("\nPlease enter the exhibition info below:")
-        cur.execute("SELECT * FROM exhibition")
-        col_names = cur.column_names
-
-        cur.execute("SELECT E_id FROM exhibition ORDER BY e_id DESC LIMIT 1")
-        last_id = (cur.fetchone())
-
-        num_params = len(col_names)
-        params = num_params * "%s,"
-        params = params[:-1]    #remove extra comma at end
-        insert = ("insert into exhibition values (" + params + ")")
-
-        data = [last_id[0]+1]
-
-
-
-        if pcoll_data[3] == "on display":
-            on_display = True
         
         if (not on_display) and (data[9] != None):
             answer = input("\nIs the art object currently on display? Enter y or n: ")
