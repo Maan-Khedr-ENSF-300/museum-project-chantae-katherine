@@ -850,10 +850,10 @@ def admin_access():
         update_delete_menu(1)
     elif choice == "4":
         create_new_table_menu()
-    #elif choice == "5":
-        #create_view_menu()
-    #elif choice == "6":
-        #alter_tb_menu()
+    elif choice == "5":
+        create_view_menu()
+    elif choice == "6":
+        alter_tb_menu()
     #elif choice == "7":
         #basic_query_menu()
     elif choice == "10":
@@ -880,7 +880,7 @@ def create_new_table_menu():
         #type_table()
     if chosen == "2":          ##elif chosen == "2": Need to change once done above
             # call function that will use the sql script 
-        insert_file_table()
+        read_sql()
     else:
         print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
         create_new_table_menu()
@@ -893,7 +893,7 @@ def create_new_table_menu():
     # print("\nChosen Method: Typing in your MySQL command for creating a new table")
     # command = input("Please type in your MySQL command: ")
 
-def insert_file_table():
+def read_sql():
     print("\nChosen Method: Reading SQL File")
     path = input("Enter your sql script file path directory: ")
 
@@ -922,7 +922,7 @@ def create_view_menu():
             # call function that will type the sql command
             # type_view()
     if chosen == "2":                  # elif chosen == "2": 
-        insert_file_view()
+        read_sql()
     else:
         print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
     create_view_menu()
@@ -931,40 +931,45 @@ def create_view_menu():
 
 #def type_view():
 
-def insert_file_view():
-    print("\nChosen Method: Reading SQL File")
-    path = input("Enter your sql script file path directory: ")
-
-    cur.execute("use museum")
-    with open (path, 'r') as f:
-        with cnx.cursor() as cursor:
-            cursor.execute(f.read(), multi=True)
-        print("\nRead file and executed sucessfully!")
-
-
-
 ######################################
 
     # Option 6: Alter (Tables?)
     # Same as the above two statements, using execute and connector.
 
-#def alter_tb_menu(): 
-    # print("\nPlease select the method in which you would like to alter an existing table:")
-    # print("1: Typing in your MySQL command")
-    # print("2: Insert a SQL script file")
-    # chosen = input("Enter chosen method (1-2): ")
+def alter_tb_menu(): 
+    print("\nPlease select the method in which you would like to alter an existing table:")
+    print("1: Typing in your MySQL command")
+    print("2: Insert a SQL script file")
+    chosen = input("Enter chosen method (1-2): ")
 
     # if chosen == "1":
             # call function that will type the sql command
             #type_altertb()
-    # elif chosen == "2":
-            # call function that will use the sql script 
-            #insert_file_altertb()
-    # else:
-            # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
-    # alter_tb_menu()
+    if chosen == "2":
+        read_sql()
+    else:
+        print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+    alter_tb_menu()
 
 ## Implementing functions for chose methods (Alter Tables)
+
+def insert_file_altertb():
+    print("\n Chosen Alter Table")
+    print("\nPlease select the method in which you would like to alter an existing table: ")
+    print("1: Typing in your MySQL command")
+    print("2: Insert a SQL script file")
+    chosen = input("Enter chosen method (1-2): ")
+
+    # if chosen == "1":
+            # call function that will type the sql command
+            # type_view()
+    if chosen == "2":                  # elif chosen == "2": 
+        read_sql()
+    else:
+        print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+    create_view_menu()
+
+## Implementing functions for chosen methods (Create View)
 
 
 
