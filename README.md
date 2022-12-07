@@ -11,8 +11,9 @@ Katherine Tubang (30121665) katherine.tubang@ucalgary.ca
 - SQL Queries: Chantae (3 queries), Katherine (rest of queries)
 - Python guest access: Chantae
 - Python data entry access: Chantae
-- Python testing and debugging: Chantae
-- Python reviewing: Chantae
+- Python database admin access: Katherine
+- Python testing and debugging: Chantae, Katherine
+- Python reviewing: Chantae, Katherine
 
 ## Notes on how to use and run program:
 Users:
@@ -25,8 +26,8 @@ The attributes must be separated by commas without spaces, and entries must be l
 To insert from a file, enter the file name with the .txt extension, but without the path. For example, enter 'artist_data.txt', 'exhi_data.txt', etc.
 
 ## Bonus Features:
-- .sql Query file:
+- In .sql Query file:
   - Completed bonus queries 1), 6), and 7)
   - Implemented a full custom trigger (DATE_VIOLATION) for ART_OBJECT table
-- Access control using sql commands: Roles and users created for database. This is in museum.sql
-- In the python application, implemented the data entry and guest accesses. Database admin access is partially complete.
+- In museum.sql file: Implemented access control using sql commands. Roles and users were created for database. 
+- In the python application: Implemented the database admin, data entry, and guest accesses.
