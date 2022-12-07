@@ -863,11 +863,6 @@ def admin_access():
         print("Sorry that is an invalid action. Please re-enter your choice.")
     admin_access()
 
-
-    # Option 4: Create table 
-    # Using the connector, let the user(administrator) type in the mysql commands onto the code itself.
-    # That will be executed through the connector and will output/dsplay the table onto the terminal.
-
 def create_new_table_menu():
     print("\n New Table Creation")
     print(20*"-")
@@ -887,7 +882,7 @@ def create_new_table_menu():
     return
 
 
-## Functions for reading and typing sql scripts and files
+## Functions for reading and typing sql scripts and files (Create table, view, alter table)
 
 def type_sql():
     print("\nChosen Method: Typing in your MySQL command")
@@ -906,13 +901,6 @@ def read_sql():
         print("\nRead file and executed sucessfully!")
 
 
-######################################
-
-    # Option 5: Create view 
-    # Same thing as above. Using the connector, will execute the mysql command lines on this python implemantation.
-    # The view should be saved on the db as well
-    # Should check through db search changes are there?? 
-
 def create_view_menu():
     print("\n View Creation")
     print(15*"-")
@@ -930,12 +918,6 @@ def create_view_menu():
         create_view_menu()
 
     return
-
-
-######################################
-
-    # Option 6: Alter (Tables?)
-    # Same as the above two statements, using execute and connector.
 
 def alter_tb_menu():
     print("\n Altering Existing Table")
@@ -956,10 +938,6 @@ def alter_tb_menu():
         alter_tb_menu()
     
     return 
-
-## Implementing functions for chose methods (Alter Tables)
-
-
 
 ######################################
 
