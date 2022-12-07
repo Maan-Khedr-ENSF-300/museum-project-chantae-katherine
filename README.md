@@ -27,6 +27,9 @@ In order to insert from file, the file must be in 'data folder'.
 The attributes must be separated by commas without spaces, and entries must be line separated.
 To insert from a file, enter the file name with the .txt extension, but without the path. For example, enter 'artist_data.txt', 'exhi_data.txt', etc.
 
+- Inserting an sql file in database admin access for options 4-7(includes create table, create view, alter tables and queries). Must enter the full path of the sql file from computer. 
+ex) inserting the file table_py.sql stored in desktop, user would need to enter //User/owner/Desktop/table_py.sql.
+
 ## Bonus Features:
 - In .sql Query file:
   - Completed bonus queries 1), 6), and 7)
