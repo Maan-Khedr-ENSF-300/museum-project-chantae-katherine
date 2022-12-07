@@ -930,7 +930,7 @@ def alter_tb_menu():
     if chosen == "1":
         type_sql()
         return
-    if chosen == "2":
+    elif chosen == "2":
         read_sql()
         return
     else:
@@ -954,11 +954,9 @@ def basic_query_menu():
     chosen = input("Enter chosen method (1-2): ")
 
     if chosen == "1":
-        type_sql()
-        #query_type()
-    if chosen == "2":
-        read_sql()
-        #query_read()
+        query_type()
+    elif  chosen == "2":
+        query_read()
     else:
         print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
         basic_query_menu()
@@ -968,38 +966,39 @@ def basic_query_menu():
 
 #functions for query display below for both methods (reading and typing)
 
-#def query_type():
-    #print("\nChosen Methods: Typing in your SQL command")
-    #command = input("\n Please enter your SQL query: ")
-    #cur.execure("use museum")
-    #cur.execute(command)
+def query_type():
+    print("\nChosen Methods: Typing in your SQL command")
+    command = input("\nPlease enter your SQL query: ")
+    print(50* "-")
+    cur.execute("use museum")
+    cur.execute(command)
 
-    #col_names = cur.col_names
-    #attribute_size = len(col_names)
-    #for i in range(attribute_size):
-        #print(col_names[i], '\t', end= '')
-    #print()
-    #print(120*"-")
+    col_names = cur.column_names
+    attribute_size = len(col_names)
+    print()
+    print("Attribute list names: ")
+    for i in range(attribute_size):
+        print(col_names[i], '\t', end= '')
+    print()
 
-    #rows = cur.fetchall()
-    #print("Table Content: \n")
-    #size = len(rows)
-    #for i in range(size)
-        #for j in range(len(rows[i]))
-            #print(rows[i][j], end= '\t')
-        #print()
+    rows = cur.fetchall()
+    print("\nTable Content (respective from attribute name list): \n")
+    size = len(rows)
+    for i in range(size):
+        for j in range(len(rows[i])):
+            print(rows[i][j], end= '\t')
+        print()
+    return
 
 
+def query_read():
+    print("\nChosen Method: Reading SQL file ")
+    path = input("\nPlease enter your sql script file path directory: ")
 
-
-#def query_read():
-    #print("\nChosen Method: Reading SQL file ")
-    #path = input("\nPlease enter your sql script file path directory: ")
-
-    #cur.execute("use museum")
-    #with open (path, 'r') as f:
-        #with cnx.cursor() as cursor:
-            #cursor.execute(f.read(), multi=True)
+    cur.execute("use museum")
+    with open (path, 'r') as f:
+        with cnx.cursor() as cursor:
+            cursor.execute(f.read(), multi=True)
 
         
 
