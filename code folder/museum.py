@@ -859,17 +859,18 @@ def admin_access():
     elif choice == "10":
         return
     else:
-        print("\nThat action has not been implemented yet.") 
-        # Print out a invalid entry message?
+        #print("\nThat action has not been implemented yet.") 
+        print("Sorry that is an invalid action. Please re-enter your choice.")
     admin_access()
 
-    ## TO DO 
+
     # Option 4: Create table 
     # Using the connector, let the user(administrator) type in the mysql commands onto the code itself.
     # That will be executed through the connector and will output/dsplay the table onto the terminal.
 
 def create_new_table_menu():
-    print("\nChosen New Table Creation")
+    print("\n New Table Creation")
+    print(20*"-")
     print("\nPlease select the method in which you would like to create your new table:")
     print("1: Typing in your MySQL command")
     print("2: Insert a SQL script file path directory")
@@ -882,20 +883,21 @@ def create_new_table_menu():
     else:
         print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
         create_new_table_menu()
+    
+    return
 
 
-## Implementing functions for chosen methods (Create Table)
+## Functions for reading and typing sql scripts and files
 
 def type_sql():
-    print("\nChosen Method: Typing in your MySQL command for creating a new table")
-    command = input("Please type in your MySQL command: ")
+    print("\nChosen Method: Typing in your MySQL command")
+    command = input("\nPlease type in your MySQL command: ")
     cur.execute(command)
-
-    
+    print("\nYour command has been executed sucessfully!")
 
 def read_sql():
-    print("\nChosen Method: Reading SQL File")
-    path = input("Enter your sql script file path directory: ")
+    print("\nChosen Method: Reading SQL file")
+    path = input("Please enter your sql script file path directory: ")
 
     cur.execute("use museum")
     with open (path, 'r') as f:
@@ -912,7 +914,8 @@ def read_sql():
     # Should check through db search changes are there?? 
 
 def create_view_menu():
-    print("\n Chosen View Creation")
+    print("\n View Creation")
+    print(15*"-")
     print("\nPlease select the method in which you would like to create view:")
     print("1: Typing in your MySQL command")
     print("2: Insert a SQL script file")
@@ -921,24 +924,22 @@ def create_view_menu():
     if chosen == "1":
         type_sql()
     elif chosen == "2":                 
-        read_sql()
+        read_sql()   
     else:
-        print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+        print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
         create_view_menu()
 
+    return
 
-
-## Implementing functions for chosen methods (Create Views)
-
-#def type_view():
-    #print("")
 
 ######################################
 
     # Option 6: Alter (Tables?)
     # Same as the above two statements, using execute and connector.
 
-def alter_tb_menu(): 
+def alter_tb_menu():
+    print("\n Altering Existing Table")
+    print(25*"-") 
     print("\nPlease select the method in which you would like to alter an existing table:")
     print("1: Typing in your MySQL command")
     print("2: Insert a SQL script file")
@@ -946,28 +947,17 @@ def alter_tb_menu():
 
     if chosen == "1":
         type_sql()
+        return
     if chosen == "2":
         read_sql()
+        return
     else:
-        print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+        print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
         alter_tb_menu()
+    
+    return 
 
 ## Implementing functions for chose methods (Alter Tables)
-
-def insert_file_altertb():
-    print("\n Chosen Alter Table")
-    print("\nPlease select the method in which you would like to alter an existing table: ")
-    print("1: Typing in your MySQL command")
-    print("2: Insert a SQL script file")
-    chosen = input("Enter chosen method (1-2): ")
-
-    if chosen == "1":
-        type_sql()
-    if chosen == "2":                
-        read_sql()
-    else:
-        print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
-        create_view_menu()
 
 
 
@@ -979,6 +969,7 @@ def insert_file_altertb():
 
 def basic_query_menu():
     print("\n Chosen Basic Query Retrieval")
+    print(30*"-")
     print("\nPlease select the method in which you would like to retrieve your basic query:")
     print("1: Typing in your MySQL command")
     print("2: Insert a SQL script file")
@@ -989,8 +980,10 @@ def basic_query_menu():
     if chosen == "2":
         read_sql()
     else:
-        print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+        print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
         basic_query_menu()
+
+    return
 
 
 
