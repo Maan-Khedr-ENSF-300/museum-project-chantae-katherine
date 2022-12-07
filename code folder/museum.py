@@ -871,23 +871,57 @@ def admin_access():
     # print("\nPlease select the method in which you would like to create your new table:")
     # print("1: Typing in your MySQL command")
     # print("2: Insert a SQL script file")
-    # chosen = input("Enter chosen method: ")
+    # chosen = input("Enter chosen method (1-2): ")
 
     # if chosen == "1":
-            #
+            # call function that will type the sql command
+    # elif chosen == "2":
+            # call function that will use the sql script 
+    # else:
+            # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+    # create_new_table_menu()
 
+######################################
 
     # Option 5: Create view 
     # Same thing as above. Using the connector, will execute the mysql command lines on this python implemantation.
     # The view should be saved on the db as well
     # Should check through db search changes are there?? 
 
-#def create_view():
+#def create_view_menu():
+    # print("\nPlease select the method in which you would like to create view:")
+    # print("1: Typing in your MySQL command")
+    # print("2: Insert a SQL script file")
+    # chosen = input("Enter chosen method (1-2): ")
+
+    # if chosen == "1":
+            # call function that will type the sql command
+    # elif chosen == "2":
+            # call function that will use the sql script 
+    # else:
+            # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+    # create_view_menu()
+
+######################################
 
     # Option 6: Alter (Tables?)
     # Same as the above two statements, using execute and connector.
 
-#def alter_tb(): 
+#def alter_tb_menu(): 
+    # print("\nPlease select the method in which you would like to alter an existing table:")
+    # print("1: Typing in your MySQL command")
+    # print("2: Insert a SQL script file")
+    # chosen = input("Enter chosen method (1-2): ")
+
+    # if chosen == "1":
+            # call function that will type the sql command
+    # elif chosen == "2":
+            # call function that will use the sql script 
+    # else:
+            # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+    # alter_tb_menu()
+
+######################################
 
     # Option 7: Query 
     # Should do the same thing as abouve, execute and connector.
