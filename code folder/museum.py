@@ -1005,7 +1005,8 @@ def create_view_menu():
         if chosen == "1":
             type_sql()
         elif chosen == "2":                 
-            read_sql()   
+            read_sql()
+            print_query()   
         elif chosen == "3":
             break
         else:
@@ -1022,7 +1023,7 @@ def alter_tb_menu():
         print("\n1: Typing in your MySQL command")
         print("2: Insert a SQL script file")
         print("3: Back to MENU")
-        chosen = input("Enter chosen method (1-2): ")
+        chosen = input("Enter chosen method (1-3): ")
 
         if chosen == "1":
             type_sql()
@@ -1039,13 +1040,25 @@ def alter_tb_menu():
 
 
 def basic_query_menu():
-    print("\n Chosen Basic Query Retrieval")
-    print(30*"-")
-    
-    i = query_type()
-    #if(i ==  mysql.connector.Error):
-        #print("Invalid Query. Please try again.")
+    while (True):
+        print("\n Chosen Basic Query Retrieval")
+        print(30*"-")
+        print("\n1: Typing in your MySQL command")
+        print("2: Insert a SQL script file")
+        print("3: Back to MENU")
+        chosen = input("Please select the method in which you would like to create view:")
 
+        if chosen == "1":
+            query_type()
+        elif chosen == "2":
+            read_sql()
+        elif chosen == "3":
+            break
+        else:
+            print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
+
+        break
+    
     return
 
 
@@ -1056,10 +1069,10 @@ def query_type():
     print(25*"-")
     command = input("\nPlease enter your SQL query: ")
     cur.execute("use museum")
-    execute= cur.execute(command)
-    print_query(execute)
+    cur.execute(command)
+    print_query()
 
-def print_query(execute):
+def print_query():
     col_names = cur.column_names
     attribute_size = len(col_names)
     print()
