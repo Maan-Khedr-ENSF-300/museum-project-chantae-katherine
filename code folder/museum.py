@@ -888,6 +888,17 @@ def admin_access():
 
 #def type_table():
     # print("\nChosen Method: Typing in your MySQL command for creating a new table")
+    # command = input("Please type in your MySQL command: ")
+
+#def insert_file_table():
+    # print("\nChosen Method")
+    # filename = input("Enter your sql script filename: ")
+
+    # with open (filename, 'r') as f:
+        #with cnx.cursor() as cursor:
+            #cursor.execute(f.read(), multi=True)
+        #cnx.commit()
+
 
 
 
