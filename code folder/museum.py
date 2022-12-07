@@ -849,7 +849,7 @@ def admin_access():
     elif choice == "3":
         update_delete_menu(1)
     #elif choice == "4":
-        #create_new_table()
+        #create_new_table_menu()
     #elif choice == "5":
         #create_view()
     #elif choice == "6":
@@ -867,26 +867,33 @@ def admin_access():
     # Using the connector, let the user(administrator) type in the mysql commands onto the code itself.
     # That will be executed through the connector and will output/dsplay the table onto the terminal.
 
-##def create_new_table():
+#def create_new_table_menu():
+    # print("\nPlease select the method in which you would like to create your new table:")
+    # print("1: Typing in your MySQL command")
+    # print("2: Insert a SQL script file")
+    # chosen = input("Enter chosen method: ")
+
+    # if chosen == "1":
+            #
+
 
     # Option 5: Create view 
     # Same thing as above. Using the connector, will execute the mysql command lines on this python implemantation.
     # The view should be saved on the db as well
     # Should check through db search changes are there?? 
 
-##def create_view():
+#def create_view():
 
     # Option 6: Alter (Tables?)
     # Same as the above two statements, using execute and connector.
-    # Should 
 
-##def alter_tb(): 
+#def alter_tb(): 
 
     # Option 7: Query 
     # Should do the same thing as abouve, execute and connector.
     # do basic queries with where conditions if possible. 
 
-##def basic_query():
+#def basic_query():
 
 def data_entry_access():
     choice = menu(1);
