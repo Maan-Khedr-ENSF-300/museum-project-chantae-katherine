@@ -851,15 +851,16 @@ def admin_access():
     #elif choice == "4":
         #create_new_table_menu()
     #elif choice == "5":
-        #create_view()
+        #create_view_menu()
     #elif choice == "6":
-        #alter_tb()
+        #alter_tb_menu()
     #elif choice == "7":
-        #basic_query()
+        #basic_query_menu()
     elif choice == "10":
         return
     else:
         print("\nThat action has not been implemented yet.") 
+        # Print out a invalid entry message?
     admin_access()
 
     ## TO DO 
@@ -875,11 +876,20 @@ def admin_access():
 
     # if chosen == "1":
             # call function that will type the sql command
+            # type_table()
     # elif chosen == "2":
             # call function that will use the sql script 
+            # insert_file_view()
     # else:
             # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
     # create_new_table_menu()
+
+## Implementing functions for chosen methods (Create Table)
+
+#def type_table():
+    # print("\nChosen Method: Typing in your MySQL command for creating a new table")
+
+
 
 ######################################
 
@@ -896,11 +906,17 @@ def admin_access():
 
     # if chosen == "1":
             # call function that will type the sql command
+            # type_view()
     # elif chosen == "2":
             # call function that will use the sql script 
+            #insert_file_view()
     # else:
             # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
     # create_view_menu()
+
+## Implementing functions for chosen methods (Create Views)
+
+
 
 ######################################
 
@@ -915,11 +931,17 @@ def admin_access():
 
     # if chosen == "1":
             # call function that will type the sql command
+            #type_altertb()
     # elif chosen == "2":
             # call function that will use the sql script 
+            #insert_file_altertb()
     # else:
             # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
     # alter_tb_menu()
+
+## Implementing functions for chose methods (Alter Tables)
+
+
 
 ######################################
 
@@ -935,11 +957,17 @@ def admin_access():
 
     # if chosen == "1":
             # call function that will type the sql command
+            # type_query()
     # elif chosen == "2":
             # call function that will use the sql script 
+            # insert_file_query()
     # else:
             # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
     # basic_query_menu()
+
+    ## Implementing functions for chosen methods (Basic Retrieval Queries)
+
+
 
 def data_entry_access():
     choice = menu(1);
