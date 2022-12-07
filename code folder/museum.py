@@ -854,8 +854,8 @@ def admin_access():
         create_view_menu()
     elif choice == "6":
         alter_tb_menu()
-    #elif choice == "7":
-        #basic_query_menu()
+    elif choice == "7":
+        basic_query_menu()
     elif choice == "10":
         return
     else:
@@ -875,23 +875,23 @@ def create_new_table_menu():
     print("2: Insert a SQL script file path directory")
     chosen = input("Enter chosen method (1-2): ")
 
-    #if chosen == "1":
-            # call function that will type the sql command
-        #type_table()
-    if chosen == "2":          ##elif chosen == "2": Need to change once done above
-            # call function that will use the sql script 
+    if chosen == "1":  
+        type_sql()
+    elif chosen == "2":         
         read_sql()
     else:
         print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
         create_new_table_menu()
 
-    #admin_access()
 
 ## Implementing functions for chosen methods (Create Table)
 
-#def type_table():
-    # print("\nChosen Method: Typing in your MySQL command for creating a new table")
-    # command = input("Please type in your MySQL command: ")
+def type_sql():
+    print("\nChosen Method: Typing in your MySQL command for creating a new table")
+    command = input("Please type in your MySQL command: ")
+    cur.execute(command)
+
+    
 
 def read_sql():
     print("\nChosen Method: Reading SQL File")
@@ -918,19 +918,20 @@ def create_view_menu():
     print("2: Insert a SQL script file")
     chosen = input("Enter chosen method (1-2): ")
 
-    # if chosen == "1":
-            # call function that will type the sql command
-            # type_view()
-    if chosen == "2":                  # elif chosen == "2": 
+    if chosen == "1":
+        type_sql()
+    elif chosen == "2":                 
         read_sql()
     else:
         print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
         create_view_menu()
 
 
+
 ## Implementing functions for chosen methods (Create Views)
 
 #def type_view():
+    #print("")
 
 ######################################
 
@@ -943,14 +944,13 @@ def alter_tb_menu():
     print("2: Insert a SQL script file")
     chosen = input("Enter chosen method (1-2): ")
 
-    # if chosen == "1":
-            # call function that will type the sql command
-            #type_altertb()
+    if chosen == "1":
+        type_sql()
     if chosen == "2":
         read_sql()
     else:
         print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
-    alter_tb_menu()
+        alter_tb_menu()
 
 ## Implementing functions for chose methods (Alter Tables)
 
@@ -961,16 +961,13 @@ def insert_file_altertb():
     print("2: Insert a SQL script file")
     chosen = input("Enter chosen method (1-2): ")
 
-    # if chosen == "1":
-            # call function that will type the sql command
-            # type_view()
-    if chosen == "2":                  # elif chosen == "2": 
+    if chosen == "1":
+        type_sql()
+    if chosen == "2":                
         read_sql()
     else:
         print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
-    create_view_menu()
-
-## Implementing functions for chosen methods (Create View)
+        create_view_menu()
 
 
 
@@ -980,23 +977,22 @@ def insert_file_altertb():
     # Should do the same thing as abouve, execute and connector.
     # do basic queries with where conditions if possible. 
 
-#def basic_query_menu():
-    # print("\nPlease select the method in which you would like to retrieve your basic query:")
-    # print("1: Typing in your MySQL command")
-    # print("2: Insert a SQL script file")
-    # chosen = input("Enter chosen method (1-2): ")
+def basic_query_menu():
+    print("\n Chosen Basic Query Retrieval")
+    print("\nPlease select the method in which you would like to retrieve your basic query:")
+    print("1: Typing in your MySQL command")
+    print("2: Insert a SQL script file")
+    chosen = input("Enter chosen method (1-2): ")
 
-    # if chosen == "1":
-            # call function that will type the sql command
-            # type_query()
-    # elif chosen == "2":
-            # call function that will use the sql script 
-            # insert_file_query()
-    # else:
-            # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
-    # basic_query_menu()
+    if chosen == "1":
+        type_sql()
+    if chosen == "2":
+        read_sql()
+    else:
+        print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+        basic_query_menu()
 
-    ## Implementing functions for chosen methods (Basic Retrieval Queries)
+
 
 def data_entry_access():
     choice = menu(1);
