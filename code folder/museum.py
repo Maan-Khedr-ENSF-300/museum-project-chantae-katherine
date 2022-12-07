@@ -956,7 +956,7 @@ def basic_query_menu():
     if chosen == "1":
         query_type()
     elif  chosen == "2":
-        query_read()
+        read_sql()
     else:
         print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
         basic_query_menu()
@@ -969,13 +969,15 @@ def basic_query_menu():
 def query_type():
     print("\nChosen Methods: Typing in your SQL command")
     command = input("\nPlease enter your SQL query: ")
-    print(50* "-")
     cur.execute("use museum")
-    cur.execute(command)
+    execute= cur.execute(command)
+    print_query(execute)
 
+def print_query(execute):
     col_names = cur.column_names
     attribute_size = len(col_names)
     print()
+    print(50*"-")
     print("Attribute list names: ")
     for i in range(attribute_size):
         print(col_names[i], '\t', end= '')
@@ -991,16 +993,6 @@ def query_type():
     return
 
 
-def query_read():
-    print("\nChosen Method: Reading SQL file ")
-    path = input("\nPlease enter your sql script file path directory: ")
-
-    cur.execute("use museum")
-    with open (path, 'r') as f:
-        with cnx.cursor() as cursor:
-            cursor.execute(f.read(), multi=True)
-
-        
 
 
 def data_entry_access():
