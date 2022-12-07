@@ -3,12 +3,14 @@
 Group 5 - 
 Chantae Ho (30141743) chantae.ho@ucalgary.ca
 Katherine Tubang (30121665) katherine.tubang@ucalgary.ca 
+
+## Task Completion
 - ERD diagram planning: Chantae, Katherine
 - ERD diagram creation: Katherine
 - Relational schema planning: Chantae
 - Relational schema creation: Chantae
 - SQL Database Creation & Initialization, Roles & Users (Access Control): Chantae
-- SQL Queries: Chantae (3 queries), Katherine (rest of queries)
+- SQL Queries: Chantae, Katherine
 - Python guest access: Chantae
 - Python data entry access: Chantae
 - Python database admin access: Katherine
