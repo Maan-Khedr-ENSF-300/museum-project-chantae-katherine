@@ -31,18 +31,22 @@ CREATE TABLE ARTIST (
 
 INSERT INTO ARTIST(FName, LName, Main_style, Artist_descrip, Date_born, Date_died, Epoch, Country_of_origin)
 VALUES
-("Vivian", "Maier", "Black & White", "Vivian Dorothy Maier was an American street photographer whose 
-work was discovered and recognized after her death. She worked for about 40 years as a nanny, mostly 
-in Chicago's North Shore, while pursuing photography.", "1926-02-01", "2009-04-21", "Modern", "United States"),
-("Dempsey", "Bob", "Traditional", "Dempsey Bob, OC D.Litt is a Northwest Coast woodcarver and 
-sculptor from British Columbia, Canada, who is of Tahltan and Tlingit First Nations descent. He was 
-born in the Tahltan village of Telegraph Creek on the Stikine River in northwestern B.C., and is of the Wolf clan. ",
+("Vivian", "Maier", "Black & White", 
+"Vivian Dorothy Maier was an American street photographer whose work was discovered and 
+    recognized after her death. She worked for about 40 years as a nanny, mostly 
+    in Chicago's North Shore, while pursuing photography.", "1926-02-01", "2009-04-21", "Modern", "United States"),
+("Dempsey", "Bob", "Traditional", 
+"Dempsey Bob, OC D.Litt is a Northwest Coast woodcarver and sculptor from British Columbia, 
+    Canada, who is of Tahltan and Tlingit First Nations descent. He was born in the Tahltan 
+    village of Telegraph Creek on the Stikine River in northwestern B.C., and is of the Wolf clan. ",
 "1948-01-01", null, "Contemporary", "Canada"),
-("Lai Cheuk", "Wah", "Realistic", "Sarah Lai Cheuk Wah is best known for her paintings of common objects and 
-urban landscapes, which she renders realistically in great detail. Her visual language is derived from the 
-ordinary, the mundane and the everyday.", "1983-01-01", null, "Contemporary", "Hong Kong"),
-("Anish", "Kapoor", "Installation art", "Sir Anish Mikhail Kapoor CBE, RA is a British-Indian sculptor specializing 
-in installation art and conceptual art.", "1954-03-12", null, "Contemporary", "United Kingdom");
+("Lai Cheuk", "Wah", "Realistic", 
+"Sarah Lai Cheuk Wah is best known for her paintings of common objects and urban landscapes, 
+    which she renders realistically in great detail. Her visual language is derived from the 
+    ordinary, the mundane and the everyday.", "1983-01-01", null, "Contemporary", "Hong Kong"),
+("Anish", "Kapoor", "Installation art", 
+"Sir Anish Mikhail Kapoor CBE, RA is a British-Indian sculptor specializing in installation 
+    art and conceptual art.", "1954-03-12", null, "Contemporary", "United Kingdom");
 
 
 DROP TABLE IF EXISTS COLLECTION;
@@ -58,15 +62,14 @@ CREATE TABLE COLLECTION (
 
 INSERT INTO COLLECTION(Name, Contact_person, Type, C_descrip, Address, Phone)
 VALUES
-("Glenbow Collection", "Melanie Kjorlien", "Museum", "Glenbow’s incredible collection of 
-art and objects can provide us with a sense of belonging, an understanding of what 
-it means to live here in Alberta, and an appreciation for the legacy of the remarkable 
-people and events that have shaped our communities.", "130 9 Ave SE, Calgary, AB",
+("Glenbow Collection", "Melanie Kjorlien", "Museum", "Glenbow\'s incredible collection of art and objects can provide us with a sense of 
+    belonging, an understanding of what it means to live here in Alberta, and an appreciation for the 
+    legacy of the remarkable people and events that have shaped our communities.", "130 9 Ave SE, Calgary, AB",
 "14032684100"),
-("Met Collection", "Tiarra Brown", "Museum", "The Metropolitan Museum of Art is one of the 
-world's largest and finest art museums. Its collections include more than two million works 
-of art spanning 5,000 years of world culture, from prehistory to the present and from every 
-part of the globe.", "1000 Fifth Avenue, New York, NY", "12125357710");
+("Met Collection", "Tiarra Brown", "Museum", 
+"The Metropolitan Museum of Art is one of the world's largest and finest art museums. Its collections include 
+    more than two million works of art spanning 5,000 years of world culture, from prehistory to the present 
+    and from every part of the globe.", "1000 Fifth Avenue, New York, NY", "12125357710");
 
 DROP TABLE IF EXISTS ART_OBJECT;
 CREATE TABLE ART_OBJECT (
@@ -83,8 +86,8 @@ CREATE TABLE ART_OBJECT (
     Date_borrowed       DATE,
     Date_returned       DATE,
     PRIMARY KEY (Id_no),
-    FOREIGN KEY (Artist_FName, Artist_LName) REFERENCES ARTIST(FName, LName) ON UPDATE CASCADE,
-    FOREIGN KEY (Borrowed_collection) REFERENCES COLLECTION(Name) ON UPDATE CASCADE
+    FOREIGN KEY (Artist_FName, Artist_LName) REFERENCES ARTIST(FName, LName) ON UPDATE CASCADE ON DELETE SET NULL,
+    FOREIGN KEY (Borrowed_collection) REFERENCES COLLECTION(Name) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 -- trigger that requires Date_borrowed and Date_returned to be dates in the past or today's date
@@ -124,7 +127,7 @@ CREATE TABLE ON_DISPLAY (
     A_id                INT NOT NULL,
     PRIMARY KEY (E_id, A_id),
     FOREIGN KEY (E_id) REFERENCES EXHIBITION(E_id) ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (A_id) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE 
+    FOREIGN KEY (A_id) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO ON_DISPLAY(E_id, A_id)
@@ -153,13 +156,13 @@ CREATE TABLE SCULPTURE (
     Id_no               INT NOT NULL,
     Style               VARCHAR(20),
     Material            VARCHAR(20),
-    Height              FLOAT,  -- in meters
-    Weight              FLOAT,  -- in lbs
+    Height_in_m         FLOAT,  -- in meters
+    Weight_in_lb        FLOAT,  -- in lbs
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO SCULPTURE(Id_no, Style, Material, Height, Weight)
+INSERT INTO SCULPTURE(Id_no, Style, Material, Height_in_m, Weight_in_lb)
 VALUES
 (7, "Installation art", "Stainless steel", 10, 220000),
 (10, "Animalism", "Bronze", 1.3716, 1000);
@@ -169,13 +172,13 @@ CREATE TABLE STATUE (
     Id_no               INT NOT NULL,
     Style               VARCHAR(20),
     Material            VARCHAR(20),
-    Height              FLOAT,  -- in meters
-    Weight              FLOAT,  -- in lbs
+    Height_in_m         FLOAT,  -- in meters
+    Weight_in_lb        FLOAT,  -- in lbs
     PRIMARY KEY (Id_no),
     FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO STATUE(Id_no, Style, Material, Height, Weight)
+INSERT INTO STATUE(Id_no, Style, Material, Height_in_m, Weight_in_lb)
 VALUES
 (8, "Portraiture", "Marble", 0.6858, 133.8),
 (9, "Bust", "Marble", 0.96885, 307.1);
