@@ -927,7 +927,19 @@ def admin_access():
     # Should do the same thing as abouve, execute and connector.
     # do basic queries with where conditions if possible. 
 
-#def basic_query():
+#def basic_query_menu():
+    # print("\nPlease select the method in which you would like to retrieve your basic query:")
+    # print("1: Typing in your MySQL command")
+    # print("2: Insert a SQL script file")
+    # chosen = input("Enter chosen method (1-2): ")
+
+    # if chosen == "1":
+            # call function that will type the sql command
+    # elif chosen == "2":
+            # call function that will use the sql script 
+    # else:
+            # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+    # basic_query_menu()
 
 def data_entry_access():
     choice = menu(1);
