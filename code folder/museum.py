@@ -939,27 +939,14 @@ def alter_tb_menu():
     
     return 
 
-######################################
-
-    # Option 7: Query 
-    # Should do the same thing as abouve, execute and connector.
-    # do basic queries with where conditions if possible. 
 
 def basic_query_menu():
     print("\n Chosen Basic Query Retrieval")
     print(30*"-")
-    print("\nPlease select the method in which you would like to retrieve your basic query:")
-    print("1: Typing in your MySQL command")
-    print("2: Insert a SQL script file")
-    chosen = input("Enter chosen method (1-2): ")
-
-    if chosen == "1":
-        query_type()
-    elif  chosen == "2":
-        read_sql()
-    else:
-        print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
-        basic_query_menu()
+    
+    i = query_type()
+    #if(i ==  mysql.connector.Error):
+        #print("Invalid Query. Please try again.")
 
     return
 
@@ -991,9 +978,6 @@ def print_query(execute):
             print(rows[i][j], end= '\t')
         print()
     return
-
-
-
 
 def data_entry_access():
     choice = menu(1);
