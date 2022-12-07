@@ -1088,16 +1088,8 @@ def print_query():
     for i in range(size):
         for j in range(len(rows[i])):
             print(rows[i][j], end= "\t")
-            print()
         print()
     return
-
-
-    elif choice == "10":
-        return
-    else:
-        print("\nThat action has not been implemented yet.")
-    admin_access()
 
 def data_entry_access():
     choice = menu(1);
@@ -1144,11 +1136,6 @@ def main():
 
     print("\nThanks for using the program! See you next time.")
 
-
-
-    print("\nThanks for using the program! See you next time.")
-
-
     cnx.close()
 
 
@@ -1163,11 +1150,6 @@ def menu(role_num):
         print("5. Create view") 
         print("6. Alter") 
         print("7. Query") 
-
-        print("4. Create table")
-        print("5. Create view")
-        print("6. Alter")
-        print("7. Query")
 
     print("10. QUIT")
 
