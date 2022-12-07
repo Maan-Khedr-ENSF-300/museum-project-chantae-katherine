@@ -22,6 +22,7 @@ Users:
 
 In order to insert from file, the file must be in 'data folder'.
 The attributes must be separated by commas without spaces, and entries must be line separated.
+To insert from a file, enter the file name with the .txt extension, but without the path. For example, enter 'artist_data.txt', 'exhi_data.txt', etc.
 
 ## Bonus Features:
 - .sql Query file:
