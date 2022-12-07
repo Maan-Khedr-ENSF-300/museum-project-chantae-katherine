@@ -858,8 +858,7 @@ def admin_access():
         basic_query_menu()
     elif choice == "10":
         return
-    else:
-        #print("\nThat action has not been implemented yet.") 
+    else: 
         print("Sorry that is an invalid action. Please re-enter your choice.")
     admin_access()
 
@@ -887,12 +886,13 @@ def create_new_table_menu():
 def type_sql():
     print("\nChosen Method: Typing in your MySQL command")
     command = input("\nPlease type in your MySQL command: ")
+    cur.execute("use museum")
     cur.execute(command)
     print("\nYour command has been executed sucessfully!")
 
 def read_sql():
     print("\nChosen Method: Reading SQL file")
-    path = input("Please enter your sql script file path directory: ")
+    path = input("\nPlease enter your sql script file path directory: ")
 
     cur.execute("use museum")
     with open (path, 'r') as f:
@@ -955,14 +955,53 @@ def basic_query_menu():
 
     if chosen == "1":
         type_sql()
+        #query_type()
     if chosen == "2":
         read_sql()
+        #query_read()
     else:
         print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
         basic_query_menu()
 
     return
 
+
+#functions for query display below for both methods (reading and typing)
+
+#def query_type():
+    #print("\nChosen Methods: Typing in your SQL command")
+    #command = input("\n Please enter your SQL query: ")
+    #cur.execure("use museum")
+    #cur.execute(command)
+
+    #col_names = cur.col_names
+    #attribute_size = len(col_names)
+    #for i in range(attribute_size):
+        #print(col_names[i], '\t', end= '')
+    #print()
+    #print(120*"-")
+
+    #rows = cur.fetchall()
+    #print("Table Content: \n")
+    #size = len(rows)
+    #for i in range(size)
+        #for j in range(len(rows[i]))
+            #print(rows[i][j], end= '\t')
+        #print()
+
+
+
+
+#def query_read():
+    #print("\nChosen Method: Reading SQL file ")
+    #path = input("\nPlease enter your sql script file path directory: ")
+
+    #cur.execute("use museum")
+    #with open (path, 'r') as f:
+        #with cnx.cursor() as cursor:
+            #cursor.execute(f.read(), multi=True)
+
+        
 
 
 def data_entry_access():
