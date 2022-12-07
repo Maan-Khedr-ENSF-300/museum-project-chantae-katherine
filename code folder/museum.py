@@ -982,15 +982,16 @@ def print_query(execute):
     print(50*"-")
     print("Attribute list names: ")
     for i in range(attribute_size):
-        print(col_names[i], '\t', end= '')
+        print(col_names[i], end= '\t')
     print()
 
     rows = cur.fetchall()
-    print("\nTable Content (respective from attribute name list): \n")
     size = len(rows)
+    print("\nTable Content (respective from attribute name list): \n")
     for i in range(size):
         for j in range(len(rows[i])):
-            print(rows[i][j], end= '\t')
+            print(rows[i][j], end= "\t")
+            print()
         print()
     return
 
