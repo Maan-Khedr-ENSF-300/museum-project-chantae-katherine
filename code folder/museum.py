@@ -848,8 +848,8 @@ def admin_access():
         update_delete_menu(0)
     elif choice == "3":
         update_delete_menu(1)
-    #elif choice == "4":
-        #create_new_table_menu()
+    elif choice == "4":
+        create_new_table_menu()
     #elif choice == "5":
         #create_view_menu()
     #elif choice == "6":
@@ -868,21 +868,23 @@ def admin_access():
     # Using the connector, let the user(administrator) type in the mysql commands onto the code itself.
     # That will be executed through the connector and will output/dsplay the table onto the terminal.
 
-#def create_new_table_menu():
-    # print("\nPlease select the method in which you would like to create your new table:")
-    # print("1: Typing in your MySQL command")
-    # print("2: Insert a SQL script file")
-    # chosen = input("Enter chosen method (1-2): ")
+def create_new_table_menu():
+    print("\nPlease select the method in which you would like to create your new table:")
+    print("1: Typing in your MySQL command")
+    print("2: Insert a SQL script file")
+    chosen = input("Enter chosen method (1-2): ")
 
-    # if chosen == "1":
+    #if chosen == "1":
             # call function that will type the sql command
-            # type_table()
-    # elif chosen == "2":
+        #type_table()
+    if chosen == "2":          ## # elif chosen == "2":
             # call function that will use the sql script 
-            # insert_file_view()
-    # else:
-            # print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
-    # create_new_table_menu()
+        insert_file_table()
+    else:
+        print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
+        create_new_table_menu()
+
+    admin_access()
 
 ## Implementing functions for chosen methods (Create Table)
 
@@ -890,16 +892,15 @@ def admin_access():
     # print("\nChosen Method: Typing in your MySQL command for creating a new table")
     # command = input("Please type in your MySQL command: ")
 
-#def insert_file_table():
-    # print("\nChosen Method")
-    # filename = input("Enter your sql script filename: ")
+def insert_file_table():
+    print("\nChosen Method")
+    path = input("Enter your sql script filename: ")
 
-    # with open (filename, 'r') as f:
-        #with cnx.cursor() as cursor:
-            #cursor.execute(f.read(), multi=True)
-        #cnx.commit()
-
-
+    cur.execute("use museum")
+    with open (path, 'r') as f:
+        with cnx.cursor() as cursor:
+            cursor.execute(f.read(), multi=True)
+        print("\nRead file and executed sucessfully!")
 
 
 ######################################
