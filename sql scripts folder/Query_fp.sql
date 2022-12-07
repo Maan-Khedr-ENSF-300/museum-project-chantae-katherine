@@ -57,6 +57,8 @@ where Status = "stored";
 -- 6) An update operation with any necessary triggers.
 -- Update an art_object's Id_no and see that the sculpture which references this art_object
 -- has also had its Id_no changed. (ON UPDATE CASCADE)
+
+-- NOTE: The select statements are included just to show the actions taken!
 SELECT * from SCULPTURE;
 
 UPDATE ART_OBJECT
@@ -70,4 +72,9 @@ SELECT * from SCULPTURE;
 -- record in the table PAINTING, since art_object with Id_no=3 is a 
 -- painting, and we have specified 'ON DELETE CASCADE'
 
+-- NOTE: The select statements are included just to show the actions taken!
+SELECT * FROM PAINTING;
+
 DELETE FROM ART_OBJECT WHERE Id_no=3;
+
+SELECT * FROM PAINTING;
