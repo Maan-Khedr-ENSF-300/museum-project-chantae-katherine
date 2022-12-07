@@ -863,22 +863,29 @@ def admin_access():
     admin_access()
 
 def create_new_table_menu():
-    print("\n New Table Creation")
-    print(20*"-")
-    print("\nPlease select the method in which you would like to create your new table:")
-    print("1: Typing in your MySQL command")
-    print("2: Insert a SQL script file path directory")
-    chosen = input("Enter chosen method (1-2): ")
+    while (True):
+        print("\n New Table Creation")
+        print(20*"-")
+        print("\nPlease select the method in which you would like to create your new table:")
+        print("1: Typing in your MySQL command")
+        print("2: Insert a SQL script file path directory")
+        print("3: Back to MENU")
+        chosen = input("Enter chosen method (1-2): ")
 
-    if chosen == "1":  
-        type_sql()
-    elif chosen == "2":         
-        read_sql()
-    else:
-        print("Sorry that is not a valid entry. Please re-enter your chosen method: ")
-        create_new_table_menu()
-    
+        if chosen == "1":  
+            type_sql()
+            break
+        elif chosen == "2":         
+            read_sql()
+            break
+        elif chosen == "3":
+            break
+        else:
+            print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
+
     return
+        
+
 
 
 ## Functions for reading and typing sql scripts and files (Create table, view, alter table)
