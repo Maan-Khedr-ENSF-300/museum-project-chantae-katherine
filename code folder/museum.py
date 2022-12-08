@@ -889,14 +889,14 @@ def create_new_table_menu():
 
 def type_sql():
     print("\nChosen Method: Typing in your MySQL command")
-    command = input("\nPlease type in your MySQL command: ")
+    command = input("\nPlease type in your MySQL command (do not include ';' delimiter): ")
     cur.execute("use museum")
     cur.execute(command)
     print("\nYour command has been executed sucessfully!")
 
 def read_sql():
     print("\nChosen Method: Reading SQL file")
-    path = input("\nPlease enter your sql script file path directory: ")
+    path = input("\nPlease enter your sql script FULL file path: ")
 
     cur.execute("use museum")
     with open (path, 'r') as f:
@@ -979,7 +979,7 @@ def basic_query_menu():
 def query_type():
     print("\nTyping in your SQL command")
     print(25*"-")
-    command = input("\nPlease enter your SQL query: ")
+    command = input("\nPlease enter your SQL query (do not include ';' delimiter): ")
     cur.execute("use museum")
     cur.execute(command)
     print_query()
