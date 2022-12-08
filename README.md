@@ -28,8 +28,8 @@ The attributes must be separated by commas without spaces, and entries must be l
 To insert from a file, enter the file name with the .txt extension, but without the path. For example, enter 'artist_data.txt', 'exhi_data.txt', etc.
 
 
-3. In order to insert from an sql file in database admin access for options 4-7 (create table, create view, alter tables and queries), the user must enter the FULL PATH of the sql file from computer. 
-- ex) inserting the file table_py.sql stored in desktop, user would need to enter //User/owner/Desktop/table_py.sql.
+3. In order to run commands from an sql file in database admin access for options 4-7 (create table, create view, alter tables and queries), the user must enter the FULL PATH of the sql file from computer. 
+- ex) inserting the file table_py.sql stored in desktop, user would need to enter //User/owner/Desktop/table_py.sql
 
 4. When typing in SQL queries, the user does not need to include semicolons (;) at the end of commands
 
