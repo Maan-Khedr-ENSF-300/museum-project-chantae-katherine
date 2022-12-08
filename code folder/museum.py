@@ -921,8 +921,7 @@ def create_view_menu():
         if chosen == "1":
             type_sql()
         elif chosen == "2":                 
-            read_sql()
-            print_query()   
+            read_sql()  
         elif chosen == "3":
             break
         else:
