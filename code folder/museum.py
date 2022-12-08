@@ -986,8 +986,7 @@ def read_query():
 
     cur.execute("use museum")
     with open (path, 'r') as f:
-        with cnx.cursor() as cursor:
-            command = cursor.execute(f.read(), multi=True)
+        command = cur.execute(f.read(), multi=True)
         print("\nRead file and executed sucessfully!")
         print_query(command)
     return
