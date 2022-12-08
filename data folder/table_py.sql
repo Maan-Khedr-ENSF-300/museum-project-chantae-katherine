@@ -9,6 +9,6 @@ create table POTTERY
  Id_no         int not null,
  style         varchar(50),
  Material      varchar(20),
- Ceramic_type  varchar(20),
+ Pottery_type  varchar(20),
  primary key(Id_no)
 );
