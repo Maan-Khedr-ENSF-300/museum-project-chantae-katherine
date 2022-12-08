@@ -899,7 +899,7 @@ def type_sql():
 
 def read_sql():
     print("\nChosen Method: Reading SQL file")
-    path = input("\nPlease enter your sql script file path directory: ")
+    path = input("\nPlease enter your sql script FULL file path: ")
 
     cur.execute("use museum")
     with open (path, 'r') as f:
