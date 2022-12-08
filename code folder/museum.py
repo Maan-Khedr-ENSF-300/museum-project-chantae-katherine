@@ -114,6 +114,7 @@ def selection_menu():
             for i in range(7, header_size):
                 print("{:<20s}".format(col_names[i]),end='')
             print()
+
             print(15*8*'-')
             for row in search_result:
                 i = 0
@@ -333,7 +334,7 @@ def insert_sequence(table):
             print("\nSomething went wrong:", err)
             return
 
-         #Based on art_type (PAINTING/STATUE/SCULPTURE/OTHER), get data for that also
+        #Based on art_type (PAINTING/STATUE/SCULPTURE/OTHER), get data for that also
         print("\nPlease enter some more information about your", data[7])
         cur.execute("SELECT * FROM " + data[7])
         col_names = cur.column_names
@@ -474,6 +475,7 @@ def insert_sequence(table):
         insert = ("insert into exhibition values (" + params + ")")
 
         data = [last_id[0]+1]
+
 
         for i in range(1, num_params):
             info = ""
@@ -846,11 +848,179 @@ def admin_access():
         update_delete_menu(0)
     elif choice == "3":
         update_delete_menu(1)
+    elif choice == "4":
+        create_new_table_menu()
+    elif choice == "5":
+        create_view_menu()
+    elif choice == "6":
+        alter_tb_menu()
+    elif choice == "7":
+        basic_query_menu()
     elif choice == "10":
         return
-    else:
-        print("\nThat action has not been implemented yet.")
+    else: 
+        print("Sorry that is an invalid action. Please re-enter your choice.")
     admin_access()
+
+def create_new_table_menu():
+    while (True):
+        print("\n New Table Creation")
+        print(20*"-")
+        print("Please select the method in which you would like to create your new table:")
+        print("\n1: Typing in your MySQL command")
+        print("2: Insert a SQL script file path directory")
+        print("3: Back to MENU")
+        chosen = input("Enter chosen method (1-2): ")
+
+        if chosen == "1":  
+            type_sql()
+        elif chosen == "2":         
+            read_sql()
+        elif chosen == "3":
+            break
+        else:
+            print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
+        break 
+
+    return
+        
+
+## Functions for reading and typing sql scripts and files (Create table, view, alter table)
+
+def type_sql():
+    print("\nChosen Method: Typing in your MySQL command")
+    command = input("\nPlease type in your MySQL command (do not include ';' delimiter): ")
+    cur.execute("use museum")
+    command = cur.execute(command)
+    print("\nYour command has been executed successfully!")
+    print_query(command)
+
+def read_sql():
+    print("\nChosen Method: Reading SQL file")
+    path = input("\nPlease enter your sql script FULL file path: ")
+
+    cur.execute("use museum")
+    with open (path, 'r') as f:
+        with cnx.cursor() as cursor:
+            command = cursor.execute(f.read(), multi=True)
+        print("\nRead file and executed successfully!")
+    
+        
+
+
+
+def create_view_menu():
+    while (True):
+        print("\n View Creation")
+        print(15*"-")
+        print("Please select the method in which you would like to create view:")
+        print("\n1: Typing in your MySQL command")
+        print("2: Insert a SQL script file")
+        print("3: Back to MENU")
+        chosen = input("Enter chosen method (1-2): ")
+
+        if chosen == "1":
+            type_sql()
+        elif chosen == "2":                 
+            read_sql()  
+        elif chosen == "3":
+            break
+        else:
+            print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
+        break
+
+    return
+
+def alter_tb_menu():
+    while(True):
+        print("\n Altering Existing Table")
+        print(25*"-") 
+        print("Please select the method in which you would like to alter an existing table:")
+        print("\n1: Typing in your MySQL command")
+        print("2: Insert a SQL script file")
+        print("3: Back to MENU")
+        chosen = input("Enter chosen method (1-3): ")
+
+        if chosen == "1":
+            type_sql()
+        elif chosen == "2":
+            read_sql()
+        elif chosen == "3":
+            break
+        else:
+            print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
+        
+        break
+    
+    return 
+
+
+def basic_query_menu():
+    while (True):
+        print("\n Chosen Basic Query Retrieval")
+        print(30*"-")
+        print("\n1: Typing in your MySQL command")
+        print("2: Insert a SQL script file")
+        print("3: Back to MENU")
+        chosen = input("Please select the method in which you would like to create view:")
+
+        if chosen == "1":
+            query_type()
+        elif chosen == "2":
+            read_query()
+        elif chosen == "3":
+            break
+        else:
+            print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
+
+        break
+    
+    return
+
+
+#functions for query display below for both methods (reading and typing)
+
+def read_query():
+    print("\nChosen Method: Reading SQL file")
+    path = input("\nPlease enter your sql script FULL file path: ")
+
+    cur.execute("use museum")
+    with open (path, 'r') as f:
+        command = cur.execute(f.read(), multi=True)
+        print("\nRead file and executed sucessfully!")
+        print_query(command)
+    return
+
+
+
+def query_type():
+    print("\nTyping in your SQL command")
+    print(25*"-")
+    command = input("\nPlease enter your SQL query (do not include ';' delimiter): ")
+    cur.execute("use museum")
+    command =cur.execute(command)
+    print_query(command)
+
+def print_query(command):
+    col_names = cur.column_names
+    attribute_size = len(col_names)
+    print()
+    print(50*"-")
+    print("Attribute list names: ")
+    for i in range(attribute_size):
+        print(col_names[i], end= '\t')
+    print()
+
+    rows = cur.fetchall()
+    size = len(rows)
+    print("\nTable Content (respective from attribute name list): \n")
+    for i in range(size):
+        for j in range(len(rows[i])):
+            print(rows[i][j], end= "\t")
+        print()
+    return
+
+
 
 def data_entry_access():
     choice = menu(1);
@@ -907,10 +1077,11 @@ def menu(role_num):
     print("2. Delete")
     print("3. Update")
     if role_num == 0:
-        print("4. Create table")
-        print("5. Create view")
-        print("6. Alter")
-        print("7. Query")
+        print("4. Create table") 
+        print("5. Create view") 
+        print("6. Alter") 
+        print("7. Query") 
+
     print("10. QUIT")
 
     choice = input("Which operation would you like to execute? Please enter your choice here: ")

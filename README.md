@@ -18,17 +18,20 @@ Katherine Tubang (30121665) katherine.tubang@ucalgary.ca
 - Python reviewing: Chantae, Katherine
 
 ## Notes on how to use and run program:
-Users:
+1. Users:
 - Username: ch | Password: password1
 - Username: kt | Password: password2
 - Username: guest | No password
 
-In order to insert from file, the file must be in 'data folder'.
+2. In order to insert tuples from a file, the file must be in 'data folder'.
 The attributes must be separated by commas without spaces, and entries must be line separated.
 To insert from a file, enter the file name with the .txt extension, but without the path. For example, enter 'artist_data.txt', 'exhi_data.txt', etc.
 
-- Inserting an sql file in database admin access for options 4-7(includes create table, create view, alter tables and queries). Must enter the full path of the sql file from computer. 
-ex) inserting the file table_py.sql stored in desktop, user would need to enter //User/owner/Desktop/table_py.sql.
+
+3. In order to run commands from an sql file in database admin access for options 4-7 (create table, create view, alter tables and queries), the user must enter the FULL PATH of the sql file from computer. 
+- ex) inserting the file table_py.sql stored in desktop, user would need to enter //User/owner/Desktop/table_py.sql
+
+4. When typing in SQL queries, the user does not need to include semicolons (;) at the end of commands
 
 ## Bonus Features:
 - In .sql Query file:
