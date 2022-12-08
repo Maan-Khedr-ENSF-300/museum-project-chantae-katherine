@@ -892,7 +892,7 @@ def create_new_table_menu():
 
 def type_sql():
     print("\nChosen Method: Typing in your MySQL command")
-    command = input("\nPlease type in your MySQL command: ")
+    command = input("\nPlease type in your MySQL command (do not include ';' delimiter): ")
     cur.execute("use museum")
     cur.execute(command)
     print("\nYour command has been executed sucessfully!")
