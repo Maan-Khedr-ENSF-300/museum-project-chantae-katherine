@@ -891,8 +891,9 @@ def type_sql():
     print("\nChosen Method: Typing in your MySQL command")
     command = input("\nPlease type in your MySQL command (do not include ';' delimiter): ")
     cur.execute("use museum")
-    cur.execute(command)
-    print("\nYour command has been executed sucessfully!")
+    command = cur.execute(command)
+    print("\nYour command has been executed successfully!")
+    print_query(command)
 
 def read_sql():
     print("\nChosen Method: Reading SQL file")
@@ -901,8 +902,11 @@ def read_sql():
     cur.execute("use museum")
     with open (path, 'r') as f:
         with cnx.cursor() as cursor:
-            cursor.execute(f.read(), multi=True)
-        print("\nRead file and executed sucessfully!")
+            command = cursor.execute(f.read(), multi=True)
+        print("\nRead file and executed successfully!")
+    
+        
+
 
 
 def create_view_menu():
@@ -963,7 +967,7 @@ def basic_query_menu():
         if chosen == "1":
             query_type()
         elif chosen == "2":
-            read_sql()
+            read_query()
         elif chosen == "3":
             break
         else:
@@ -976,15 +980,29 @@ def basic_query_menu():
 
 #functions for query display below for both methods (reading and typing)
 
+def read_query():
+    print("\nChosen Method: Reading SQL file")
+    path = input("\nPlease enter your sql script FULL file path: ")
+
+    cur.execute("use museum")
+    with open (path, 'r') as f:
+        with cnx.cursor() as cursor:
+            command = cursor.execute(f.read(), multi=True)
+        print("\nRead file and executed sucessfully!")
+        print_query(command)
+    return
+
+
+
 def query_type():
     print("\nTyping in your SQL command")
     print(25*"-")
     command = input("\nPlease enter your SQL query (do not include ';' delimiter): ")
     cur.execute("use museum")
-    cur.execute(command)
-    print_query()
+    command =cur.execute(command)
+    print_query(command)
 
-def print_query():
+def print_query(command):
     col_names = cur.column_names
     attribute_size = len(col_names)
     print()
@@ -1002,6 +1020,8 @@ def print_query():
             print(rows[i][j], end= "\t")
         print()
     return
+
+
 
 def data_entry_access():
     choice = menu(1);
