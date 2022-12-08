@@ -3,6 +3,6 @@
 
 -- Admin alters the table CERAMICS, to add a column weight
 
-alter table MUSEUM.POTTERY add column 
+alter table MUSEUM.OTHER add column 
 Weight smallint;
 
