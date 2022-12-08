@@ -982,7 +982,7 @@ def basic_query_menu():
 def query_type():
     print("\nTyping in your SQL command")
     print(25*"-")
-    command = input("\nPlease enter your SQL query: ")
+    command = input("\nPlease enter your SQL query (do not include ';' delimiter): ")
     cur.execute("use museum")
     cur.execute(command)
     print_query()
