@@ -880,13 +880,10 @@ def create_new_table_menu():
             break
         else:
             print("\nSorry that is not a valid entry. Please re-enter your chosen method: ")
-
         break 
 
     return
         
-
-
 
 ## Functions for reading and typing sql scripts and files (Create table, view, alter table)
 
